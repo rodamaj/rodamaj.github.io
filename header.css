@@ -3,6 +3,7 @@
 /* Style the header */
 header {
     font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
     padding: 10px 16px;
     /* from https://coolors.co/721817-fa9f42-2b4162-0b6e4f-e0e0e2 */
     background: #FA9F42;
@@ -23,5 +24,5 @@ header {
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
-    /* padding-top: 102px; */
+    padding-top: 102px;
 }
