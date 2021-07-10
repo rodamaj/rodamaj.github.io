@@ -1,3 +1,13 @@
+html { 
+    font-size: calc(0.75em + 1vw) 
+}
+
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 1em;
+    }
+}
+
 body {
     font-family: 'Work Sans', sans-serif;
     font-weight: 300;
@@ -14,4 +24,46 @@ a {
 
 #logo {
     margin-right: 20px;
+}
+
+/* Adapted from https://www.w3schools.com/howto/howto_js_sticky_header.asp */
+
+/* Style the header */
+header {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    /* from https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
+    background: #1D3557;
+    color: #F1F1F1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  
+/* Page content */
+.content {
+    padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}
+
+h2 {
+    font-size: calc(1em + 1vw);
+}
+
+@media screen and (min-width: 400px) {
+    h2 {
+        font-size: 1em;
+    }
 }
