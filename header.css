@@ -4,10 +4,13 @@
 header {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    padding: 10px 16px;
-    /* from https://coolors.co/721817-fa9f42-2b4162-0b6e4f-e0e0e2 */
-    background: #FA9F42;
-    color: #000000;
+    padding: 10px 20px;
+    /* from https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
+    background: #1D3557;
+    color: #F1F1F1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
   
 /* Page content */

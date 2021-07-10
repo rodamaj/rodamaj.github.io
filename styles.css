@@ -5,5 +5,13 @@ body {
 }
 
 #content {
-    margin: 10px 16px;
+    margin: 20px;
+}
+
+a {
+    color: #457B9D;
+}
+
+#logo {
+    margin-right: 20px;
 }
