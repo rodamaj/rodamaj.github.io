@@ -1,5 +1,6 @@
 html { 
-    font-size: calc(0.75em + 1vw) 
+    font-size: calc(0.75em + 1vw);
+    width: 100%;
 }
 
 @media screen and (min-width: 400px) {
@@ -24,12 +25,6 @@ body {
 @media screen and (max-width: 1200px) {
     #content {
         margin: 20px;
-    }
-}
-
-@media screen and (max-height: 720px) {
-    #content {
-        padding-bottom: 40vw;
     }
 }
 
@@ -68,14 +63,16 @@ header {
     /* from https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
     background: #1D3557;
     color: white;
+    position: sticky;
+    top: 0;
 }
 
 #header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     margin: 0 auto;
-    width: 100%;
     max-width: 1200px;
 }
 
@@ -90,33 +87,35 @@ header {
         margin: 0;
     }
 }
-  
+
+@media screen and (max-width: 300px) {
+    #header-content {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    #header-content > div {
+        margin-top: 0.5em;
+    }
+}
+
+#header-content > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#social-media-section > a {
+    margin: 0 0.5vw;
+}
+
 /* Page content */
 .content {
     padding: 16px;
 }
 
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-@media screen and (max-width: 300px) {
-    .sticky > div > h2 {
-        padding-right: 30vw;
-    }
-}
-
 h2 {
-    font-size: calc(1em + 1vw);
-}
-
-@media screen and (min-width: 400px) {
-    h2 {
-        font-size: 1em;
-    }
+    font-size: 1em;
 }
 
 footer {
