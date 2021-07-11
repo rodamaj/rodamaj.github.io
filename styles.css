@@ -11,11 +11,26 @@ html {
 body {
     font-family: 'Work Sans', sans-serif;
     font-weight: 300;
-    margin: 0%;
+    margin: 0 auto;
+    width: 100%;
 }
 
 #content {
-    margin: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding-bottom: 20vw;
+}
+
+@media screen and (max-width: 1200px) {
+    #content {
+        margin: 20px;
+    }
+}
+
+@media screen and (max-height: 720px) {
+    #content {
+        padding-bottom: 40vw;
+    }
 }
 
 a {
@@ -24,6 +39,23 @@ a {
 
 #logo {
     margin-right: 20px;
+}
+
+#about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+@media screen and (max-width: 600px) {
+    #about {
+        flex-direction: column;
+    }
+}
+
+#picture {
+    margin: 10px;
 }
 
 /* Adapted from https://www.w3schools.com/howto/howto_js_sticky_header.asp */
@@ -35,10 +67,28 @@ header {
     padding: 10px 20px;
     /* from https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
     background: #1D3557;
-    color: #F1F1F1;
+    color: white;
+}
+
+#header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+@media screen and (min-width: 300px) {
+    #header-content {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #header-content {
+        margin: 0;
+    }
 }
   
 /* Page content */
@@ -53,9 +103,10 @@ header {
     width: 100%;
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-    padding-top: 102px;
+@media screen and (max-width: 300px) {
+    .sticky > div > h2 {
+        padding-right: 30vw;
+    }
 }
 
 h2 {
@@ -66,4 +117,15 @@ h2 {
     h2 {
         font-size: 1em;
     }
+}
+
+footer {
+    font-size: 0.85em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #E63946;
+    color: white;
+    text-align: center;
 }
