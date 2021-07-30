@@ -72,8 +72,6 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
-    max-width: 1200px;
 }
 
 @media screen and (min-width: 300px) {
@@ -127,4 +125,24 @@ footer {
     background-color: #E63946;
     color: white;
     text-align: center;
+}
+
+#footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+#spanish-link {
+    font-weight: bold;
+}
+
+#footer-content a {
+    color: white;
+}
+
+.margin-container {
+    margin: 0 auto;
+    max-width: 1200px;
 }
