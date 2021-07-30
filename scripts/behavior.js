@@ -1,9 +1,12 @@
+import { language } from "./lang_es.js";
+
 let englishLink = document.getElementById("english-link");
 let spanishLink = document.getElementById("spanish-link");
 
 englishLink.onclick = function() {
     toggleLink(englishLink, spanishLink, () => {
         alert("Translation to English.");
+        console.log(language);
     });
 };
 
