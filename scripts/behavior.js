@@ -1,4 +1,4 @@
-import { language } from "./lang.es.js";
+import { language } from "./lang_es";
 
 let englishLink = document.getElementById("english-link");
 let spanishLink = document.getElementById("spanish-link");
