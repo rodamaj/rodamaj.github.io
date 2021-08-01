@@ -67,6 +67,7 @@ header {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
     position: sticky;
     top: 0;
