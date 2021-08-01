@@ -1,20 +1,31 @@
-import { language } from "./lang_es.js";
+import { language as langES } from "./lang_es.js";
+import { language as langEN } from "./lang_en.js";
 
-let englishLink = document.getElementById("english-link");
-let spanishLink = document.getElementById("spanish-link");
+const englishLink = document.getElementById("english-link");
+const spanishLink = document.getElementById("spanish-link");
 
 englishLink.onclick = function() {
     toggleLink(englishLink, spanishLink, () => {
-        alert("Translation to English.");
-        console.log(language);
+        changePageLanguage(langEN);
     });
 };
 
 spanishLink.onclick = function() {
     toggleLink(spanishLink, englishLink, () => {
-        alert("Traducción a español.");
+        changePageLanguage(langES);
     });
 };
+
+function changePageLanguage(lang) {
+    document.getElementById("description").innerHTML = lang.description;
+    document.getElementById("interests").children[0].innerHTML = lang.interestsTitle;
+    document.getElementById("interests").children[1].innerHTML = "";
+    lang.interests.forEach(interest => {
+        const li = document.createElement("li");
+        li.innerHTML = interest;
+        document.getElementById("interests").children[1].appendChild(li);
+    });
+}
 
 function toggleLink(clickedLink, newClickableLink, callback) {
     if (newClickableLink.getAttribute("href") == null) {
