@@ -132,6 +132,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #spanish-link {
@@ -145,4 +147,14 @@ footer {
 .margin-container {
     margin: 0 auto;
     max-width: 1200px;
+}
+
+@media screen and (max-width: 600px) {
+    #footer-content {
+        flex-direction: column;
+    }
+
+    #footer-content p {
+        margin: 1em;
+    }
 }
