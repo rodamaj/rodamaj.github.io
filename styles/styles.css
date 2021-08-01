@@ -66,16 +66,21 @@ a {
 header {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    padding: 10px 20px;
-    /* from https://coolors.co/beef9e-a6c36f-828c51-335145-1e352f */
-    background: #1E352F;
+    backdrop-filter: blur(10px);
     color: white;
     position: sticky;
     top: 0;
 }
 
+.colored-background {
+    opacity: 0.8;
+    background: black;
+    padding: 10px 20px;
+}
+
 #header-content {
     display: flex;
+    opacity: 1;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -129,6 +134,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    /* from https://coolors.co/beef9e-a6c36f-828c51-335145-1e352f */
     background-color: #828C51;
     color: white;
     text-align: center;
