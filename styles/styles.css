@@ -63,15 +63,12 @@ a {
     }
 }
 
-/* Adapted from https://www.w3schools.com/howto/howto_js_sticky_header.asp */
-
-/* Style the header */
 header {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     padding: 10px 20px;
-    /* from https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557 */
-    background: #1D3557;
+    /* from https://coolors.co/beef9e-a6c36f-828c51-335145-1e352f */
+    background: #1E352F;
     color: white;
     position: sticky;
     top: 0;
@@ -132,7 +129,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #E63946;
+    background-color: #828C51;
     color: white;
     text-align: center;
 }
