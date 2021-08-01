@@ -19,12 +19,12 @@ body {
 #content {
     margin: 20px auto;
     max-width: 1200px;
-    padding-bottom: 20vw;
 }
 
 @media screen and (max-width: 1200px) {
     #content {
         margin: 20px;
+        padding-bottom: 25vw;
     }
 }
 
@@ -51,6 +51,16 @@ a {
 
 #picture {
     margin: 10px;
+}
+
+#description {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    #description {
+        margin-left: auto;
+    }
 }
 
 /* Adapted from https://www.w3schools.com/howto/howto_js_sticky_header.asp */
