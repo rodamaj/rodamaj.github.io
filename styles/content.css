@@ -66,6 +66,27 @@
   margin: 0;
 }
 
+.info-card ul {
+  list-style: none; 
+  padding-left: 1em;
+}
+
+.info-card li:before {
+  padding-right: 0.5em;
+}
+
+#interests li:before {
+  content: "💻";
+}
+
+#cv-es-link:before {
+  content: "🇪🇸";
+}
+
+#cv-en-link:before {
+  content: "🇬🇧";
+}
+
 /* tiny screens */
 @media (max-width: 319px) {
 }
