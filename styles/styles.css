@@ -20,12 +20,12 @@ body {
   width: 100%;
 }
 
-a {
-  color: #457b9d;
+h2 {
+  font-size: 1.3em;
 }
 
-h2 {
-  font-size: 1em;
+a {
+  color: #457b9d;
 }
 
 .margin-container {

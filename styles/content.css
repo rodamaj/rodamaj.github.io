@@ -1,11 +1,11 @@
 #content {
-  margin: 20px auto;
+  margin: 2em auto;
   max-width: 1200px;
 }
 
 @media screen and (max-width: 1200px) {
   #content {
-    margin: 20px;
+    margin: 2em;
     padding-bottom: 25vw;
   }
 }
@@ -24,12 +24,12 @@
 }
 
 #picture {
-  margin: 10px;
+  margin: 1em;
   border-radius: 50%;
 }
 
 #description {
-  margin-left: 20px;
+  margin-left: 2em;
 }
 
 @media screen and (max-width: 600px) {

@@ -8,18 +8,18 @@ header {
   top: 0;
 }
 
-#logo {
-  margin-right: 20px;
+.colored-background {
+  opacity: 0.8;
+  background: black;
+  padding: 0.5em 1em;
 }
 
 #logo-section {
   margin-right: 1em;
 }
 
-.colored-background {
-  opacity: 0.8;
-  background: black;
-  padding: 10px 20px;
+#logo {
+  margin-right: 1em;
 }
 
 #header-content {
@@ -28,6 +28,12 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+#header-content > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 @media screen and (min-width: 300px) {
@@ -51,12 +57,6 @@ header {
   #header-content > div {
     margin-top: 0.5em;
   }
-}
-
-#header-content > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 #social-media-section > a {
