@@ -1,3 +1,7 @@
+@import url(header.css);
+@import url(content.css);
+@import url(footer.css);
+
 html {
   font-size: calc(0.75em + 1vw);
   width: 100%;
@@ -16,168 +20,15 @@ body {
   width: 100%;
 }
 
-#content {
-  margin: 20px auto;
-  max-width: 1200px;
-}
-
-@media screen and (max-width: 1200px) {
-  #content {
-    margin: 20px;
-    padding-bottom: 25vw;
-  }
-}
-
 a {
   color: #457b9d;
-}
-
-#logo {
-  margin-right: 20px;
-}
-
-#logo-section {
-  margin-right: 1em;
-}
-
-#about {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 5vh;
-}
-
-@media screen and (max-width: 600px) {
-  #about {
-    flex-direction: column;
-  }
-}
-
-#picture {
-  margin: 10px;
-  border-radius: 50%;
-}
-
-#description {
-  margin-left: 20px;
-}
-
-@media screen and (max-width: 600px) {
-  #description {
-    margin-left: auto;
-  }
-}
-
-header {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
-  position: sticky;
-  top: 0;
-}
-
-.colored-background {
-  opacity: 0.8;
-  background: black;
-  padding: 10px 20px;
-}
-
-#header-content {
-  display: flex;
-  opacity: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@media screen and (min-width: 300px) {
-  #header-content {
-    padding: 10px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  #header-content {
-    margin: 0;
-  }
-}
-
-@media screen and (max-width: 300px) {
-  #header-content {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  #header-content > div {
-    margin-top: 0.5em;
-  }
-}
-
-#header-content > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#social-media-section > a {
-  margin: 0 0.5vw;
-}
-
-/* Page content */
-.content {
-  padding: 16px;
 }
 
 h2 {
   font-size: 1em;
 }
 
-footer {
-  font-size: 0.85em;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  /* from https://coolors.co/beef9e-a6c36f-828c51-335145-1e352f */
-  background-color: #828c51;
-  color: white;
-  text-align: center;
-}
-
-#footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#spanish-link {
-  font-weight: bold;
-}
-
-#footer-content a {
-  color: white;
-}
-
 .margin-container {
   margin: 0 auto;
   max-width: 1200px;
-}
-
-@media screen and (max-width: 600px) {
-  #footer-content {
-    flex-direction: column;
-  }
-
-  #footer-content p {
-    margin: 1em;
-  }
-}
-
-.info-group {
-  padding-bottom: 1em;
 }

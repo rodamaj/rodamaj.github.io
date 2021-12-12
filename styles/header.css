@@ -1,0 +1,64 @@
+header {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+#logo {
+  margin-right: 20px;
+}
+
+#logo-section {
+  margin-right: 1em;
+}
+
+.colored-background {
+  opacity: 0.8;
+  background: black;
+  padding: 10px 20px;
+}
+
+#header-content {
+  display: flex;
+  opacity: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 300px) {
+  #header-content {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #header-content {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #header-content {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #header-content > div {
+    margin-top: 0.5em;
+  }
+}
+
+#header-content > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#social-media-section > a {
+  margin: 0 0.5vw;
+}

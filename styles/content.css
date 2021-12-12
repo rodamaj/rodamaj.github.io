@@ -1,0 +1,43 @@
+#content {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+@media screen and (max-width: 1200px) {
+  #content {
+    margin: 20px;
+    padding-bottom: 25vw;
+  }
+}
+
+#about {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+@media screen and (max-width: 600px) {
+  #about {
+    flex-direction: column;
+  }
+}
+
+#picture {
+  margin: 10px;
+  border-radius: 50%;
+}
+
+#description {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  #description {
+    margin-left: auto;
+  }
+}
+
+.info-group {
+  padding-bottom: 1em;
+}
