@@ -3,25 +3,19 @@
 @import url(footer.css);
 
 html {
-  font-size: calc(0.75em + 1vw);
   width: 100%;
 }
 
-@media screen and (min-width: 400px) {
-  html {
-    font-size: 1em;
-  }
-}
-
 body {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-family: "Inter", sans-serif;
   margin: 0 auto;
   width: 100%;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 a {
@@ -30,5 +24,5 @@ a {
 
 .margin-container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 980px;
 }
