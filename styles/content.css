@@ -1,5 +1,9 @@
 #content {
-  margin: 2em auto;
+  margin: 2em;
+  padding-bottom: 10em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }
 
 #about {
@@ -10,14 +14,15 @@
 }
 
 #picture {
-  margin: 1em;
+  margin-top: 1em;
+  margin-bottom: 3em;
   border-radius: 50%;
 }
 
 #description {
   font-size: 2.5rem;
   font-weight: 600;
-  text-align: justify;
+  text-align: start;
 }
 
 #description p {
@@ -36,48 +41,58 @@
   color: lightgreen;
 }
 
-.info-group {
-  padding-bottom: 1em;
+.info-cards-section {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+  height: 8em;
+}
+
+.info-card {
+  border: 1px solid hsla(0, 0%, 51.4%, 0.16);
+  border-radius: 28px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 50%;
+  height: 100%;
+}
+
+.info-card h4 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 /* tiny screens */
 @media (max-width: 319px) {
-  #content {
-    margin: 2em;
-    padding-bottom: 25vw;
-  }
 }
 
 /* mobile devices */
 @media (min-width: 320px) and (max-width: 480px) {
-  #content {
-    margin: 2em;
-    padding-bottom: 25vw;
-  }
 }
 
 /* tablets */
 @media (min-width: 481px) and (max-width: 768px) {
-  #content {
-    margin: 2em;
-    padding-bottom: 25vw;
+  @media (max-width: 580px) {
+    .info-cards-section {
+      flex-direction: column;
+    }
+
+    .info-card {
+      width: 100%;
+    }
   }
 }
 
 /* laptops */
 @media (min-width: 769px) and (max-width: 1024px) {
-  #content {
-    margin: 2em;
-    padding-bottom: 25vw;
-  }
 }
 
 /* desktops */
 @media (min-width: 1025px) and (max-width: 1200px) {
-  #content {
-    margin: 2em;
-    padding-bottom: 25vw;
-  }
 }
 
 /* large screens (TVs) */
