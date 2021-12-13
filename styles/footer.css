@@ -40,8 +40,8 @@ footer {
   margin: 1em 0;
 }
 
-/* tiny screens and mobile devices */
-@media (max-width: 480px) {
+/* other */
+@media (max-width: 360px) {
   #footer-content {
     flex-direction: column;
   }
