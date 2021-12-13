@@ -89,15 +89,15 @@
   content: "💻";
 }
 
-#links a {
+#cv-links a {
   text-decoration: none;
 }
 
-#links a:hover {
+#cv-links a:hover {
   text-decoration: underline;
 }
 
-#links li:after {
+#cv-links li:after {
   content: "\f054";
   font-family: FontAwesome;
   color: #06c;

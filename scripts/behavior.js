@@ -25,43 +25,68 @@ spanishLink.onclick = function () {
 };
 
 function changePageLanguage(lang) {
-  document.getElementById("description-name").innerHTML = lang.descriptionName;
-  document.getElementById("description-field").innerHTML =
-    lang.descriptionField;
-  document.getElementById("description-place").innerHTML =
-    lang.descriptionPlace;
+  translateStaticElements(lang);
+  translateHeaderLinks(lang.headerLinks);
+  translateInterestsList(lang.interests);
+  translateCVLinksList(lang.cvLinks);
 
-  document.getElementById("interests").children[0].innerHTML =
-    lang.interestsTitle;
-  document.getElementById("links").children[0].innerHTML = lang.cvLinksTitle;
+  window.localStorage.setItem("lang", lang.abbreviation);
+}
 
-  document.getElementById("header-links").innerHTML = "";
-  document.getElementById("interests").children[1].innerHTML = "";
-  document.getElementById("links").children[1].innerHTML = "";
+function translateStaticElements(lang) {
+  const descriptionName = document.getElementById("description-name");
+  setElementContent(descriptionName, lang.descriptionName);
+  const descriptionField = document.getElementById("description-field");
+  setElementContent(descriptionField, lang.descriptionField);
+  const descriptionPlace = document.getElementById("description-place");
+  setElementContent(descriptionPlace, lang.descriptionPlace);
 
-  lang.headerLinks.forEach((link) => {
+  const interestsTitle = document.getElementById("interests-title");
+  setElementContent(interestsTitle, lang.interestsTitle);
+  const cvLinksTitle = document.getElementById("cv-links-title");
+  setElementContent(cvLinksTitle, lang.cvLinksTitle);
+}
+
+function translateHeaderLinks(newHeaderLinks) {
+  const headerLinks = document.getElementById("header-links");
+  clearElementContent(headerLinks);
+  newHeaderLinks.forEach((link) => {
     const a = document.createElement("a");
     a.innerHTML = link;
-    document.getElementById("header-links").appendChild(a);
+    headerLinks.appendChild(a);
   });
+}
 
-  lang.interests.forEach((interest) => {
+function translateInterestsList(newInterests) {
+  const interestsList = document.getElementById("interests-list");
+  clearElementContent(interestsList);
+  newInterests.forEach((interest) => {
     const li = document.createElement("li");
     li.innerHTML = interest;
-    document.getElementById("interests").children[1].appendChild(li);
+    interestsList.appendChild(li);
   });
+}
 
-  lang.cvLinks.forEach((link) => {
+function translateCVLinksList(newCVLinks) {
+  const cvLinksList = document.getElementById("cv-links-list");
+  clearElementContent(cvLinksList);
+  newCVLinks.forEach((link) => {
     const li = document.createElement("li");
     li.setAttribute("id", link.id);
     const a = document.createElement("a");
     a.innerHTML = link.text;
     a.setAttribute("href", link.href);
     li.appendChild(a);
-    document.getElementById("links").children[1].appendChild(li);
+    cvLinksList.appendChild(li);
   });
+}
 
-  window.localStorage.setItem("lang", lang.abbreviation);
+function setElementContent(element, newContent) {
+  element.innerHTML = newContent;
+}
+
+function clearElementContent(element) {
+  element.innerHTML = "";
 }
 
 function toggleLink(clickedLink, newClickableLink, callback) {
