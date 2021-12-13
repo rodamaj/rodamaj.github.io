@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 4em;
+}
+
 footer {
   position: fixed;
   left: 0;
@@ -42,6 +46,10 @@ footer {
 
 /* other */
 @media (max-width: 360px) {
+  body {
+    padding-bottom: 8em;
+  }
+
   #footer-content {
     flex-direction: column;
   }
