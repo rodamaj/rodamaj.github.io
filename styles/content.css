@@ -1,4 +1,4 @@
-#content {
+.content {
   margin: 2em;
   padding-bottom: 10em;
   display: flex;
@@ -149,4 +149,30 @@
   .info-card {
     width: auto;
   }
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.big-section {
+  margin: 5em 0;
+}
+
+.big-section h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.big-section h4 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: black;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.big-section p {
+  color: #6e6e73;
 }
