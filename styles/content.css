@@ -162,17 +162,28 @@
 .big-section h3 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #1d1d1f;
+  color: #B8B8B9;
 }
 
 .big-section h4 {
   font-size: 3rem;
   font-weight: 600;
-  color: black;
   margin: 0;
   margin-bottom: 1em;
 }
 
 .big-section p {
+  color: #BFBFC1;
+}
+
+.white-bg .big-section h3 {
+  color: #1d1d1f;
+}
+
+.white-bg .big-section h4 {
+  color: black;
+}
+
+.white-bg .big-section p {
   color: #6e6e73;
 }
