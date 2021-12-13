@@ -3,7 +3,7 @@ function setElementContent(element, newContent) {
 }
 
 function clearElementContent(element) {
-  element.innerHTML = '';
+  element.innerHTML = "";
 }
 
 export { setElementContent, clearElementContent };

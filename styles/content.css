@@ -1,5 +1,5 @@
-@import url('info-cards.css');
-@import url('big-section.css');
+@import url("info-cards.css");
+@import url("big-section.css");
 
 .content {
   padding: 2em;
@@ -23,7 +23,7 @@
 
 #description {
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 500;
   text-align: start;
 }
 
@@ -36,7 +36,6 @@
   content: "_";
   margin-left: 0.5em;
   font-size: 2rem;
-  font-weight: 900;
   opacity: 0;
   animation: cursor 1s infinite;
 }
@@ -61,6 +60,10 @@
 
 #description p {
   margin: 0.2em;
+}
+
+#description strong {
+  font-weight: 600;
 }
 
 #description-name strong {
