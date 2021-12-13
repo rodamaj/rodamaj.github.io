@@ -91,50 +91,14 @@
   content: "🇬🇧";
 }
 
-/* tiny screens */
-@media (max-width: 319px) {
+/* other */
+@media (max-width: 580px) {
   .info-cards-section {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .info-card {
     width: auto;
   }
-}
-
-/* mobile devices */
-@media (min-width: 320px) and (max-width: 480px) {
-  .info-cards-section {
-    flex-direction: column;
-  }
-
-  .info-card {
-    width: auto;
-  }
-}
-
-/* tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  @media (max-width: 580px) {
-    .info-cards-section {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .info-card {
-      width: auto;
-    }
-  }
-}
-
-/* laptops */
-@media (min-width: 769px) and (max-width: 1024px) {
-}
-
-/* desktops */
-@media (min-width: 1025px) and (max-width: 1200px) {
-}
-
-/* large screens (TVs) */
-@media (min-width: 1201px) {
 }

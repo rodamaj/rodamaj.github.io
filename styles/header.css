@@ -4,7 +4,7 @@ header {
   color: white;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #e2e2e22b
+  border-bottom: 1px solid #e2e2e22b;
 }
 
 .colored-background {
@@ -56,10 +56,6 @@ header {
 
 /* tiny screens */
 @media (max-width: 319px) {
-  #header-links {
-    display: none;
-  }
-
   #social-media-section {
     display: none;
   }
@@ -67,32 +63,14 @@ header {
 
 /* mobile devices */
 @media (min-width: 320px) and (max-width: 480px) {
-  #header-links {
-    display: none;
-  }
-
   .header-side-item {
     width: auto;
   }
 }
 
-/* tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  @media (max-width: 580px) {
-    #header-links {
-      display: none;
-    }
+/* other */
+@media (max-width: 580px) {
+  #header-links {
+    display: none;
   }
-}
-
-/* laptops */
-@media (min-width: 769px) and (max-width: 1024px) {
-}
-
-/* desktops */
-@media (min-width: 1025px) and (max-width: 1200px) {
-}
-
-/* large screens (TVs) */
-@media (min-width: 1201px) {
 }
