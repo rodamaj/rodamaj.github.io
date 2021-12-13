@@ -25,7 +25,11 @@ spanishLink.onclick = function () {
 };
 
 function changePageLanguage(lang) {
-  document.getElementById("description").innerHTML = lang.description;
+  document.getElementById("description-name").innerHTML = lang.descriptionName;
+  document.getElementById("description-field").innerHTML =
+    lang.descriptionField;
+  document.getElementById("description-place").innerHTML =
+    lang.descriptionPlace;
 
   document.getElementById("interests").children[0].innerHTML =
     lang.interestsTitle;
@@ -42,6 +46,7 @@ function changePageLanguage(lang) {
 
   lang.links.forEach((link) => {
     const li = document.createElement("li");
+    li.setAttribute("id", link.id);
     const a = document.createElement("a");
     a.innerHTML = link.text;
     a.setAttribute("href", link.href);

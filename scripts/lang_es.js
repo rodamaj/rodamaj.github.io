@@ -1,12 +1,15 @@
 const language = {
   abbreviation: "es",
 
-  description:
-    'Egresado de Ingeniería de Software, Universidad de Costa Rica <br /> \
-    Técnico medio en Ejecutivo para Centros de Servicio <br /> \
-    Moravia, San José, Costa Rica',
+  descriptionName: "Hola, mi nombre es <strong>Josué Amador-Rojas</strong>.",
 
-  interestsTitle: "Áreas de interés",
+  descriptionField:
+    "Soy un <strong>ingeniero de software</strong> \
+    egresado de la Universidad de Costa Rica.",
+
+  descriptionPlace: "Vivo en <strong>Moravia, San José, Costa Rica</strong>.",
+
+  interestsTitle: "Me interesan las áreas de",
 
   interests: [
     "Interacción humano-computador",
@@ -14,14 +17,16 @@ const language = {
     "Bases de datos",
   ],
 
-  linksTitle: "Enlaces frecuentes",
+  linksTitle: "Más sobre mí",
 
   links: [
     {
+      id: "cv-es-link",
       text: "Currículo en español",
       href: "cv/jar_cv_es.pdf",
     },
     {
+      id: "cv-en-link",
       text: "Currículo en inglés",
       href: "cv/jar_cv_en.pdf",
     },
