@@ -8,8 +8,7 @@ header {
 }
 
 .colored-background {
-  opacity: 0.8;
-  background: #1d1d1f;
+  background: #1d1d1faa;
   padding: 0.2em 1em;
 }
 
@@ -46,6 +45,10 @@ header {
   color: white;
   font-size: 0.875rem;
   text-decoration: none;
+}
+
+#header-links a:hover {
+  color: lightskyblue;
 }
 
 #social-media-section {
