@@ -24,7 +24,13 @@
   text-align: start;
 }
 
-#description p {
+#description:after {
+  content: "\f054";
+  font-family: FontAwesome;
+  font-size: 2rem;
+}
+
+#description p, #description:after {
   margin: 0.2em;
 }
 
@@ -49,7 +55,7 @@
 }
 
 .info-card {
-  background-color: white;
+  background-color: #f5f5f7;
   border: 1px solid #e2e2e22b;
   border-radius: 28px;
   padding: 2em;
@@ -72,7 +78,7 @@
 }
 
 .info-card li {
-  color: darkslategrey;
+  color: #6e6e73;
 }
 
 .info-card li:before {
@@ -81,6 +87,22 @@
 
 #interests li:before {
   content: "💻";
+}
+
+#links a {
+  text-decoration: none;
+}
+
+#links a:hover {
+  text-decoration: underline;
+}
+
+#links li:after {
+  content: "\f054";
+  font-family: FontAwesome;
+  color: #06c;
+  font-size: 0.75rem;
+  margin-left: 0.4em;
 }
 
 #cv-es-link:before {
