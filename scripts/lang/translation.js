@@ -25,22 +25,16 @@ function translateStaticElements(lang) {
 
 function translateHeaderLinks(newHeaderLinks) {
   const headerLinks = document.getElementById('header-links');
-  clearElementContent(headerLinks);
-  newHeaderLinks.forEach((link) => {
-    const a = document.createElement('a');
-    a.innerHTML = link;
-    headerLinks.appendChild(a);
-  });
+  for (let i = 0; i < headerLinks.children.length; i++) {
+    headerLinks.children[i].innerHTML = newHeaderLinks[i];
+  }
 }
 
 function translateInterestsList(newInterests) {
   const interestsList = document.getElementById('interests-list');
-  clearElementContent(interestsList);
-  newInterests.forEach((interest) => {
-    const li = document.createElement('li');
-    li.innerHTML = interest;
-    interestsList.appendChild(li);
-  });
+  for (let i = 0; i < interestsList.children.length; i++) {
+    interestsList.children[i].innerHTML = newInterests[i];
+  }
 }
 
 function translateCVLinksList(newCVLinks) {
