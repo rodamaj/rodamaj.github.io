@@ -24,13 +24,39 @@
   text-align: start;
 }
 
-#description:after {
-  content: "\f054";
-  font-family: FontAwesome;
+#description-prompt {
   font-size: 2rem;
 }
 
-#description p, #description:after {
+/* from https://codepen.io/dani-visual31/pen/aQpZza */
+#description-prompt:after {
+  content: "_";
+  margin-left: 0.5em;
+  font-size: 2rem;
+  font-weight: 900;
+  opacity: 0;
+  animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#description p {
   margin: 0.2em;
 }
 
