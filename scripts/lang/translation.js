@@ -21,6 +21,9 @@ function translateStaticElements(lang) {
   setElementContent(interestsTitle, lang.interestsTitle);
   const cvLinksTitle = document.getElementById('cv-links-title');
   setElementContent(cvLinksTitle, lang.cvLinksTitle);
+
+  translatePortfolio(lang);
+  translateContact(lang);
 }
 
 function translateHeaderLinks(newHeaderLinks) {
@@ -42,4 +45,22 @@ function translateCVLinksList(newCVLinks) {
   for (let i = 0; i < cvLinksList.children.length; i++) {
     cvLinksList.children[i].firstElementChild.innerHTML = newCVLinks[i];
   }
+}
+
+function translatePortfolio(lang) {
+  const portfolioTitle = document.getElementById("portfolio-title");
+  portfolioTitle.innerHTML = lang.portfolioTitle;
+  const portfolioSubtitle = document.getElementById("portfolio-subtitle");
+  portfolioSubtitle.innerHTML = lang.portfolioSubtitle;
+  const portfolioContent = document.getElementById("portfolio-content");
+  portfolioContent.innerHTML = lang.portfolioContent;
+}
+
+function translateContact(lang) {
+  const contactTitle = document.getElementById("contact-title");
+  contactTitle.innerHTML = lang.contactTitle;
+  const contactSubtitle = document.getElementById("contact-subtitle");
+  contactSubtitle.innerHTML = lang.contactSubtitle;
+  const contactContent = document.getElementById("contact-content");
+  contactContent.innerHTML = lang.contactContent;
 }

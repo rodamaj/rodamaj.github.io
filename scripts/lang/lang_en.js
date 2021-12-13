@@ -27,4 +27,16 @@ export const language = {
   cvLinksTitle: "More about me",
 
   cvLinks: ["CV in Spanish", "CV in English"],
+
+  portfolioTitle: "Portfolio",
+
+  portfolioSubtitle: "Some of my projects as a student.",
+
+  portfolioContent: "Under construction.",
+
+  contactTitle: "Contact",
+
+  contactSubtitle: "Are you interested in working with me?",
+
+  contactContent: "Under construction.",
 };

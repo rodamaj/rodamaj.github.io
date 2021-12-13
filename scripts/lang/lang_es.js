@@ -22,4 +22,16 @@ export const language = {
   cvLinksTitle: "Más sobre mí",
 
   cvLinks: ["Currículo en español", "Currículo en inglés"],
+
+  portfolioTitle: "Portafolio",
+
+  portfolioSubtitle: "Algunos de mis proyectos como estudiante.",
+
+  portfolioContent: "En construcción.",
+
+  contactTitle: "Contacto",
+
+  contactSubtitle: "¿Querés trabajar conmigo?",
+
+  contactContent: "En construcción.",
 };
