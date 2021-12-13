@@ -51,7 +51,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  gap: 1em;
 }
 
 /* tiny screens */
@@ -59,6 +59,11 @@ header {
   #social-media-section {
     display: none;
   }
+}
+
+.header-icon {
+  font-size: 1.5rem;
+  color: white;
 }
 
 /* mobile devices */
