@@ -1,0 +1,28 @@
+{
+  "name": "rodamaj.github.io",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "scripts/behavior.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodamaj/rodamaj.github.io.git"
+  },
+  "keywords": [
+    "website",
+    "github",
+    "portfolio",
+    "developer"
+  ],
+  "author": "rodamaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodamaj/rodamaj.github.io/issues"
+  },
+  "homepage": "https://github.com/rodamaj/rodamaj.github.io#readme",
+  "devDependencies": {
+    "eslint": "^8.4.1"
+  }
+}
