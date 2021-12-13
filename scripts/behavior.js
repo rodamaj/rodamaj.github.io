@@ -33,10 +33,17 @@ function changePageLanguage(lang) {
 
   document.getElementById("interests").children[0].innerHTML =
     lang.interestsTitle;
-  document.getElementById("links").children[0].innerHTML = lang.linksTitle;
+  document.getElementById("links").children[0].innerHTML = lang.cvLinksTitle;
 
+  document.getElementById("header-links").innerHTML = "";
   document.getElementById("interests").children[1].innerHTML = "";
   document.getElementById("links").children[1].innerHTML = "";
+
+  lang.headerLinks.forEach((link) => {
+    const a = document.createElement("a");
+    a.innerHTML = link;
+    document.getElementById("header-links").appendChild(a);
+  });
 
   lang.interests.forEach((interest) => {
     const li = document.createElement("li");
@@ -44,7 +51,7 @@ function changePageLanguage(lang) {
     document.getElementById("interests").children[1].appendChild(li);
   });
 
-  lang.links.forEach((link) => {
+  lang.cvLinks.forEach((link) => {
     const li = document.createElement("li");
     li.setAttribute("id", link.id);
     const a = document.createElement("a");

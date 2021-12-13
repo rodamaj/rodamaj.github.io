@@ -1,6 +1,8 @@
 const language = {
   abbreviation: "es",
 
+  headerLinks: ["Inicio", "Portafolio", "Contacto"],
+
   descriptionName: "Hola, mi nombre es <strong>Josué Amador-Rojas</strong>.",
 
   descriptionField:
@@ -17,9 +19,9 @@ const language = {
     "Bases de datos",
   ],
 
-  linksTitle: "Más sobre mí",
+  cvLinksTitle: "Más sobre mí",
 
-  links: [
+  cvLinks: [
     {
       id: "cv-es-link",
       text: "Currículo en español",

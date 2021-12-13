@@ -1,6 +1,8 @@
 const language = {
   abbreviation: "en",
 
+  headerLinks: ["Home", "Portfolio", "Contact"],
+
   description:
     "Graduated in Software Engineering Concentration, Universidad de Costa Rica <br /> \
     Associate Degree as a Customer Service Executive <br /> \
@@ -22,9 +24,9 @@ const language = {
     "Databases",
   ],
 
-  linksTitle: "More about me",
+  cvLinksTitle: "More about me",
 
-  links: [
+  cvLinks: [
     {
       id: "cv-es-link",
       text: "CV in Spanish",
