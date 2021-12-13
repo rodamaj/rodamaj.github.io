@@ -69,16 +69,9 @@ function translateInterestsList(newInterests) {
 
 function translateCVLinksList(newCVLinks) {
   const cvLinksList = document.getElementById("cv-links-list");
-  clearElementContent(cvLinksList);
-  newCVLinks.forEach((link) => {
-    const li = document.createElement("li");
-    li.setAttribute("id", link.id);
-    const a = document.createElement("a");
-    a.innerHTML = link.text;
-    a.setAttribute("href", link.href);
-    li.appendChild(a);
-    cvLinksList.appendChild(li);
-  });
+  for (let i = 0; i < cvLinksList.children.length; i++) {
+    cvLinksList.children[i].firstElementChild.innerHTML = newCVLinks[i];
+  }
 }
 
 function setElementContent(element, newContent) {

@@ -1,4 +1,4 @@
-const language = {
+export const language = {
   abbreviation: "en",
 
   headerLinks: ["Home", "Portfolio", "Contact"],
@@ -26,18 +26,5 @@ const language = {
 
   cvLinksTitle: "More about me",
 
-  cvLinks: [
-    {
-      id: "cv-es-link",
-      text: "CV in Spanish",
-      href: "cv/jar_cv_es.pdf",
-    },
-    {
-      id: "cv-en-link",
-      text: "CV in English",
-      href: "cv/jar_cv_en.pdf",
-    },
-  ],
+  cvLinks: ["CV in Spanish", "CV in English"],
 };
-
-export { language };
