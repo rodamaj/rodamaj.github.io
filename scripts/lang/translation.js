@@ -1,28 +1,34 @@
-import {
-  setElementContent,
-  clearElementContent,
-} from "../shared/html-handler.js";
+import { setElementContent } from '../shared/html-handler.js';
 
-export function changePageLanguage(lang) {
-  translateStaticElements(lang);
-  translateHeaderLinks(lang.headerLinks);
-  translateInterestsList(lang.interests);
-  translateCVLinksList(lang.cvLinks);
+function translatePortfolio(lang) {
+  const portfolioTitle = document.getElementById('portfolio-title');
+  portfolioTitle.innerHTML = lang.portfolioTitle;
+  const portfolioSubtitle = document.getElementById('portfolio-subtitle');
+  portfolioSubtitle.innerHTML = lang.portfolioSubtitle;
+  const portfolioContent = document.getElementById('portfolio-content');
+  portfolioContent.innerHTML = lang.portfolioContent;
+}
 
-  window.localStorage.setItem("lang", lang.abbreviation);
+function translateContact(lang) {
+  const contactTitle = document.getElementById('contact-title');
+  contactTitle.innerHTML = lang.contactTitle;
+  const contactSubtitle = document.getElementById('contact-subtitle');
+  contactSubtitle.innerHTML = lang.contactSubtitle;
+  const contactContent = document.getElementById('contact-content');
+  contactContent.innerHTML = lang.contactContent;
 }
 
 function translateStaticElements(lang) {
-  const descriptionName = document.getElementById("description-name");
+  const descriptionName = document.getElementById('description-name');
   setElementContent(descriptionName, lang.descriptionName);
-  const descriptionField = document.getElementById("description-field");
+  const descriptionField = document.getElementById('description-field');
   setElementContent(descriptionField, lang.descriptionField);
-  const descriptionPlace = document.getElementById("description-place");
+  const descriptionPlace = document.getElementById('description-place');
   setElementContent(descriptionPlace, lang.descriptionPlace);
 
-  const interestsTitle = document.getElementById("interests-title");
+  const interestsTitle = document.getElementById('interests-title');
   setElementContent(interestsTitle, lang.interestsTitle);
-  const cvLinksTitle = document.getElementById("cv-links-title");
+  const cvLinksTitle = document.getElementById('cv-links-title');
   setElementContent(cvLinksTitle, lang.cvLinksTitle);
 
   translatePortfolio(lang);
@@ -30,40 +36,31 @@ function translateStaticElements(lang) {
 }
 
 function translateHeaderLinks(newHeaderLinks) {
-  const headerLinks = document.getElementById("header-links");
-  for (let i = 0; i < headerLinks.children.length; i++) {
+  const headerLinks = document.getElementById('header-links');
+  for (let i = 0; i < headerLinks.children.length; i += 1) {
     headerLinks.children[i].innerHTML = newHeaderLinks[i];
   }
 }
 
 function translateInterestsList(newInterests) {
-  const interestsList = document.getElementById("interests-list");
-  for (let i = 0; i < interestsList.children.length; i++) {
+  const interestsList = document.getElementById('interests-list');
+  for (let i = 0; i < interestsList.children.length; i += 1) {
     interestsList.children[i].innerHTML = newInterests[i];
   }
 }
 
 function translateCVLinksList(newCVLinks) {
-  const cvLinksList = document.getElementById("cv-links-list");
-  for (let i = 0; i < cvLinksList.children.length; i++) {
+  const cvLinksList = document.getElementById('cv-links-list');
+  for (let i = 0; i < cvLinksList.children.length; i += 1) {
     cvLinksList.children[i].firstElementChild.innerHTML = newCVLinks[i];
   }
 }
 
-function translatePortfolio(lang) {
-  const portfolioTitle = document.getElementById("portfolio-title");
-  portfolioTitle.innerHTML = lang.portfolioTitle;
-  const portfolioSubtitle = document.getElementById("portfolio-subtitle");
-  portfolioSubtitle.innerHTML = lang.portfolioSubtitle;
-  const portfolioContent = document.getElementById("portfolio-content");
-  portfolioContent.innerHTML = lang.portfolioContent;
-}
+export default function changePageLanguage(lang) {
+  translateStaticElements(lang);
+  translateHeaderLinks(lang.headerLinks);
+  translateInterestsList(lang.interests);
+  translateCVLinksList(lang.cvLinks);
 
-function translateContact(lang) {
-  const contactTitle = document.getElementById("contact-title");
-  contactTitle.innerHTML = lang.contactTitle;
-  const contactSubtitle = document.getElementById("contact-subtitle");
-  contactSubtitle.innerHTML = lang.contactSubtitle;
-  const contactContent = document.getElementById("contact-content");
-  contactContent.innerHTML = lang.contactContent;
+  window.localStorage.setItem('lang', lang.abbreviation);
 }

@@ -1,36 +1,39 @@
-import { changePageLanguage } from "./lang/translation.js";
-import { language as langES } from "./lang/lang_es.js";
-import { language as langEN } from "./lang/lang_en.js";
+import changePageLanguage from './lang/translation.js';
+import langES from './lang/lang_es.js';
+import langEN from './lang/lang_en.js';
 
-const englishLink = document.getElementById("english-link");
-const spanishLink = document.getElementById("spanish-link");
+const englishLink = document.getElementById('english-link');
+const spanishLink = document.getElementById('spanish-link');
 
-window.onpageshow = function () {
-  if (window.localStorage.getItem("lang") === "en") {
+function toggleLink(clickedLink, newClickableLink, callback) {
+  const oldLink = clickedLink;
+  const newLink = newClickableLink;
+
+  if (newLink.getAttribute('href') == null) {
+    oldLink.removeAttribute('href');
+    oldLink.style.fontWeight = '600';
+    newLink.setAttribute('href', '');
+    newLink.style.fontWeight = 'normal';
+    callback();
+  }
+}
+
+window.onpageshow = () => {
+  if (window.localStorage.getItem('lang') === 'en') {
     toggleLink(englishLink, spanishLink, () => {
       changePageLanguage(langEN);
     });
   }
 };
 
-englishLink.onclick = function () {
+englishLink.onclick = () => {
   toggleLink(englishLink, spanishLink, () => {
     changePageLanguage(langEN);
   });
 };
 
-spanishLink.onclick = function () {
+spanishLink.onclick = () => {
   toggleLink(spanishLink, englishLink, () => {
     changePageLanguage(langES);
   });
 };
-
-function toggleLink(clickedLink, newClickableLink, callback) {
-  if (newClickableLink.getAttribute("href") == null) {
-    clickedLink.removeAttribute("href");
-    clickedLink.style.fontWeight = "600";
-    newClickableLink.setAttribute("href", "");
-    newClickableLink.style.fontWeight = "normal";
-    callback();
-  }
-}

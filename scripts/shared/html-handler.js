@@ -1,9 +1,11 @@
 function setElementContent(element, newContent) {
-  element.innerHTML = newContent;
+  const elementToBeModified = element;
+  elementToBeModified.innerHTML = newContent;
 }
 
 function clearElementContent(element) {
-  element.innerHTML = "";
+  const elementToBeCleaned = element;
+  elementToBeCleaned.innerHTML = '';
 }
 
 export { setElementContent, clearElementContent };

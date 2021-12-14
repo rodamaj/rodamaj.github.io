@@ -1,37 +1,38 @@
-export const language = {
-  abbreviation: "es",
+const language = {
+  abbreviation: 'es',
 
-  headerLinks: ["Inicio", "Portafolio", "Contacto"],
+  headerLinks: ['Inicio', 'Portafolio', 'Contacto'],
 
-  descriptionName: "Hola, mi nombre es <strong>Josué Amador-Rojas</strong>.",
+  descriptionName: 'Hola, mi nombre es <strong>Josué Amador-Rojas</strong>.',
 
   descriptionField:
-    "Soy un <strong>ingeniero de software</strong> \
-    egresado de la Universidad de Costa Rica.",
+    'Soy un <strong>ingeniero de software</strong> egresado de la Universidad de Costa Rica.',
 
-  descriptionPlace: "Vivo en <strong>Moravia, San José, Costa Rica</strong>.",
+  descriptionPlace: 'Vivo en <strong>Moravia, San José, Costa Rica</strong>.',
 
-  interestsTitle: "Me interesan las áreas de",
+  interestsTitle: 'Me interesan las áreas de',
 
   interests: [
-    "Interacción humano-computador",
-    "Informática educativa",
-    "Bases de datos",
+    'Interacción humano-computador',
+    'Informática educativa',
+    'Bases de datos',
   ],
 
-  cvLinksTitle: "Más sobre mí",
+  cvLinksTitle: 'Más sobre mí',
 
-  cvLinks: ["Currículo en español", "Currículo en inglés"],
+  cvLinks: ['Currículo en español', 'Currículo en inglés'],
 
-  portfolioTitle: "Portafolio",
+  portfolioTitle: 'Portafolio',
 
-  portfolioSubtitle: "Algunos de mis proyectos como estudiante.",
+  portfolioSubtitle: 'Algunos de mis proyectos como estudiante.',
 
-  portfolioContent: "En construcción.",
+  portfolioContent: 'En construcción.',
 
-  contactTitle: "Contacto",
+  contactTitle: 'Contacto',
 
-  contactSubtitle: "¿Querés trabajar conmigo?",
+  contactSubtitle: '¿Querés trabajar conmigo?',
 
-  contactContent: "En construcción.",
+  contactContent: 'En construcción.',
 };
+
+export default language;
