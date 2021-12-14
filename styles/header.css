@@ -9,13 +9,10 @@ header {
 
 .colored-background {
   background: #1d1d1faa;
-  padding: 0.2em 1em;
 }
 
 #logo-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #header-content {
@@ -24,6 +21,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0.2em 2em;
 }
 
 .header-item {
@@ -37,7 +35,6 @@ header {
 }
 
 #header-links {
-  display: flex;
   gap: 1em;
 }
 
@@ -52,10 +49,8 @@ header {
 }
 
 #social-media-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
+  justify-content: flex-end;
+  gap: 2em;
 }
 
 /* tiny screens */
