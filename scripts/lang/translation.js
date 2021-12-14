@@ -1,4 +1,25 @@
+import langES from './lang_es.js';
+import langEN from './lang_en.js';
 import { setElementContent } from '../shared/html-handler.js';
+
+function translateDescription(lang) {
+  const descriptionName = document.getElementById('description-name');
+  setElementContent(descriptionName, lang.descriptionName);
+  const descriptionField = document.getElementById('description-field');
+  setElementContent(descriptionField, lang.descriptionField);
+  const descriptionPlace = document.getElementById('description-place');
+  setElementContent(descriptionPlace, lang.descriptionPlace);
+}
+
+function translateInterestsTitle(newTitle) {
+  const interestsTitle = document.getElementById('interests-title');
+  setElementContent(interestsTitle, newTitle);
+}
+
+function translateCVLinksTitle(newTitle) {
+  const cvLinksTitle = document.getElementById('cv-links-title');
+  setElementContent(cvLinksTitle, newTitle);
+}
 
 function translatePortfolio(lang) {
   const portfolioTitle = document.getElementById('portfolio-title');
@@ -19,17 +40,10 @@ function translateContact(lang) {
 }
 
 function translateStaticElements(lang) {
-  const descriptionName = document.getElementById('description-name');
-  setElementContent(descriptionName, lang.descriptionName);
-  const descriptionField = document.getElementById('description-field');
-  setElementContent(descriptionField, lang.descriptionField);
-  const descriptionPlace = document.getElementById('description-place');
-  setElementContent(descriptionPlace, lang.descriptionPlace);
+  translateDescription(lang);
 
-  const interestsTitle = document.getElementById('interests-title');
-  setElementContent(interestsTitle, lang.interestsTitle);
-  const cvLinksTitle = document.getElementById('cv-links-title');
-  setElementContent(cvLinksTitle, lang.cvLinksTitle);
+  translateInterestsTitle(lang.interestsTitle);
+  translateCVLinksTitle(lang.cvLinksTitle);
 
   translatePortfolio(lang);
   translateContact(lang);
@@ -56,11 +70,24 @@ function translateCVLinksList(newCVLinks) {
   }
 }
 
-export default function changePageLanguage(lang) {
+function getLanguageObject(langAbbv) {
+  if (langAbbv === 'es' || langAbbv === 'ES') return langES;
+  if (langAbbv === 'en' || langAbbv === 'EN') return langEN;
+
+  throw new Error('Language not supported');
+}
+
+function storeLanguageSelection(langAbbv) {
+  window.localStorage.setItem('lang', langAbbv);
+}
+
+export default function changePageLanguage(langAbbv) {
+  const lang = getLanguageObject(langAbbv);
+
   translateStaticElements(lang);
   translateHeaderLinks(lang.headerLinks);
   translateInterestsList(lang.interests);
   translateCVLinksList(lang.cvLinks);
 
-  window.localStorage.setItem('lang', lang.abbreviation);
+  storeLanguageSelection(lang.abbreviation);
 }
