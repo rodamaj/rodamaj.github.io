@@ -38,10 +38,15 @@ footer {
 
 .footer-side-item {
   width: 5em;
+  display: flex;
 }
 
 #footer-logo {
   margin: 1em 0;
+}
+
+#lang-switch {
+  justify-content: flex-end;
 }
 
 /* other */
