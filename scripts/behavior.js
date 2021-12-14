@@ -1,37 +1,38 @@
 import changePageLanguage from './lang/translation.js';
+import {
+  hasElementAttribute,
+  setElementAttribute,
+  setElementOnClickAction,
+  removeElementAttribute,
+  setElementStyleProperty,
+} from './shared/html-handler.js';
 
-const englishLink = document.getElementById('english-link');
-const spanishLink = document.getElementById('spanish-link');
-
-function toggleLink(clickedLink, newClickableLink, callback) {
-  const oldLink = clickedLink;
-  const newLink = newClickableLink;
-
-  if (newLink.getAttribute('href') == null) {
-    oldLink.removeAttribute('href');
-    oldLink.style.fontWeight = '600';
-    newLink.setAttribute('href', '');
-    newLink.style.fontWeight = 'normal';
-    callback();
+function toggleLink(oldLinkId, newLinkId, action) {
+  if (!hasElementAttribute(newLinkId, 'href')) {
+    removeElementAttribute(oldLinkId, 'href');
+    setElementStyleProperty(oldLinkId, 'fontWeight', '600');
+    setElementAttribute(newLinkId, 'href', '');
+    setElementStyleProperty(newLinkId, 'fontWeight', '500');
+    action();
   }
 }
 
 window.onpageshow = () => {
   if (window.localStorage.getItem('lang') === 'en') {
-    toggleLink(englishLink, spanishLink, () => {
+    toggleLink('english-link', 'spanish-link', () => {
       changePageLanguage('en');
     });
   }
 };
 
-englishLink.onclick = () => {
-  toggleLink(englishLink, spanishLink, () => {
+setElementOnClickAction('english-link', () => {
+  toggleLink('english-link', 'spanish-link', () => {
     changePageLanguage('en');
   });
-};
+});
 
-spanishLink.onclick = () => {
-  toggleLink(spanishLink, englishLink, () => {
+setElementOnClickAction('spanish-link', () => {
+  toggleLink('spanish-link', 'english-link', () => {
     changePageLanguage('es');
   });
-};
+});

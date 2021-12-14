@@ -1,42 +1,31 @@
 import langES from './lang_es.js';
 import langEN from './lang_en.js';
-import { setElementContent } from '../shared/html-handler.js';
+import { setElementContent, setChildrenContent, setChildrensFirstChildContent } from '../shared/html-handler.js';
 
 function translateDescription(lang) {
-  const descriptionName = document.getElementById('description-name');
-  setElementContent(descriptionName, lang.descriptionName);
-  const descriptionField = document.getElementById('description-field');
-  setElementContent(descriptionField, lang.descriptionField);
-  const descriptionPlace = document.getElementById('description-place');
-  setElementContent(descriptionPlace, lang.descriptionPlace);
+  setElementContent('description-name', lang.descriptionName);
+  setElementContent('description-field', lang.descriptionField);
+  setElementContent('description-place', lang.descriptionPlace);
 }
 
 function translateInterestsTitle(newTitle) {
-  const interestsTitle = document.getElementById('interests-title');
-  setElementContent(interestsTitle, newTitle);
+  setElementContent('interests-title', newTitle);
 }
 
 function translateCVLinksTitle(newTitle) {
-  const cvLinksTitle = document.getElementById('cv-links-title');
-  setElementContent(cvLinksTitle, newTitle);
+  setElementContent('cv-links-title', newTitle);
 }
 
 function translatePortfolio(lang) {
-  const portfolioTitle = document.getElementById('portfolio-title');
-  portfolioTitle.innerHTML = lang.portfolioTitle;
-  const portfolioSubtitle = document.getElementById('portfolio-subtitle');
-  portfolioSubtitle.innerHTML = lang.portfolioSubtitle;
-  const portfolioContent = document.getElementById('portfolio-content');
-  portfolioContent.innerHTML = lang.portfolioContent;
+  setElementContent('portfolio-title', lang.portfolioTitle);
+  setElementContent('portfolio-subtitle', lang.portfolioSubtitle);
+  setElementContent('portfolio-content', lang.portfolioContent);
 }
 
 function translateContact(lang) {
-  const contactTitle = document.getElementById('contact-title');
-  contactTitle.innerHTML = lang.contactTitle;
-  const contactSubtitle = document.getElementById('contact-subtitle');
-  contactSubtitle.innerHTML = lang.contactSubtitle;
-  const contactContent = document.getElementById('contact-content');
-  contactContent.innerHTML = lang.contactContent;
+  setElementContent('contact-title', lang.contactTitle);
+  setElementContent('contact-subtitle', lang.contactSubtitle);
+  setElementContent('contact-content', lang.contactContent);
 }
 
 function translateStaticElements(lang) {
@@ -50,24 +39,15 @@ function translateStaticElements(lang) {
 }
 
 function translateHeaderLinks(newHeaderLinks) {
-  const headerLinks = document.getElementById('header-links');
-  for (let i = 0; i < headerLinks.children.length; i += 1) {
-    headerLinks.children[i].innerHTML = newHeaderLinks[i];
-  }
+  setChildrenContent('header-links', newHeaderLinks);
 }
 
 function translateInterestsList(newInterests) {
-  const interestsList = document.getElementById('interests-list');
-  for (let i = 0; i < interestsList.children.length; i += 1) {
-    interestsList.children[i].innerHTML = newInterests[i];
-  }
+  setChildrenContent('interests-list', newInterests);
 }
 
 function translateCVLinksList(newCVLinks) {
-  const cvLinksList = document.getElementById('cv-links-list');
-  for (let i = 0; i < cvLinksList.children.length; i += 1) {
-    cvLinksList.children[i].firstElementChild.innerHTML = newCVLinks[i];
-  }
+  setChildrensFirstChildContent('cv-links-list', newCVLinks);
 }
 
 function getLanguageObject(langAbbv) {
