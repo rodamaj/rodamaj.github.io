@@ -1,4 +1,4 @@
-# Personal website | Sitio personal
+# Sitio personal | Personal website
 
 Este es el repositorio de código de mi sitio web personal. Ingrese a [rodamaj.github.io](https://rodamaj.github.io) para verlo.
 
