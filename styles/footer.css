@@ -52,10 +52,27 @@ footer {
 /* other */
 @media (max-width: 360px) {
   body {
-    padding-bottom: 8em;
+    padding-bottom: 5em;
   }
 
   #footer-content {
     flex-direction: column;
+  }
+
+  #copyright {
+    margin: 1em 0;
+  }
+
+  #footer-logo {
+    display: none;
+  }
+  
+  #lang-switch {
+    margin-bottom: 1em;
+    justify-content: center;
+  }
+
+  #lang-switch p {
+    margin: 0;
   }
 }
