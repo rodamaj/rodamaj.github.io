@@ -112,21 +112,38 @@
 }
 
 .colorable-icon.fa-linkedin:hover {
-  color: #0B65C2;
+  color: #0b65c2;
 }
 
 .colorable-icon.fa-github:hover {
-  color: #C9510C;
+  color: #c9510c;
 }
 
 .colorable-icon.fa-instagram:hover {
-  color: #E1306C;
+  color: #e1306c;
 }
 
 .colorable-icon.fa-twitter:hover {
-  color: #1C9BEF;
+  color: #1c9bef;
+}
+
+#email-section {
+  display: flex;
+  align-items: center;
 }
 
 #email-link {
   word-break: break-all;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

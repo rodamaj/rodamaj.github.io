@@ -46,6 +46,25 @@ function setElementStyleProperty(elementId, propertyName, newPropertyValue) {
   element.style[propertyName] = newPropertyValue;
 }
 
+function createElementWithId(tag, id) {
+  const newElement = document.createElement(tag);
+  newElement.setAttribute('id', id);
+  return newElement;
+}
+
+function insertElementWithIdAfterElement(referenceElementId, newElementTag, newElementId) {
+  const referenceElement = document.getElementById(referenceElementId);
+  const newElement = createElementWithId(newElementTag, newElementId);
+  referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
+}
+
+function removeElementAfterTimeout(elementId, milliseconds) {
+  setTimeout(() => {
+    const element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+  }, milliseconds);
+}
+
 export {
   setElementContent,
   setChildrenContent,
@@ -57,4 +76,7 @@ export {
   setElementOnClickAction,
   removeElementAttribute,
   setElementStyleProperty,
+  createElementWithId,
+  insertElementWithIdAfterElement,
+  removeElementAfterTimeout,
 };
