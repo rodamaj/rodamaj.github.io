@@ -23,7 +23,7 @@
 
 #description {
   font-size: 2.5rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: start;
 }
 
@@ -88,4 +88,33 @@
 
 #cv-en-link:before {
   content: "🇬🇧";
+}
+
+#find-me-title {
+  background: linear-gradient(
+    90deg,
+    #0b65c2 10%,
+    #c9510c 35%,
+    #e1306c 65%,
+    #1c9bef 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.colorable-icon.fa-linkedin:hover {
+  color: #0b65c2;
+}
+
+.colorable-icon.fa-github:hover {
+  color: #c9510c;
+}
+
+.colorable-icon.fa-instagram:hover {
+  color: #e1306c;
+}
+
+.colorable-icon.fa-twitter:hover {
+  color: #1c9bef;
 }
