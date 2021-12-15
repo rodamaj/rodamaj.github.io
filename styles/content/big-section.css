@@ -6,31 +6,31 @@
   margin: 2em 0;
 }
 
-.big-section h3 {
+.big-section-title {
   font-size: 1.75rem;
   font-weight: 600;
   color: #b8b8b9;
 }
 
-.big-section h4 {
+.big-section-subtitle {
   font-size: 3rem;
   font-weight: 600;
   margin: 0;
   margin-bottom: 1em;
 }
 
-.big-section p {
+.big-section-content {
   color: #bfbfc1;
 }
 
-.white-bg .big-section h3 {
+.white-bg .big-section-title {
   color: #565657;
 }
 
-.white-bg .big-section h4 {
+.white-bg .big-section-subtitle {
   color: black;
 }
 
-.white-bg .big-section p {
+.white-bg .big-section-content {
   color: #6e6e73;
 }

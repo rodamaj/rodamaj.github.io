@@ -82,8 +82,8 @@
 
         <div class="info-cards-section">
           <div id="interests" class="info-card">
-            <h4 id="interests-title">Me interesan las áreas de</h4>
-            <ul id="interests-list">
+            <h4 id="interests-title" class="info-card-title">Me interesan las áreas de</h4>
+            <ul id="interests-list" class="info-card-ul">
               <li>Interacción humano-computador</li>
               <li>Informática educativa</li>
               <li>Bases de datos</li>
@@ -91,9 +91,9 @@
           </div>
 
           <div id="cv-links" class="info-card">
-            <h4 id="cv-links-title">Más sobre mí</h4>
+            <h4 id="cv-links-title" class="info-card-title">Más sobre mí</h4>
 
-            <ul id="cv-links-list">
+            <ul id="cv-links-list" class="info-card-ul">
               <li id="cv-es-link">
                 <a href="assets/cv/jar_cv_es_v1.0.pdf">Currículo en español</a>
               </li>
@@ -111,11 +111,11 @@
       <div class="margin-container">
         <div class="content">
           <div class="big-section">
-            <h3 id="portfolio-title">Portafolio</h3>
-            <h4 id="portfolio-subtitle">
+            <h3 id="portfolio-title" class="big-section-title">Portafolio</h3>
+            <h4 id="portfolio-subtitle" class="big-section-subtitle">
               Algunos de mis proyectos como estudiante.
             </h4>
-            <p id="portfolio-content">En construcción.</p>
+            <p id="portfolio-content" class="big-section-content">En construcción.</p>
           </div>
         </div>
       </div>
@@ -124,9 +124,19 @@
     <div id="contact" class="margin-container">
       <div class="content">
         <div class="big-section">
-          <h3 id="contact-title">Contacto</h3>
-          <h4 id="contact-subtitle">¿Querés trabajar conmigo?</h4>
-          <p id="contact-content">En construcción.</p>
+          <h3 id="contact-title" class="big-section-title">Contacto</h3>
+          <h4 id="contact-subtitle" class="big-section-subtitle">¿Querés trabajar conmigo?</h4>
+          <div class="info-cards-section">
+            <div class="info-card">
+              <h4 class="info-card-title">Enviá un mensaje</h4>
+              <p class="info-card-content">Aquí van dos enlaces: uno de mailto y otro para abrir un pop-up con el formulario de contacto.</p>
+            </div>
+            <p class="info-card-text-divisor">o bien,</p>
+            <div class="info-card">
+              <h4 class="info-card-title">Encontrame en</h4>
+              <p class="info-card-content">Aquí van iconos de redes sociales.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -145,7 +155,9 @@
         <p id="copyright">2021. Josué Amador-Rojas.</p>
 
         <div id="lang-switch" class="footer-side-item">
-          <p><a id="spanish-link">ES</a> | <a href="" id="english-link">EN</a></p>
+          <p>
+            <a id="spanish-link">ES</a> | <a href="" id="english-link">EN</a>
+          </p>
         </div>
       </div>
     </footer>

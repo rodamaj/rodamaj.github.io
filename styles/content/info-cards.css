@@ -18,23 +18,27 @@
   width: 50%;
 }
 
-.info-card h4 {
+.info-card-title {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
   color: black;
 }
 
-.info-card ul {
+.info-card-content {
+  color: #6e6e73;
+}
+
+.info-card-ul {
   list-style: none;
   padding-left: 0.5em;
 }
 
-.info-card li {
+.info-card-ul > li {
   color: #6e6e73;
 }
 
-.info-card li:before {
+.info-card-ul > li:before {
   padding-right: 0.5em;
 }
 
@@ -48,4 +52,10 @@
   .info-card {
     width: auto;
   }
+}
+
+.info-card-text-divisor {
+  font-size: 1.5rem;
+  align-self: center;
+  margin: 0 1em;
 }
