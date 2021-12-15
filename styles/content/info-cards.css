@@ -88,7 +88,13 @@
 
 .copy-button {
   margin-left: 0.5em;
-  color: rgba(0, 102, 204, 0.414);
+  color: rgba(0, 102, 204, 0.537);
+}
+
+.copy-button:hover {
+  margin-left: 0.5em;
+  color: #06c;
+  cursor: pointer;
 }
 
 .icon-button-row {

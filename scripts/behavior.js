@@ -36,3 +36,7 @@ setElementOnClickAction('spanish-link', () => {
     changePageLanguage('es');
   });
 });
+
+setElementOnClickAction('copy-email-button', () => {
+  navigator.clipboard.writeText('amadorrojasjosue@gmail.com');
+});
