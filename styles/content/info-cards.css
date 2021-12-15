@@ -59,3 +59,62 @@
   align-self: center;
   margin: 0 1em;
 }
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.arrow-link::after {
+  content: "\f054";
+  font-family: FontAwesome;
+  color: #06c;
+  font-size: 0.75rem;
+  margin-left: 0.4em;
+  display: inline-block;
+}
+
+.info-card-title.card-link {
+  color: #06c;
+  cursor: pointer;
+}
+
+.info-card-title.arrow-link::after {
+  font-size: 1rem;
+}
+
+.copy-button {
+  margin-left: 0.5em;
+  color: rgba(0, 102, 204, 0.414);
+}
+
+.icon-button-row {
+  display: flex;
+  align-self: stretch;
+  justify-content: space-around;
+  margin: 2em;
+}
+
+.icon-button-row i {
+  color: black;
+  font-size: 2rem;
+}
+
+.colorable-icon.fa-linkedin:hover {
+  color: #0B65C2;
+}
+
+.colorable-icon.fa-github:hover {
+  color: #C9510C;
+}
+
+.colorable-icon.fa-instagram:hover {
+  color: #E1306C;
+}
+
+.colorable-icon.fa-twitter:hover {
+  color: #1C9BEF;
+}

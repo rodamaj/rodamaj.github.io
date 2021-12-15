@@ -32,7 +32,7 @@
 }
 
 /* from https://codepen.io/dani-visual31/pen/aQpZza */
-#description-prompt:after {
+#description-prompt::after {
   content: "_";
   margin-left: 0.5em;
   font-size: 2rem;
@@ -80,22 +80,6 @@
 
 #interests li:before {
   content: "💻";
-}
-
-#cv-links a {
-  text-decoration: none;
-}
-
-#cv-links a:hover {
-  text-decoration: underline;
-}
-
-#cv-links li:after {
-  content: "\f054";
-  font-family: FontAwesome;
-  color: #06c;
-  font-size: 0.75rem;
-  margin-left: 0.4em;
 }
 
 #cv-es-link:before {
