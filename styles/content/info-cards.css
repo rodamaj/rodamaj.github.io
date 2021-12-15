@@ -43,7 +43,7 @@
 }
 
 /* other */
-@media (max-width: 639px) {
+@media (max-width: 649px) {
   .info-cards-section {
     flex-direction: column;
     align-items: stretch;
