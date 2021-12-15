@@ -43,7 +43,7 @@
 }
 
 /* other */
-@media (max-width: 580px) {
+@media (max-width: 639px) {
   .info-cards-section {
     flex-direction: column;
     align-items: stretch;
@@ -100,8 +100,10 @@
 .icon-button-row {
   display: flex;
   align-self: stretch;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin: 2em;
+  gap: 1em;
 }
 
 .icon-button-row i {
@@ -123,4 +125,8 @@
 
 .colorable-icon.fa-twitter:hover {
   color: #1C9BEF;
+}
+
+#email-link {
+  word-break: break-all;
 }
