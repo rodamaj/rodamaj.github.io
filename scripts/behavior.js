@@ -40,10 +40,6 @@ setElementOnClickAction('copy-email-button', () => {
   copyEmailLink();
 });
 
-setElementOnClickAction('close-contact-form-button', () => {
-  window.history.back();
-});
-
 setElementOnSubmitAction('contact-form', () => {
   const contactName = document.forms['contact-form']['contact-name'];
   const contactEmail = document.forms['contact-form']['contact-email'];
