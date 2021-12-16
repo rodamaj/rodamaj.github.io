@@ -39,10 +39,8 @@ setElementOnClickAction('copy-email-button', () => {
   copyEmailLink();
 });
 
-setElementOnClickAction('contact-form-link', () => {
-  // TODO: show modal with contact form
-  // eslint-disable-next-line no-alert
-  alert('En construcción. / Under construction.');
+setElementOnClickAction('close-contact-form-button', () => {
+  window.history.back();
 });
 
 setElementOnClickAction('english-link', () => {

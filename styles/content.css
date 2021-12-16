@@ -2,6 +2,7 @@
 @import url("content/info-cards.css");
 @import url("content/big-section.css");
 @import url("content/contact.css");
+@import url("content/modal.css");
 
 .content {
   padding: 2em;
