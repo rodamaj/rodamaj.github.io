@@ -19,6 +19,12 @@
   margin-bottom: 1em;
 }
 
+.form-textfield:invalid, .form-textarea:invalid {
+  border: 2px solid rgb(222, 7, 28);
+  color: rgb(222, 7, 28);
+  background-color: rgba(222, 7, 29, 0.195);
+}
+
 .form-textarea {
   min-height: 5em;
   resize: none;

@@ -40,6 +40,7 @@
   right: 0;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .modal-close:hover {
