@@ -40,12 +40,12 @@
 
 .copy-button {
   margin-left: 0.5em;
-  color: rgba(0, 102, 204, 0.537);
+  color: var(--transparent-copy-button-color);
 }
 
 .copy-button:hover {
   margin-left: 0.5em;
-  color: #06c;
+  color: var(--link-color);
   cursor: pointer;
 }
 
@@ -56,10 +56,10 @@
 #contact-find-me {
   background: linear-gradient(
     90deg,
-    #0b65c2 10%,
-    #c9510c 35%,
-    #e1306c 65%,
-    #1c9bef 90%
+    var(--linkedin-color) 10%,
+    var(--github-color) 35%,
+    var(--instagram-color) 65%,
+    var(--twitter-color) 90%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -81,17 +81,17 @@
 }
 
 .colorable-icon.fa-linkedin-in:hover {
-  color: #0b65c2;
+  color: var(--linkedin-color);
 }
 
 .colorable-icon.fa-github:hover {
-  color: #c9510c;
+  color: var(--github-color);
 }
 
 .colorable-icon.fa-instagram:hover {
-  color: #e1306c;
+  color: var(--instagram-color);
 }
 
 .colorable-icon.fa-twitter:hover {
-  color: #1c9bef;
+  color: var(--twitter-color);
 }

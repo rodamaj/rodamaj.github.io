@@ -2,7 +2,7 @@
 
 .modal {
   position: fixed;
-  background-color: #1d1d1f;
+  background-color: var(--bg-color);
   top: 0;
   right: 0;
   bottom: 0;
@@ -33,7 +33,7 @@
 }
 
 .modal-close {
-  color: #6e6e73;
+  color: var(--gray-2);
   margin: 2em;
   position: absolute;
   top: 0;

@@ -1,0 +1,17 @@
+:root {
+  --footer-bg-color: #828c51;
+  --transparent-border-color: #e2e2e22b;
+  --transparent-header-color: #1d1d1faa;
+  --bg-color: #1d1d1f;
+  --link-color: #06c;
+  --light-gray-1: #b8b8b9;
+  --light-gray-2: #bfbfc1;
+  --gray-1: #565657;
+  --gray-2: #6e6e73;
+  --linkedin-color: #0b65c2;
+  --github-color: #c9510c;
+  --instagram-color: #e1306c;
+  --twitter-color: #1c9bef;
+  --transparent-copy-button-color: rgba(0, 102, 204, 0.537);
+  --info-card-bg-color: #f5f5f7;
+}
