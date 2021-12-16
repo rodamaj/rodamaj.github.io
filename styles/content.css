@@ -3,6 +3,7 @@
 @import url("content/big-section.css");
 @import url("content/contact.css");
 @import url("content/modal.css");
+@import url("content/form.css");
 
 .content {
   padding: 2em;
