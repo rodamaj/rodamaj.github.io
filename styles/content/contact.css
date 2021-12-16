@@ -1,0 +1,97 @@
+#email-section {
+  display: flex;
+  align-items: center;
+}
+
+#email-link {
+  word-break: break-all;
+}
+
+.fading-feedback {
+  color: green;
+  animation: fade 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fading-in {
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.copy-button {
+  margin-left: 0.5em;
+  color: rgba(0, 102, 204, 0.537);
+}
+
+.copy-button:hover {
+  margin-left: 0.5em;
+  color: #06c;
+  cursor: pointer;
+}
+
+.copied-button {
+  display: none !important;
+}
+
+#contact-find-me {
+  background: linear-gradient(
+    90deg,
+    #0b65c2 10%,
+    #c9510c 35%,
+    #e1306c 65%,
+    #1c9bef 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-button-row {
+  display: flex;
+  align-self: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2em;
+  gap: 1em;
+}
+
+.icon-button-row i {
+  color: black;
+  font-size: 2rem;
+}
+
+.colorable-icon.fa-linkedin-in:hover {
+  color: #0b65c2;
+}
+
+.colorable-icon.fa-github:hover {
+  color: #c9510c;
+}
+
+.colorable-icon.fa-instagram:hover {
+  color: #e1306c;
+}
+
+.colorable-icon.fa-twitter:hover {
+  color: #1c9bef;
+}
