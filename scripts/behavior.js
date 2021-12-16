@@ -96,7 +96,7 @@ setElementOnClickAction('copy-email-button', () => {
 setElementOnClickAction('contact-form-link', () => {
   // TODO: show modal with contact form
   // eslint-disable-next-line no-alert
-  alert('El contacto a través del sitio web está en construcción. Por favor, contactame a través de correo electrónico. Disculpá las molestias.');
+  alert('En construcción. / Under construction.');
 });
 
 setElementOnClickAction('english-link', () => {
