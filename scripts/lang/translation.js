@@ -25,7 +25,9 @@ function translatePortfolio(lang) {
 function translateContact(lang) {
   setElementContent('contact-title', lang.contactTitle);
   setElementContent('contact-subtitle', lang.contactSubtitle);
-  setElementContent('contact-content', lang.contactContent);
+  setElementContent('contact-form-link', lang.contactFormLink);
+  setElementContent('contact-another-option', lang.contactAnotherOption);
+  setElementContent('contact-find-me', lang.contactFindMe);
 }
 
 function translateStaticElements(lang) {

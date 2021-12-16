@@ -32,7 +32,11 @@ const language = {
 
   contactSubtitle: 'Are you interested in working with me?',
 
-  contactContent: 'Under construction.',
+  contactFormLink: 'Message me',
+
+  contactAnotherOption: 'or email me at',
+
+  contactFindMe: 'Find me on',
 };
 
 export default language;
