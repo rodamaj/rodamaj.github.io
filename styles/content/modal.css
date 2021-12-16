@@ -22,7 +22,7 @@
 
 .modal-content {
   width: 60%;
-  height: 50%;
+  min-height: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
