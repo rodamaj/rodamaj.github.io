@@ -111,7 +111,7 @@
   font-size: 2rem;
 }
 
-.colorable-icon.fa-linkedin:hover {
+.colorable-icon.fa-linkedin-in:hover {
   color: #0b65c2;
 }
 
@@ -136,6 +136,12 @@
   word-break: break-all;
 }
 
+.fading-feedback {
+  color: green;
+  animation: fade 2s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -146,4 +152,21 @@
   100% {
     opacity: 0;
   }
+}
+
+.fading-in {
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.copied-button {
+  display: none !important;
 }

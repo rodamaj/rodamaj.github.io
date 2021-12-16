@@ -58,11 +58,41 @@ function insertElementWithIdAfterElement(referenceElementId, newElementTag, newE
   referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
 }
 
-function removeElementAfterTimeout(elementId, milliseconds) {
+function setElementContentAfterTimeout(elementId, newContent, milliseconds, then) {
+  setTimeout(() => {
+    const element = document.getElementById(elementId);
+    element.innerHTML = newContent;
+    if (then) then();
+  }, milliseconds);
+}
+
+function removeElementAfterTimeout(elementId, milliseconds, then) {
   setTimeout(() => {
     const element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
+    if (then) then();
   }, milliseconds);
+}
+
+function addClassToElement(elementId, newClass) {
+  const element = document.getElementById(elementId);
+  element.classList.add(newClass);
+}
+
+function removeClassFromElement(elementId, classToRemove) {
+  const element = document.getElementById(elementId);
+  element.classList.remove(classToRemove);
+}
+
+function removeClassFromElementAfterTimeout(elementId, classToRemove, milliseconds, then) {
+  setTimeout(() => {
+    removeClassFromElement(elementId, classToRemove);
+    if (then) then();
+  }, milliseconds);
+}
+
+function getElementOnClickAction(elementId) {
+  return document.getElementById(elementId)?.onclick;
 }
 
 export {
@@ -74,9 +104,14 @@ export {
   getElementAttribute,
   setElementAttribute,
   setElementOnClickAction,
+  setElementContentAfterTimeout,
   removeElementAttribute,
   setElementStyleProperty,
   createElementWithId,
   insertElementWithIdAfterElement,
   removeElementAfterTimeout,
+  addClassToElement,
+  removeClassFromElement,
+  removeClassFromElementAfterTimeout,
+  getElementOnClickAction,
 };
