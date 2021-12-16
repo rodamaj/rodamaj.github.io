@@ -145,24 +145,25 @@
           <div class="info-cards-section">
             <div class="info-card">
               <a
-                href="#contact-form"
+                href="#message-me"
                 id="contact-form-link"
                 class="info-card-title card-link arrow-link"
                 >Enviá un mensaje</a
               >
 
-              <div id="contact-form" class="modal">
+              <div id="message-me" class="modal">
                 <div class="modal-content">
                   <a id="close-contact-form-button" class="modal-close"
                     >Cancelar</a
                   >
                   <h3>Formulario en construcción. Puede que el mensaje que escribás no me llegue.</h3>
                   <div class="form-container">
-                    <form>
-                      <label for="contact-full-name">Nombre completo:</label>
+                    <form id="contact-form">
+                      <label for="contact-name">Nombre completo:</label>
                       <input
                         type="text"
-                        id="contact-full-name"
+                        id="contact-name"
+                        name="contact-name"
                         placeholder="Escriba su nombre completo."
                         required
                       />
@@ -171,6 +172,7 @@
                       <input
                         type="email"
                         id="contact-email"
+                        name="contact-email"
                         placeholder="Escriba su dirección de correo electrónico."
                         required
                       />
@@ -178,6 +180,7 @@
                       <label for="contact-message">Mensaje:</label>
                       <textarea
                         id="contact-message"
+                        name="contact-message"
                         placeholder="Escriba su mensaje o consulta aquí."
                         required
                       ></textarea>
