@@ -40,16 +40,6 @@ setElementOnClickAction('copy-email-button', () => {
   copyEmailLink();
 });
 
-setElementOnSubmitAction('contact-form', () => {
-  const contactName = document.forms['contact-form']['contact-name'];
-  const contactEmail = document.forms['contact-form']['contact-email'];
-  const contactMessage = document.forms['contact-form']['contact-message'];
-  // eslint-disable-next-line no-alert
-  alert(`Tu nombre es ${contactName.value}, tu correo es ${contactEmail.value} y tu mensaje es ${contactMessage.value}.`);
-
-  return false;
-});
-
 setElementOnClickAction('english-link', () => {
   toggleLink('english-link', 'spanish-link', () => {
     changePageLanguage('en');
