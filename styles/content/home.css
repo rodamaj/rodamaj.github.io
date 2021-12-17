@@ -1,13 +1,3 @@
-@import url("info-cards.css");
-@import url("big-section.css");
-
-.content {
-  padding: 2em;
-  padding-bottom: 5em;
-  display: flex;
-  flex-direction: column;
-}
-
 #about {
   display: flex;
   flex-direction: column;
@@ -25,6 +15,14 @@
   font-size: 2.5rem;
   font-weight: 600;
   text-align: start;
+}
+
+#description p {
+  margin: 0.2em;
+}
+
+#description strong {
+  font-weight: 600;
 }
 
 #description-prompt {
@@ -58,14 +56,6 @@
   }
 }
 
-#description p {
-  margin: 0.2em;
-}
-
-#description strong {
-  font-weight: 600;
-}
-
 #description-name strong {
   color: lightcoral;
 }
@@ -78,43 +68,14 @@
   color: lightgreen;
 }
 
-#interests li:before {
+#interests li::before {
   content: "💻";
 }
 
-#cv-es-link:before {
+#cv-es-link::before {
   content: "🇪🇸";
 }
 
-#cv-en-link:before {
+#cv-en-link::before {
   content: "🇬🇧";
-}
-
-#contact-find-me {
-  background: linear-gradient(
-    90deg,
-    #0b65c2 10%,
-    #c9510c 35%,
-    #e1306c 65%,
-    #1c9bef 90%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.colorable-icon.fa-linkedin:hover {
-  color: #0b65c2;
-}
-
-.colorable-icon.fa-github:hover {
-  color: #c9510c;
-}
-
-.colorable-icon.fa-instagram:hover {
-  color: #e1306c;
-}
-
-.colorable-icon.fa-twitter:hover {
-  color: #1c9bef;
 }

@@ -144,12 +144,67 @@
           </h4>
           <div class="info-cards-section">
             <div class="info-card">
-              <h4 id="contact-form-link" class="info-card-title card-link arrow-link">Enviá un mensaje</h4>
+              <a
+                href="#message-me"
+                id="contact-form-link"
+                class="info-card-title card-link arrow-link"
+                >Enviá un mensaje</a
+              >
+
+              <div id="message-me" class="modal">
+                <div class="modal-content">
+                  <a href="#contact" id="close-contact-form-button" class="modal-close"
+                    >Cancelar</a
+                  >
+                  <h3 class="form-card-title">
+                    Formulario de contacto
+                  </h3>
+                  <h4 class="form-card-subtitle">Empezá por llenar estos datos para saber quién sos.</h4>
+                  <div class="form-container">
+                    <form id="contact-form">
+                      <label for="contact-name">Nombre completo:</label>
+                      <input
+                        class="form-textfield"
+                        type="text"
+                        id="contact-name"
+                        name="contact-name"
+                        placeholder="Escriba su nombre completo."
+                        required
+                      />
+
+                      <label for="contact-email">Correo electrónico:</label>
+                      <input
+                        class="form-textfield"
+                        type="email"
+                        id="contact-email"
+                        name="contact-email"
+                        placeholder="Escriba su dirección de correo electrónico."
+                        required
+                      />
+
+                      <label for="contact-message">Mensaje:</label>
+                      <textarea
+                        class="form-textarea"
+                        id="contact-message"
+                        name="contact-message"
+                        placeholder="Escriba su mensaje o consulta aquí."
+                        required
+                      ></textarea>
+
+                      <input class="form-button" type="submit" value="Enviar" />
+                    </form>
+                  </div>
+                </div>
+              </div>
+
               <p id="contact-another-option" class="info-card-content">
                 o bien, podés escribirme al correo
               </p>
               <div id="email-section">
-                <a id="email-link" class="card-link" href="mailto:amadorrojasjosue@gmail.com"
+                <a
+                  id="email-link"
+                  class="card-link"
+                  href="mailto:amadorrojasjosue@gmail.com"
                   >amadorrojasjosue@gmail.com</a
                 >
 
@@ -158,7 +213,9 @@
             </div>
 
             <div class="info-card">
-              <h4 id="contact-find-me" class="info-card-title">Encontrame en</h4>
+              <h4 id="contact-find-me" class="info-card-title">
+                Encontrame en
+              </h4>
 
               <div class="icon-button-row">
                 <a href="https://www.linkedin.com/in/rodamaj/"
@@ -203,6 +260,7 @@
         </div>
       </div>
     </footer>
+
     <script type="module" src="scripts/behavior.js" async></script>
   </body>
 </html>

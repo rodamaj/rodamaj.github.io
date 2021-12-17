@@ -1,0 +1,48 @@
+/* adapted from https://www.sliderrevolution.com/resources/css-modal/, "Basic CSS-Only Modal" */
+
+.modal {
+  position: fixed;
+  background-color: var(--bg-color);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  width: 60%;
+  min-height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3em;
+  background: black;
+  border-radius: 28px;
+}
+
+.modal-close {
+  color: var(--gray-2);
+  margin: 2em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.modal-close:hover {
+  color: white;
+}

@@ -1,5 +1,6 @@
+@import url("colors.css");
 @import url("header.css");
-@import url("content/content.css");
+@import url("content.css");
 @import url("footer.css");
 
 html {
@@ -10,7 +11,7 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0 auto;
   width: 100%;
-  background: #1d1d1f;
+  background: var(--bg-color);
   color: white;
 }
 
@@ -21,7 +22,7 @@ h2 {
 }
 
 a {
-  color: #06c;
+  color: var(--link-color);
 }
 
 .margin-container {

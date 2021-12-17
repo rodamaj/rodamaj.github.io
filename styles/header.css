@@ -4,11 +4,11 @@ header {
   color: white;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid #e2e2e22b;
+  border-bottom: 1px solid var(--transparent-border-color);
 }
 
 .colored-background {
-  background: #1d1d1faa;
+  background: var(--transparent-header-color);
 }
 
 #logo-section {

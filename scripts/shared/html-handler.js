@@ -37,6 +37,10 @@ function setElementOnClickAction(elementId, action) {
   document.getElementById(elementId).onclick = action;
 }
 
+function setElementOnSubmitAction(elementId, action) {
+  document.getElementById(elementId).onsubmit = action;
+}
+
 function removeElementAttribute(elementId, attributeName) {
   document.getElementById(elementId)?.removeAttribute(attributeName);
 }
@@ -104,6 +108,7 @@ export {
   getElementAttribute,
   setElementAttribute,
   setElementOnClickAction,
+  setElementOnSubmitAction,
   setElementContentAfterTimeout,
   removeElementAttribute,
   setElementStyleProperty,
