@@ -34,7 +34,7 @@ const language = {
 
   contactFormLink: 'Enviá un mensaje',
 
-  contactAnotherOption: 'o bien, podés escribirme al correo',
+  contactAnotherOption: 'o podés copiar mi correo para más tarde:',
 
   contactFindMe: 'Encontrame en',
 };

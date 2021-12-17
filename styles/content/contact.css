@@ -1,10 +1,16 @@
 #email-section {
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-#email-link {
+.email-text {
+  font-family: monospace;
+  font-size: 1.125rem;
   word-break: break-all;
+  margin: 0.5em;
+  color: black;
 }
 
 .fading-feedback {
@@ -40,12 +46,11 @@
 
 .copy-button {
   margin-left: 0.5em;
-  color: var(--transparent-copy-button-color);
+  color: rgba(0, 0, 0, 0.489);
 }
 
 .copy-button:hover {
-  margin-left: 0.5em;
-  color: var(--link-color);
+  color: black;
   cursor: pointer;
 }
 
