@@ -1,3 +1,4 @@
 .vscode
 styles/media-queries.css
 node_modules
+.DS_Store
