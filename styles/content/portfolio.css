@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 5em;
 }
 
@@ -11,7 +12,6 @@
   justify-content: center;
   gap: 5em;
   overflow: hidden;
-  width: 100%;
 }
 
 .portfolio-project-text {
@@ -22,7 +22,8 @@
   max-width: 60vw;
 }
 
-#ride-text, #ceaco-text {
+#ride-text,
+#ceaco-text {
   text-align: right;
 }
 
@@ -32,4 +33,32 @@
 
 #hawkeyes-img {
   float: right;
+}
+
+#ride-project,
+#ceaco-project {
+  align-self: flex-end;
+}
+
+#asistenciasucr-project,
+#hawkeyes-project {
+  align-self: flex-start;
+}
+
+#asistenciasucr-text,
+#ceaco-text {
+  position: relative;
+}
+
+#asistenciasucr-text {
+  top: -10em;
+}
+
+#ceaco-text {
+  bottom: -10em;
+}
+
+#mobile-projects {
+  display: flex;
+  justify-content: space-around;
 }
