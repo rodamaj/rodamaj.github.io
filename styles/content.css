@@ -1,10 +1,26 @@
 @import url("content/home.css");
 @import url("content/info-cards.css");
 @import url("content/big-section.css");
+@import url("content/portfolio.css");
 @import url("content/contact.css");
 
 .content {
   padding: 2em;
+  padding-bottom: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-content {
+  padding: 2em;
+  padding-bottom: 0em;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-content {
+  padding: 2em;
+  padding-top: 0em;
   padding-bottom: 5em;
   display: flex;
   flex-direction: column;
