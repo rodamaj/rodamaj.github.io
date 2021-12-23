@@ -1,6 +1,26 @@
-#ride-img {
-  display: block;
-  margin: 0 auto;
+#portfolio-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5em;
+}
+
+.portfolio-img {
   position: relative;
-  left: 40%;
+}
+
+#ride-img {
+  left: 30%;
+}
+
+#asistenciasucr-img {
+  right: 25%;
+}
+
+#ceaco-img {
+  left: 25%;
+}
+
+#hawkeyes-img {
+  right: 30%;
 }
