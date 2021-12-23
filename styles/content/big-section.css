@@ -1,5 +1,6 @@
 .white-bg {
   background-color: white;
+  color: black;
 }
 
 .big-section {
@@ -25,10 +26,6 @@
 
 .white-bg .big-section-title {
   color: var(--gray-1);
-}
-
-.white-bg .big-section-subtitle {
-  color: black;
 }
 
 .white-bg .big-section-content {
