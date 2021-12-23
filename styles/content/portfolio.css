@@ -1,26 +1,35 @@
-#portfolio-images {
+#portfolio-projects {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5em;
 }
 
-.portfolio-img {
-  position: relative;
+.portfolio-project {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+  overflow: hidden;
+  width: 100%;
+}
+
+.portfolio-project-text {
+  max-width: 20vw;
+}
+
+.portfolio-img-container {
+  max-width: 60vw;
+}
+
+#ride-text, #ceaco-text {
+  text-align: right;
 }
 
 #ride-img {
-  left: 30%;
-}
-
-#asistenciasucr-img {
-  right: 25%;
-}
-
-#ceaco-img {
-  left: 25%;
+  float: left;
 }
 
 #hawkeyes-img {
-  right: 30%;
+  float: right;
 }
