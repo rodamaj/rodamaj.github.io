@@ -22,7 +22,7 @@ function toggleLink(oldLinkId, newLinkId, action) {
 }
 
 function copyEmailLink() {
-  navigator.clipboard.writeText('amadorrojasjosue@gmail.com');
+  navigator.clipboard.writeText('bjamadorr@gmail.com');
   showCopiedEmailFeedback();
 }
 
