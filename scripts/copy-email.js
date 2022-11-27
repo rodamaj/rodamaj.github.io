@@ -14,10 +14,7 @@ function addCopyFeedbackClasses() {
 }
 
 function replaceEmailWithCopyFeedback() {
-  setElementContent(
-    'email-link',
-    window.localStorage.getItem('lang') === 'en' ? 'Copied!' : '¡Copiado!'
-  );
+  setElementContent('email-link', window.localStorage.getItem('lang') === 'en' ? 'Copied!' : '¡Copiado!');
   addCopyFeedbackClasses();
 }
 
@@ -37,14 +34,9 @@ function restoreOnClickEventOnCopyButton(copyAction) {
 
 function removeAnimationEmailClassesAfterTimeout(milliseconds, copyAction) {
   removeClassFromElementAfterTimeout('email-link', 'fading-in', milliseconds);
-  removeClassFromElementAfterTimeout(
-    'copy-email-button',
-    'fading-in',
-    milliseconds,
-    () => {
-      restoreOnClickEventOnCopyButton(copyAction);
-    }
-  );
+  removeClassFromElementAfterTimeout('copy-email-button', 'fading-in', milliseconds, () => {
+    restoreOnClickEventOnCopyButton(copyAction);
+  });
 }
 
 function popOnClickEventFromCopyButton() {
@@ -57,16 +49,11 @@ function restoreEmailLink() {
   const animationMillisecs = 2000;
   const copyAction = popOnClickEventFromCopyButton();
 
-  setElementContentAfterTimeout(
-    'email-link',
-    'bjamadorr@gmail.com',
-    animationMillisecs,
-    () => {
-      deleteCopyFeedbackClasses();
-      addAnimationEmailClasses();
-      removeAnimationEmailClassesAfterTimeout(animationMillisecs, copyAction);
-    }
-  );
+  setElementContentAfterTimeout('email-link', 'amadorrojasjosue@gmail.com', animationMillisecs, () => {
+    deleteCopyFeedbackClasses();
+    addAnimationEmailClasses();
+    removeAnimationEmailClassesAfterTimeout(animationMillisecs, copyAction);
+  });
 }
 
 export default function showCopiedEmailFeedback() {
