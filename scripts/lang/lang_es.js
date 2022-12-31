@@ -16,6 +16,8 @@ const language = {
     'Interacción humano-computador',
     'Informática educativa',
     'Bases de datos',
+    'Desarrollo de aplicaciones web',
+    'Desarrollo de aplicaciones móviles',
   ],
 
   cvLinksTitle: 'Más sobre mí',
