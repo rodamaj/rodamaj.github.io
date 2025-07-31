@@ -9,5 +9,10 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image'
-  ]
+  ],
+
+  ssr: false,
+  app: {
+    baseURL: '/',
+  },
 })
