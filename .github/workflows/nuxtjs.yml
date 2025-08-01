@@ -29,12 +29,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: List files before checkout
-        run: ls -la
       - name: Checkout
         uses: actions/checkout@v4
-      - name: List files before detecting package manager
-        run: ls -la
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -50,8 +46,6 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-      - name: List files before setting up Node
-        run: ls -la
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -61,13 +55,7 @@ jobs:
         run: ls -la
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          # Automatically inject router.base in your Nuxt configuration file and set
-          # target to static (https://nuxtjs.org/docs/configuration-glossary/configuration-target/).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: nuxt
-      - name: List files before restoring cache
+      - name: List files after setting up Pages
         run: ls -la
       - name: Restore cache
         uses: actions/cache@v4
@@ -78,8 +66,6 @@ jobs:
           key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
-      - name: List files before installing dependencies
-        run: ls -la
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: List files before generating static files
