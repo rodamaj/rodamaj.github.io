@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { LocaleObject } from '@nuxtjs/i18n'
+
 definePageMeta({ i18n: false })
 const { locale, locales, setLocale } = useI18n()
 const colorMode = useColorMode()
@@ -56,7 +58,10 @@ const onThemeSelected = (theme: string) => {
       <div class="settings">
         <ToggleLink
           :links="
-            locales.map((locale) => ({ label: locale.code, id: locale.code }))
+            locales.map((locale: LocaleObject) => ({
+              label: locale.code,
+              id: locale.code,
+            }))
           "
           :active-id="locale"
           @select="onLangSelected"
