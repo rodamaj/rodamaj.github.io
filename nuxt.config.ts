@@ -9,12 +9,22 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
+    '@nuxtjs/i18n',
   ],
 
   fonts: {
     defaults: {
       weights: [400, 700],
     },
+  },
+
+  i18n: {
+    locales: [
+      { code: 'es', language: 'es-ES', file: 'es.json' },
+      { code: 'en', language: 'en-US', file: 'en.json' },
+    ],
+    defaultLocale: 'es',
+    strategy: 'no_prefix',
   },
 
   ssr: false,

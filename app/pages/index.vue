@@ -1,6 +1,9 @@
 <script setup lang="ts">
+definePageMeta({ i18n: false })
+const { locales, setLocale } = useI18n()
+
 const onLangSelected = (lang: string) => {
-  console.log(`Language selected: ${lang}`)
+  setLocale(lang as 'en' | 'es')
 }
 
 const onThemeSelected = (theme: string) => {
@@ -12,8 +15,8 @@ const onThemeSelected = (theme: string) => {
   <div class="main-container">
     <main class="content">
       <h1 class="name">Josué Amador-Rojas</h1>
-      <p>Ingeniero de software</p>
-      <p>Estudiante de Ciencias de la Computación, Universidad de Costa Rica</p>
+      <p>{{ $t('profession') }}</p>
+      <p>{{ $t('ocupation') }}</p>
 
       <p>––</p>
 
@@ -39,29 +42,28 @@ const onThemeSelected = (theme: string) => {
           class="contact-link"
           >Instagram</a
         >
-        <a href="/cv/jar_cv_es_v3.pdf" target="_blank" class="cv-link"
-          >Currículo en español</a
-        >
-        <a href="/cv/jar_cv_en_v3.pdf" target="_blank" class="cv-link"
-          >Currículo en inglés</a
-        >
+        <a href="/cv/jar_cv_es_v3.pdf" target="_blank" class="cv-link">{{
+          $t('es-cv-label')
+        }}</a>
+        <a href="/cv/jar_cv_en_v3.pdf" target="_blank" class="cv-link">{{
+          $t('en-cv-label')
+        }}</a>
       </nav>
 
       <p>––</p>
 
       <div class="settings">
         <ToggleLink
-          :links="[
-            { label: 'en', id: 'en' },
-            { label: 'es', id: 'es' },
-          ]"
+          :links="
+            locales.map((locale) => ({ label: locale.code, id: locale.code }))
+          "
           @select="onLangSelected"
         />
 
         <ToggleLink
           :links="[
-            { label: 'light', id: 'light' },
-            { label: 'dark', id: 'dark' },
+            { label: $t('light-theme-label'), id: 'light' },
+            { label: $t('dark-theme-label'), id: 'dark' },
           ]"
           @select="onThemeSelected"
         />
@@ -76,6 +78,18 @@ const onThemeSelected = (theme: string) => {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+@media (min-width: 700px) {
+  .content {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    padding: 2rem;
+  }
 }
 
 .content h1,
