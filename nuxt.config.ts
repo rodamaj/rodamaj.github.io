@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
+    '@nuxtjs/color-mode',
   ],
 
   fonts: {
@@ -25,6 +26,12 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'es',
     strategy: 'no_prefix',
+  },
+
+  colorMode: {
+    preference: 'light', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    storage: 'localStorage',
   },
 
   ssr: false,

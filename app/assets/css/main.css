@@ -4,6 +4,11 @@ body {
   background-color: #fafafa;
 }
 
+.dark-mode body {
+  background-color: #091a28;
+  color: #ebf4f1;
+}
+
 .app {
   max-width: 1366px;
 }

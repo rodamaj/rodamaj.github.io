@@ -1,13 +1,14 @@
 <script setup lang="ts">
 definePageMeta({ i18n: false })
 const { locales, setLocale } = useI18n()
+const colorMode = useColorMode()
 
 const onLangSelected = (lang: string) => {
   setLocale(lang as 'en' | 'es')
 }
 
 const onThemeSelected = (theme: string) => {
-  console.log(`Theme selected: ${theme}`)
+  colorMode.preference = theme as 'light' | 'dark'
 }
 </script>
 
