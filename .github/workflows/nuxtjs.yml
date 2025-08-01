@@ -29,8 +29,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: List files before checkout
+        run: ls -la
       - name: Checkout
         uses: actions/checkout@v4
+      - name: List files before detecting package manager
+        run: ls -la
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -46,11 +50,15 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - name: List files before setting up Node
+        run: ls -la
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: List files before setting up Pages
+        run: ls -la
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -59,23 +67,23 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: nuxt
-      # - name: Restore cache
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       dist
-      #       .nuxt
-      #     key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-nuxt-build-
+      - name: List files before restoring cache
+        run: ls -la
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            dist
+            .nuxt
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
+          restore-keys: |
+            ${{ runner.os }}-nuxt-build-
+      - name: List files before installing dependencies
+        run: ls -la
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Show nuxt.config.ts contents
-        run: cat nuxt.config.ts || echo "Config not found"
-      - name: Show nuxt.config.js contents
-        run: cat nuxt.config.js || echo "Config not found"
-      - name: Show nuxi info
-        run: npx nuxi info
+      - name: List files before generating static files
+        run: ls -la
       - name: Static HTML export with Nuxt
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
