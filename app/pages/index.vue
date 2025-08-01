@@ -1,90 +1,17 @@
-<script setup lang="ts">
-import type { LocaleObject } from '@nuxtjs/i18n'
-
-definePageMeta({ i18n: false })
-const { locale, locales, setLocale } = useI18n()
-const colorMode = useColorMode()
-
-const onLangSelected = (lang: string) => {
-  setLocale(lang as 'en' | 'es')
-}
-
-const onThemeSelected = (theme: string) => {
-  colorMode.preference = theme as 'light' | 'dark'
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="main-container">
     <main class="content">
-      <h1 class="name">Josué Amador-Rojas</h1>
-      <p>{{ $t('profession') }}</p>
-      <p>{{ $t('ocupation') }}</p>
+      <SummarySection />
 
       <p>––</p>
 
-      <nav class="link-nav">
-        <a href="mailto:bjamadorr@gmail.com" class="contact-link"
-          >bjamadorr@gmail.com</a
-        >
-        <a
-          href="https://www.linkedin.com/in/rodamaj/"
-          target="_blank"
-          rel="noreferrer"
-          class="contact-link"
-          >LinkedIn</a
-        >
-        <a
-          href="https://www.github.com/rodamaj"
-          target="_blank"
-          rel="noreferrer"
-          class="contact-link"
-          >GitHub</a
-        >
-        <a
-          href="https://www.instagram.com/rodamaj"
-          target="_blank"
-          rel="noreferrer"
-          class="contact-link"
-          >Instagram</a
-        >
-        <a
-          href="/public-assets/cv/jar_cv_es.pdf"
-          target="_blank"
-          class="cv-link"
-          >{{ $t('es-cv-label') }}</a
-        >
-        <a
-          href="/public-assets/cv/jar_cv_en.pdf"
-          target="_blank"
-          class="cv-link"
-          >{{ $t('en-cv-label') }}</a
-        >
-      </nav>
+      <LinkSection />
 
       <p>––</p>
 
-      <div class="settings">
-        <ToggleLink
-          :links="
-            locales.map((locale: LocaleObject) => ({
-              label: locale.code,
-              id: locale.code,
-            }))
-          "
-          :active-id="locale"
-          @select="onLangSelected"
-        />
-
-        <ToggleLink
-          :links="[
-            { label: $t('light-theme-label'), id: 'light' },
-            { label: $t('dark-theme-label'), id: 'dark' },
-          ]"
-          :active-id="colorMode.preference"
-          @select="onThemeSelected"
-        />
-      </div>
+      <SettingsSection />
     </main>
   </div>
 </template>
@@ -111,39 +38,8 @@ const onThemeSelected = (theme: string) => {
   }
 }
 
-.content h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+.content * {
   font-size: 1rem;
   line-height: 1.5;
-}
-
-.name {
-  font-weight: bold;
-}
-
-.link-nav,
-.settings {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-a {
-  color: inherit;
-}
-
-.link-nav a::after {
-  content: '↗';
-  display: inline-block;
-  text-decoration: none;
-  margin-left: 0.25rem;
-  opacity: 0.75;
-  font-size: 0.8rem;
 }
 </style>
