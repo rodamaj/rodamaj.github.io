@@ -30,18 +30,21 @@ const onThemeSelected = (theme: string) => {
         <a
           href="https://www.linkedin.com/in/rodamaj/"
           target="_blank"
+          rel="noreferrer"
           class="contact-link"
           >LinkedIn</a
         >
         <a
           href="https://www.github.com/rodamaj"
           target="_blank"
+          rel="noreferrer"
           class="contact-link"
           >GitHub</a
         >
         <a
           href="https://www.instagram.com/rodamaj"
           target="_blank"
+          rel="noreferrer"
           class="contact-link"
           >Instagram</a
         >
@@ -133,5 +136,14 @@ p {
 
 a {
   color: inherit;
+}
+
+.link-nav a::after {
+  content: '↗';
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  opacity: 0.75;
+  font-size: 0.8rem;
 }
 </style>
