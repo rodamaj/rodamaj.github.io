@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { LinkInfo } from '~/types/ToggleLinkInfo'
 
-const { links } = defineProps<{
+const { links, activeId = undefined } = defineProps<{
   links: LinkInfo[]
+  activeId?: string
 }>()
 
 const emit = defineEmits(['select'])
 
-const activeLinkId = ref(links[0]?.id ?? '')
+const activeLinkId = ref(activeId ?? links[0]?.id ?? '')
 
 const onSelect = (id: string) => {
   activeLinkId.value = id

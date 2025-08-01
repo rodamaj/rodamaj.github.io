@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({ i18n: false })
-const { locales, setLocale } = useI18n()
+const { locale, locales, setLocale } = useI18n()
 const colorMode = useColorMode()
 
 const onLangSelected = (lang: string) => {
@@ -58,6 +58,7 @@ const onThemeSelected = (theme: string) => {
           :links="
             locales.map((locale) => ({ label: locale.code, id: locale.code }))
           "
+          :active-id="locale"
           @select="onLangSelected"
         />
 
@@ -66,6 +67,7 @@ const onThemeSelected = (theme: string) => {
             { label: $t('light-theme-label'), id: 'light' },
             { label: $t('dark-theme-label'), id: 'dark' },
           ]"
+          :active-id="colorMode.preference"
           @select="onThemeSelected"
         />
       </div>
@@ -89,7 +91,8 @@ const onThemeSelected = (theme: string) => {
 
 @media (max-width: 700px) {
   .main-container {
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
