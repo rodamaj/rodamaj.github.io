@@ -92,6 +92,7 @@ const onThemeSelected = (theme: string) => {
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  text-transform: lowercase;
 }
 
 @media (min-width: 700px) {
