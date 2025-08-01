@@ -45,12 +45,18 @@ const onThemeSelected = (theme: string) => {
           class="contact-link"
           >Instagram</a
         >
-        <a href="/cv/jar_cv_es_v3.pdf" target="_blank" class="cv-link">{{
-          $t('es-cv-label')
-        }}</a>
-        <a href="/cv/jar_cv_en_v3.pdf" target="_blank" class="cv-link">{{
-          $t('en-cv-label')
-        }}</a>
+        <a
+          href="/public-assets/cv/jar_cv_es.pdf"
+          target="_blank"
+          class="cv-link"
+          >{{ $t('es-cv-label') }}</a
+        >
+        <a
+          href="/public-assets/cv/jar_cv_en.pdf"
+          target="_blank"
+          class="cv-link"
+          >{{ $t('en-cv-label') }}</a
+        >
       </nav>
 
       <p>––</p>
