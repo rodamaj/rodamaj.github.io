@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { LocaleObject } from '@nuxtjs/i18n'
 
-definePageMeta({ i18n: false })
 const { locale, locales, setLocale } = useI18n()
 const colorMode = useColorMode()
 
