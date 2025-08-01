@@ -80,7 +80,7 @@ const onThemeSelected = (theme: string) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
 }
 
 @media (min-width: 700px) {
