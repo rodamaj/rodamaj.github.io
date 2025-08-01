@@ -37,9 +37,4 @@
     padding-right: 2rem;
   }
 }
-
-.content * {
-  font-size: 1rem;
-  line-height: 1.5;
-}
 </style>

@@ -15,7 +15,7 @@ const onThemeSelected = (theme: string) => {
 </script>
 
 <template>
-  <div class="settings">
+  <PlainTextSection>
     <ToggleLink
       :links="
         locales.map((locale: LocaleObject) => ({
@@ -35,14 +35,7 @@ const onThemeSelected = (theme: string) => {
       :active-id="colorMode.preference"
       @select="onThemeSelected"
     />
-  </div>
+  </PlainTextSection>
 </template>
 
-<style scoped>
-.settings {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-}
-</style>
+<style scoped></style>
