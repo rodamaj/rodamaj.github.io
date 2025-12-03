@@ -36,6 +36,23 @@ export const albumOfTheDay = functions
     .region(REGION)
     .https.onRequest(async (_req: functions.https.Request, res: functions.Response<any>) => {
         try {
+            const today = new Date().toISOString().slice(0, 10);
+            const albumDocRef = db.collection("spotifyAlbumOfTheDay").doc(today);
+            const albumDocSnap = await albumDocRef.get();
+            const existingAlbum = albumDocSnap.data();
+
+            if (albumDocSnap.exists && existingAlbum) {
+                res.set("Access-Control-Allow-Origin", "*");
+                res.json({
+                    name: existingAlbum.name,
+                    artists: Array.isArray(existingAlbum.artists)
+                        ? existingAlbum.artists.join(", ")
+                        : "",
+                    embedUrl: existingAlbum.embedUrl,
+                });
+                return;
+            }
+
             const authSnap = await db.collection("spotify").doc("auth").get();
             const authData = authSnap.data();
 
@@ -67,14 +84,24 @@ export const albumOfTheDay = functions
 
             const album = filtered[Math.floor(Math.random() * filtered.length)].album;
 
+            const payload = {
+                name: album.name,
+                artists: album.artists.map(a => a.name),
+                embedUrl: `https://open.spotify.com/embed/album/${album.id}`,
+                albumId: album.id,
+                savedAt: admin.firestore.FieldValue.serverTimestamp(),
+            };
+
+            await albumDocRef.set(payload);
+
             res.set("Access-Control-Allow-Origin", "*");
             res.json({
-                name: album.name,
-                artists: album.artists.map(a => a.name).join(", "),
-                embedUrl: `https://open.spotify.com/embed/album/${album.id}`,
+                name: payload.name,
+                artists: payload.artists.join(", "),
+                embedUrl: payload.embedUrl,
             });
         } catch (err) {
             console.error(err);
-            res.status(500).send("Error interno");
+            res.status(500).send("Internal Server Error");
         }
     });
