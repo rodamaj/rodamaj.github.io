@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const localeHead = useLocaleHead()
+const colorMode = useColorMode()
 
 useHead(() => ({
   htmlAttrs: {
@@ -7,7 +8,13 @@ useHead(() => ({
     dir: localeHead.value.htmlAttrs?.dir,
   },
   link: localeHead.value.link,
-  meta: localeHead.value.meta,
+  meta: [
+    ...(localeHead.value.meta ?? []),
+    {
+      name: 'theme-color',
+      content: colorMode.value === 'dark' ? '#0f1419' : '#f6f2e8',
+    },
+  ],
 }))
 </script>
 
