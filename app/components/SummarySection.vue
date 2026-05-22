@@ -6,7 +6,7 @@ import PlainTextSection from './PlainTextSection.vue'
   <PlainTextSection>
     <h1 class="name">Josué Amador-Rojas</h1>
     <p>{{ $t('profession') }}</p>
-    <p>{{ $t('ocupation') }}</p>
+    <p>{{ $t('occupation') }}</p>
   </PlainTextSection>
 </template>
 

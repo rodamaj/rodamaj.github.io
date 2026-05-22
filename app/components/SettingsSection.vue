@@ -15,25 +15,29 @@ const onThemeSelected = (theme: string) => {
 
 <template>
   <PlainTextSection>
-    <ToggleLink
-      :links="
-        locales.map((locale: LocaleObject) => ({
-          label: locale.code,
-          id: locale.code,
-        }))
-      "
-      :active-id="locale"
-      @select="onLangSelected"
-    />
+    <section aria-label="Language switcher">
+      <ToggleLink
+        :links="
+          locales.map((locale: LocaleObject) => ({
+            label: locale.code,
+            id: locale.code,
+          }))
+        "
+        :active-id="locale"
+        @select="onLangSelected"
+      />
+    </section>
 
-    <ToggleLink
-      :links="[
-        { label: $t('light-theme-label'), id: 'light' },
-        { label: $t('dark-theme-label'), id: 'dark' },
-      ]"
-      :active-id="colorMode.preference"
-      @select="onThemeSelected"
-    />
+    <section aria-label="Theme switcher">
+      <ToggleLink
+        :links="[
+          { label: $t('light-theme-label'), id: 'light' },
+          { label: $t('dark-theme-label'), id: 'dark' },
+        ]"
+        :active-id="colorMode.preference"
+        @select="onThemeSelected"
+      />
+    </section>
   </PlainTextSection>
 </template>
 

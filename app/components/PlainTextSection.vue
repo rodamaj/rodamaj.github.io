@@ -14,10 +14,10 @@
   line-height: 1.5;
 }
 
-.plain-text-container * {
+.plain-text-container > * {
   color: inherit;
   font-size: inherit;
   line-height: inherit;
-  margin: inherit;
+  margin: 0;
 }
 </style>

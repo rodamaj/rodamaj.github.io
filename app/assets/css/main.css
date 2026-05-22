@@ -1,7 +1,13 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
+  min-height: 100vh;
   background-color: #fafafa;
+  color: #111827;
 }
 
 .dark-mode body {
@@ -10,5 +16,5 @@ body {
 }
 
 .app {
-  max-width: 1366px;
+  min-height: 100vh;
 }
