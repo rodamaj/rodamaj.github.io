@@ -11,6 +11,7 @@ import PlainTextSection from './PlainTextSection.vue'
       href="https://www.linkedin.com/in/rodamaj/"
       target="_blank"
       rel="noreferrer"
+      :aria-label="`LinkedIn, ${$t('opens-in-new-tab-label')}`"
       class="contact-link"
       >LinkedIn</a
     >
@@ -18,6 +19,7 @@ import PlainTextSection from './PlainTextSection.vue'
       href="https://www.github.com/rodamaj"
       target="_blank"
       rel="noreferrer"
+      :aria-label="`GitHub, ${$t('opens-in-new-tab-label')}`"
       class="contact-link"
       >GitHub</a
     >
@@ -25,15 +27,24 @@ import PlainTextSection from './PlainTextSection.vue'
       href="https://www.instagram.com/rodamaj"
       target="_blank"
       rel="noreferrer"
+      :aria-label="`Instagram, ${$t('opens-in-new-tab-label')}`"
       class="contact-link"
       >Instagram</a
     >
-    <a href="/public-assets/cv/jar_cv_es.pdf" target="_blank" class="cv-link">{{
-      $t('es-cv-label')
-    }}</a>
-    <a href="/public-assets/cv/jar_cv_en.pdf" target="_blank" class="cv-link">{{
-      $t('en-cv-label')
-    }}</a>
+    <a
+      href="/public-assets/cv/jar_cv_es.pdf"
+      target="_blank"
+      :aria-label="`${$t('es-cv-label')}, ${$t('opens-in-new-tab-label')}`"
+      class="cv-link"
+      >{{ $t('es-cv-label') }}</a
+    >
+    <a
+      href="/public-assets/cv/jar_cv_en.pdf"
+      target="_blank"
+      :aria-label="`${$t('en-cv-label')}, ${$t('opens-in-new-tab-label')}`"
+      class="cv-link"
+      >{{ $t('en-cv-label') }}</a
+    >
   </PlainTextSection>
 </template>
 

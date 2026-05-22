@@ -3,6 +3,13 @@
     "occupation": "Estudiante de Ciencias de la Computación, Universidad de Costa Rica",
     "en-cv-label": "Currículo en inglés",
     "es-cv-label": "Currículo en español",
+    "language-switcher-label": "Selector de idioma",
+    "theme-switcher-label": "Selector de tema",
+    "language-option-es-label": "Español",
+    "language-option-en-label": "Inglés",
     "light-theme-label": "Claro",
-    "dark-theme-label": "Oscuro"
+    "dark-theme-label": "Oscuro",
+    "light-theme-option-label": "Tema claro",
+    "dark-theme-option-label": "Tema oscuro",
+    "opens-in-new-tab-label": "se abre en una pestaña nueva"
 }

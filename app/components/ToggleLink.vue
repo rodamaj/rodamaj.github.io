@@ -35,6 +35,7 @@ const onSelect = (id: string) => {
       type="button"
       class="link"
       :class="{ active: activeLinkId === link.id }"
+      :aria-label="link.ariaLabel"
       :aria-pressed="activeLinkId === link.id"
       @click="onSelect(link.id)"
     >
