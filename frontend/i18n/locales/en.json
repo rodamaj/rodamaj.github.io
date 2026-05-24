@@ -1,8 +1,15 @@
 {
     "profession": "Software Engineer",
-    "ocupation": "Computer Science Student, Universidad de Costa Rica",
+    "occupation": "Computer Science Student, Universidad de Costa Rica",
     "en-cv-label": "CV in English",
     "es-cv-label": "CV in Spanish",
+    "language-switcher-label": "Language switcher",
+    "theme-switcher-label": "Theme switcher",
+    "language-option-es-label": "Spanish",
+    "language-option-en-label": "English",
     "light-theme-label": "Light",
-    "dark-theme-label": "Dark"
+    "dark-theme-label": "Dark",
+    "light-theme-option-label": "Light theme",
+    "dark-theme-option-label": "Dark theme",
+    "opens-in-new-tab-label": "opens in a new tab"
 }

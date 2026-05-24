@@ -1,14 +1,73 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  color-scheme: light;
+  --theme-bg: #f6f2e8;
+  --theme-text: #181511;
+  --theme-text-soft: #5f564a;
+  --theme-link: #181511;
+  --theme-link-hover: #000000;
+  --theme-focus: #0f766e;
+  --theme-selection-bg: rgba(15, 118, 110, 0.2);
+}
+
+.dark-mode {
+  color-scheme: dark;
+  --theme-bg: #0f1419;
+  --theme-text: #f5efe3;
+  --theme-text-soft: #c8beb0;
+  --theme-link: #f5efe3;
+  --theme-link-hover: #ffffff;
+  --theme-focus: #7dd3c7;
+  --theme-selection-bg: rgba(125, 211, 199, 0.24);
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
-  background-color: #fafafa;
+  min-height: 100vh;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
 }
 
 .dark-mode body {
-  background-color: #091a28;
-  color: #ebf4f1;
+  color: var(--theme-text);
 }
 
 .app {
-  max-width: 1366px;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--theme-selection-bg);
+}
+
+a {
+  color: var(--theme-link);
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.12em;
+}
+
+a:hover {
+  color: var(--theme-link-hover);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--theme-focus);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

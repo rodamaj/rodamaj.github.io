@@ -1,14 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
   ],
@@ -37,6 +34,24 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: '/',
+    head: {
+      titleTemplate: '%s | Josué Amador-Rojas',
+      meta: [
+        { charset: 'utf-8' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, viewport-fit=cover',
+        },
+        {
+          name: 'description',
+          content:
+            'Personal website of Josué Amador-Rojas, software engineer and computer science student.',
+        },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'theme-color', content: '#fafafa' },
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    },
   },
 
   css: ['~/assets/css/main.css'],
