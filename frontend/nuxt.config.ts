@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
+  runtimeConfig: {
+    public: {
+      songOfTheDayApiUrl: process.env.NUXT_PUBLIC_SONG_OF_THE_DAY_API_URL ?? '',
+    },
+  },
+
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',

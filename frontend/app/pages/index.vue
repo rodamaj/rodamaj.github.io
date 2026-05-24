@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'HomePage',
+})
+
 const { t } = useI18n()
 
 useSeoMeta({
@@ -15,6 +19,10 @@ useSeoMeta({
   <div class="main-container">
     <main class="content">
       <SummarySection />
+
+      <p>––</p>
+
+      <SongOfTheDaySection />
 
       <p>––</p>
 

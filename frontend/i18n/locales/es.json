@@ -11,5 +11,6 @@
     "dark-theme-label": "Oscuro",
     "light-theme-option-label": "Tema claro",
     "dark-theme-option-label": "Tema oscuro",
-    "opens-in-new-tab-label": "se abre en una pestaña nueva"
+    "opens-in-new-tab-label": "se abre en una pestaña nueva",
+    "song-of-the-day-label": "Canción del día"
 }

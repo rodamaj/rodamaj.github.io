@@ -1,107 +1,84 @@
 import * as functions from "firebase-functions/v1";
 import admin from "firebase-admin";
 
-import { CLIENT_ID, CLIENT_SECRET, REGION } from "./constants";
-import { SpotifySavedAlbumsResponse } from "./SpotifySavedAlbumsResponse";
-import { SpotifyTokenResponse } from "./SpotifyTokenResponse";
-import { ensureSpotifyCredentials } from "./ensureSpotifyCredentials";
-
-const db = admin.firestore();
-
-async function getAccessTokenFromRefresh(refreshToken: string): Promise<string> {
-    ensureSpotifyCredentials();
-
-    const body = new URLSearchParams({
-        grant_type: "refresh_token",
-        refresh_token: refreshToken,
-    });
-
-    const basicAuth = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64");
-
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
-        headers: {
-            Authorization: `Basic ${basicAuth}`,
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body,
-    });
-
-    if (!response.ok) throw new Error(await response.text());
-    const json = (await response.json()) as SpotifyTokenResponse;
-    return json.access_token;
-}
+import {
+  REGION,
+  SPOTIFY_CLIENT_ID_SECRET,
+  SPOTIFY_CLIENT_SECRET_SECRET,
+} from "../config/env";
+import {getSpotifyRefreshToken} from "../firestore/spotifyAuth";
+import {spotifyFetch} from "./client";
+import {getAccessTokenFromRefresh} from "./auth";
+import {SpotifySavedAlbumsResponse} from "./types";
 
 export const albumOfTheDay = functions
-    .region(REGION)
-    .https.onRequest(async (_req: functions.https.Request, res: functions.Response<any>) => {
-        try {
-            const today = new Date().toISOString().slice(0, 10);
-            const albumDocRef = db.collection("spotifyAlbumOfTheDay").doc(today);
-            const albumDocSnap = await albumDocRef.get();
-            const existingAlbum = albumDocSnap.data();
+  .runWith({
+    secrets: [SPOTIFY_CLIENT_ID_SECRET, SPOTIFY_CLIENT_SECRET_SECRET],
+  })
+  .region(REGION)
+  .https.onRequest(
+    async (_req: functions.https.Request, res: functions.Response<unknown>) => {
+      try {
+        const db = admin.firestore();
+        const today = new Date().toISOString().slice(0, 10);
+        const albumDocRef = db.collection("spotifyAlbumOfTheDay").doc(today);
+        const albumDocSnap = await albumDocRef.get();
+        const existingAlbum = albumDocSnap.data();
 
-            if (albumDocSnap.exists && existingAlbum) {
-                res.set("Access-Control-Allow-Origin", "*");
-                res.json({
-                    name: existingAlbum.name,
-                    artists: Array.isArray(existingAlbum.artists)
-                        ? existingAlbum.artists.join(", ")
-                        : "",
-                    embedUrl: existingAlbum.embedUrl,
-                });
-                return;
-            }
-
-            const authSnap = await db.collection("spotify").doc("auth").get();
-            const authData = authSnap.data();
-
-            if (!authData || typeof authData.refreshToken !== "string") {
-                res.status(500).send("Spotify auth tokens not found");
-                return;
-            }
-            const { refreshToken } = authData;
-
-            const accessToken = await getAccessTokenFromRefresh(refreshToken);
-
-            const apiRes = await fetch(
-                "https://api.spotify.com/v1/me/albums?limit=50",
-                { headers: { Authorization: `Bearer ${accessToken}` } }
-            );
-
-            const data = (await apiRes.json()) as SpotifySavedAlbumsResponse;
-
-            const blockedArtists = new Set(["katy perry"]);
-            const filtered = data.items.filter(item => {
-                const artists = item.album.artists.map(a => a.name.toLowerCase());
-                return !artists.some(a => blockedArtists.has(a));
-            });
-
-            if (filtered.length === 0) {
-                res.status(404).send("No albums available");
-                return;
-            }
-
-            const album = filtered[Math.floor(Math.random() * filtered.length)].album;
-
-            const payload = {
-                name: album.name,
-                artists: album.artists.map(a => a.name),
-                embedUrl: `https://open.spotify.com/embed/album/${album.id}`,
-                albumId: album.id,
-                savedAt: admin.firestore.FieldValue.serverTimestamp(),
-            };
-
-            await albumDocRef.set(payload);
-
-            res.set("Access-Control-Allow-Origin", "*");
-            res.json({
-                name: payload.name,
-                artists: payload.artists.join(", "),
-                embedUrl: payload.embedUrl,
-            });
-        } catch (err) {
-            console.error(err);
-            res.status(500).send("Internal Server Error");
+        if (albumDocSnap.exists && existingAlbum) {
+          res.set("Access-Control-Allow-Origin", "*");
+          res.json({
+            name: existingAlbum.name,
+            artists: Array.isArray(existingAlbum.artists) ?
+              existingAlbum.artists.join(", ") :
+              "",
+            embedUrl: existingAlbum.embedUrl,
+          });
+          return;
         }
-    });
+
+        const refreshToken = await getSpotifyRefreshToken();
+        const accessToken = await getAccessTokenFromRefresh(refreshToken);
+        const data = await spotifyFetch<SpotifySavedAlbumsResponse>(
+          "/me/albums?limit=50",
+          accessToken,
+        );
+
+        const blockedArtists = new Set(["katy perry"]);
+        const filtered = data.items.filter((item) => {
+          const artists = item.album.artists.map(
+            (artist) => artist.name.toLowerCase(),
+          );
+          return !artists.some((artistName) => blockedArtists.has(artistName));
+        });
+
+        if (filtered.length === 0) {
+          res.status(404).send("No albums available");
+          return;
+        }
+
+        const album =
+          filtered[Math.floor(Math.random() * filtered.length)].album;
+
+        const payload = {
+          name: album.name,
+          artists: album.artists.map((artist) => artist.name),
+          embedUrl: `https://open.spotify.com/embed/album/${album.id}`,
+          albumId: album.id,
+          savedAt: admin.firestore.FieldValue.serverTimestamp(),
+        };
+
+        await albumDocRef.set(payload);
+
+        res.set("Access-Control-Allow-Origin", "*");
+        res.json({
+          name: payload.name,
+          artists: payload.artists.join(", "),
+          embedUrl: payload.embedUrl,
+        });
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+      }
+    },
+  );
