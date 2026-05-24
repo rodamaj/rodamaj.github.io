@@ -4,6 +4,7 @@ defineOptions({
 })
 
 const { t } = useI18n()
+const { data: song } = useSongOfTheDay()
 
 useSeoMeta({
   title: 'Home',
@@ -24,9 +25,11 @@ useSeoMeta({
 
       <LinkSection />
 
-      <p>––</p>
+      <template v-if="song">
+        <p>––</p>
 
-      <SongOfTheDaySection />
+        <SongOfTheDaySection />
+      </template>
 
       <p>––</p>
 

@@ -15,9 +15,9 @@ html {
 
 .dark-mode {
   color-scheme: dark;
-  --theme-bg: #0f1419;
+  --theme-bg: #0b1320;
   --theme-text: #f5efe3;
-  --theme-text-soft: #c8beb0;
+  --theme-text-soft: #cbc3b7;
   --theme-link: #f5efe3;
   --theme-link-hover: #ffffff;
   --theme-focus: #7dd3c7;

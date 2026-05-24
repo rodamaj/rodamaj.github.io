@@ -58,7 +58,6 @@ export default defineNuxtConfig({
             'Personal website of Josué Amador-Rojas, software engineer and computer science student.',
         },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'theme-color', content: '#fafafa' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
