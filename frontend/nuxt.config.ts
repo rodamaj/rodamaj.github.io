@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? 'https://rodamaj.github.io'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
@@ -6,6 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       songOfTheDayApiUrl: process.env.NUXT_PUBLIC_SONG_OF_THE_DAY_API_URL ?? '',
+      siteUrl,
     },
   },
 
@@ -23,6 +26,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
+    baseUrl: siteUrl,
     locales: [
       { code: 'es', language: 'es-ES', file: 'es.json' },
       { code: 'en', language: 'en-US', file: 'en.json' },

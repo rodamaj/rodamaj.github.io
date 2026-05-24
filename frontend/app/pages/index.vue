@@ -22,11 +22,11 @@ useSeoMeta({
 
       <p>––</p>
 
-      <SongOfTheDaySection />
+      <LinkSection />
 
       <p>––</p>
 
-      <LinkSection />
+      <SongOfTheDaySection />
 
       <p>––</p>
 
