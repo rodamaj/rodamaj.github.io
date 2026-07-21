@@ -14,7 +14,7 @@ const onThemeSelected = (theme: string) => {
 </script>
 
 <template>
-  <PlainTextSection>
+  <PlainTextSection class="settings-section">
     <section aria-labelledby="language-switcher-heading">
       <h2 id="language-switcher-heading" class="sr-only">
         {{ $t('language-switcher-label') }}
@@ -59,4 +59,10 @@ const onThemeSelected = (theme: string) => {
   </PlainTextSection>
 </template>
 
-<style scoped></style>
+<style scoped>
+.settings-section {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+</style>
