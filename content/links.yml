@@ -1,0 +1,34 @@
+personalEmail:
+  label: { es: bjamadorr@gmail.com, en: bjamadorr@gmail.com }
+  href: mailto:bjamadorr@gmail.com
+  external: false
+
+academicEmail:
+  label: { es: bryan.amador@ucr.ac.cr, en: bryan.amador@ucr.ac.cr }
+  href: mailto:bryan.amador@ucr.ac.cr
+  external: false
+
+github:
+  label: { es: GitHub, en: GitHub }
+  href: https://github.com/rodamaj
+  external: true
+
+linkedin:
+  label: { es: LinkedIn, en: LinkedIn }
+  href: https://www.linkedin.com/in/rodamaj/
+  external: true
+
+instagram:
+  label: { es: Instagram, en: Instagram }
+  href: https://www.instagram.com/rodamaj
+  external: true
+
+cvEs:
+  label: { es: Currículo en español, en: CV in Spanish }
+  href: /public-assets/cv/jar_cv_es.pdf
+  external: true
+
+cvEn:
+  label: { es: Currículo en inglés, en: CV in English }
+  href: /public-assets/cv/jar_cv_en.pdf
+  external: true

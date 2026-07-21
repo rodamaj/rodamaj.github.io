@@ -26,6 +26,42 @@ const editorialSchema = z.object({
   provisional: z.boolean().optional(),
 })
 
+const contentLink = z.object({
+  label: localizedText,
+  href: z.string(),
+  external: z.boolean().optional(),
+})
+
+const aboutSchema = z.object({
+  biography: z.array(localizedText),
+  sections: z.object({
+    education: localizedText,
+    interests: localizedText,
+    contact: localizedText,
+    resumes: localizedText,
+    academicProfiles: localizedText,
+  }),
+  education: z.array(
+    z.object({
+      date: localizedText,
+      program: localizedText,
+      institution: z.string(),
+    })
+  ),
+  interests: localizedText,
+  academicProfilesPlaceholder: localizedText,
+})
+
+const linksSchema = z.object({
+  personalEmail: contentLink,
+  academicEmail: contentLink,
+  github: contentLink,
+  linkedin: contentLink,
+  instagram: contentLink,
+  cvEs: contentLink,
+  cvEn: contentLink,
+})
+
 export default defineContentConfig({
   collections: {
     engineering: defineCollection({
@@ -41,6 +77,16 @@ export default defineContentConfig({
     thoughts: defineCollection({
       type: 'page',
       source: 'thoughts/*.md',
+    }),
+    about: defineCollection({
+      type: 'data',
+      source: 'about.yml',
+      schema: aboutSchema,
+    }),
+    links: defineCollection({
+      type: 'data',
+      source: 'links.yml',
+      schema: linksSchema,
     }),
   },
 })
