@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import type { EditorialEntry } from '~/content/site'
+
 const { content } = useSiteContent()
+const { data: entries } = await useAsyncData('engineering-entries', () =>
+  queryCollection('engineering').order('order', 'ASC').all()
+)
 </script>
 
 <template>
@@ -7,6 +12,6 @@ const { content } = useSiteContent()
     :title="content.pages.engineering.title"
     :description="content.pages.engineering.description"
   >
-    <EditorialList :entries="content.engineering" />
+    <EditorialList :entries="(entries ?? []) as EditorialEntry[]" />
   </PageShell>
 </template>

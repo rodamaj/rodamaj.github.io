@@ -40,7 +40,7 @@ useSeoMeta({
 
       <p class="separator" aria-hidden="true">––</p>
 
-      <nav aria-label="secciones principales" class="home-navigation">
+      <nav aria-label="Secciones principales" class="home-navigation">
         <section v-for="item in content.navigation" :key="item.id">
           <h2>
             <NuxtLink :to="item.href" class="forward-link">{{
