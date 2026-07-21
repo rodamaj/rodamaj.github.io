@@ -1,56 +1,62 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { content, text } = useSiteContent()
+const visibleNavigation = content.navigation.filter((item) => item.visible)
+
+const primaryLinks = [
+  {
+    label: content.labels.moreAndContact,
+    href: '/about',
+    external: false,
+  },
+]
 
 useSeoMeta({
-  title: 'Home',
-  description: () =>
-    `${t('profession')} - ${t('occupation')} - Josué Amador-Rojas`,
-  ogTitle: 'Josué Amador-Rojas',
-  ogDescription: () => `${t('profession')} - ${t('occupation')}`,
+  title: () => text(content.labels.index),
+  description: () => text(content.identity.statement),
+  ogTitle: content.identity.name,
+  ogDescription: () => text(content.identity.statement),
   ogType: 'website',
 })
 </script>
 
 <template>
-  <div class="main-container">
-    <main class="content">
-      <SummarySection />
+  <div class="site-container home-container">
+    <main class="site-content home-content">
+      <header class="home-intro">
+        <h1>{{ content.identity.name }}</h1>
+        <p>{{ text(content.identity.role) }}</p>
+        <p>{{ text(content.identity.statement) }}</p>
 
-      <p>––</p>
+        <p>
+          <NuxtLink
+            v-for="link in primaryLinks"
+            :key="link.href"
+            :to="link.href"
+            class="forward-link"
+          >
+            {{ text(link.label) }}
+          </NuxtLink>
+        </p>
+      </header>
 
-      <LinkSection />
+      <p class="separator" aria-hidden="true">––</p>
 
-      <p>––</p>
+      <nav aria-label="Secciones principales" class="home-navigation">
+        <section v-for="item in visibleNavigation" :key="item.id">
+          <h2>
+            <NuxtLink :to="item.href" class="forward-link">{{
+              text(item.label)
+            }}</NuxtLink>
+          </h2>
+          <p>{{ text(item.description) }}</p>
+        </section>
+      </nav>
 
-      <SettingsSection />
+      <p class="separator" aria-hidden="true">––</p>
+
+      <footer class="home-footer">
+        <SettingsSection />
+      </footer>
     </main>
   </div>
 </template>
-
-<style scoped>
-.main-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100dvh;
-  padding: 4rem 1.5rem;
-  box-sizing: border-box;
-  text-transform: lowercase;
-}
-
-.content {
-  width: min(100%, 600px);
-}
-
-@media (min-width: 700px) {
-  .main-container {
-    align-items: center;
-  }
-}
-
-@media (max-width: 700px) {
-  .main-container {
-    padding: 2rem 1.25rem;
-  }
-}
-</style>
