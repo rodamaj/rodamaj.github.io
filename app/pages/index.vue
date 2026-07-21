@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { content, text } = useSiteContent()
+const visibleNavigation = content.navigation.filter((item) => item.visible)
 
 const primaryLinks = [
   {
@@ -41,7 +42,7 @@ useSeoMeta({
       <p class="separator" aria-hidden="true">––</p>
 
       <nav aria-label="Secciones principales" class="home-navigation">
-        <section v-for="item in content.navigation" :key="item.id">
+        <section v-for="item in visibleNavigation" :key="item.id">
           <h2>
             <NuxtLink :to="item.href" class="forward-link">{{
               text(item.label)

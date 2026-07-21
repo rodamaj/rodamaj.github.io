@@ -12,10 +12,7 @@ const { content, text } = useSiteContent()
   <ol class="editorial-list">
     <li v-for="entry in entries" :key="entry.id" class="editorial-entry">
       <p class="entry-date">{{ text(entry.date) }}</p>
-      <article
-        class="entry-body"
-        :data-provisional="entry.provisional || undefined"
-      >
+      <article class="entry-body">
         <h2>{{ text(entry.title) }}</h2>
 
         <p v-for="paragraph in entry.description" :key="text(paragraph)">

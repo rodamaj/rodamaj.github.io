@@ -13,7 +13,7 @@ description:
 context:
   - es: Proyecto personal
     en: Personal project
-technologies: [Nuxt, Vue, TypeScript, GitHub Pages]
+technologies: [Nuxt, Nuxt Content, Vue, TypeScript, GitHub Pages]
 links:
   - label: { es: Repositorio, en: Repository }
     href: https://github.com/rodamaj/rodamaj.github.io

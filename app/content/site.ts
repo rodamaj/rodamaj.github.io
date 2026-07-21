@@ -56,6 +56,7 @@ export const siteContent = {
     {
       id: 'engineering',
       href: '/engineering',
+      visible: true,
       label: { es: 'Ingeniería', en: 'Engineering' },
       description: {
         es: 'Sistemas, herramientas y trabajo profesional seleccionado.',
@@ -65,6 +66,7 @@ export const siteContent = {
     {
       id: 'science',
       href: '/science',
+      visible: true,
       label: { es: 'Ciencia', en: 'Science' },
       description: {
         es: 'Investigaciones y exploraciones en ciencias de la computación.',
@@ -74,6 +76,7 @@ export const siteContent = {
     {
       id: 'thoughts',
       href: '/thoughts',
+      visible: false,
       label: { es: 'Pensamientos', en: 'Thoughts' },
       description: {
         es: 'Notas sobre software, ciencia y otras cosas.',
@@ -83,6 +86,7 @@ export const siteContent = {
     {
       id: 'music',
       href: '/music',
+      visible: false,
       label: { es: 'Música', en: 'Music' },
       description: {
         es: 'Discos y canciones a los que vuelvo.',
@@ -92,6 +96,7 @@ export const siteContent = {
     {
       id: 'photography',
       href: '/photography',
+      visible: false,
       label: { es: 'Fotografía', en: 'Photography' },
       description: {
         es: 'Algunas de mis fotografías favoritas.',

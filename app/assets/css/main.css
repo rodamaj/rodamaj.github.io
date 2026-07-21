@@ -255,11 +255,6 @@ button:focus-visible {
   gap: 1rem;
 }
 
-.entry-body[data-provisional='true'] {
-  border-left: 1px solid var(--theme-text-soft);
-  padding-left: 1rem;
-}
-
 .entry-status,
 .entry-meta {
   margin-top: 0.25rem;
