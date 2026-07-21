@@ -39,7 +39,6 @@ const aboutSchema = z.object({
     interests: localizedText,
     contact: localizedText,
     resumes: localizedText,
-    academicProfiles: localizedText,
   }),
   education: z.array(
     z.object({
@@ -49,7 +48,6 @@ const aboutSchema = z.object({
     })
   ),
   interests: localizedText,
-  academicProfilesPlaceholder: localizedText,
 })
 
 const linksSchema = z.object({

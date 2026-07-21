@@ -86,13 +86,6 @@ const resumeLinks = computed(() =>
           </template>
         </p>
       </section>
-
-      <section>
-        <h2>{{ text(about.sections.academicProfiles) }}</h2>
-        <p class="placeholder">
-          {{ text(about.academicProfilesPlaceholder) }}
-        </p>
-      </section>
     </div>
   </PageShell>
 </template>
