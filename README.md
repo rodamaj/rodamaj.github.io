@@ -1,75 +1,7 @@
-# Nuxt Minimal Starter
+# rodamaj.github.io
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Sitio personal de [Josué Amador-Rojas](https://rodamaj.github.io), ingeniero de software y estudiante de ciencias de la computación.
 
-## Setup
+Reúne proyectos de ingeniería de software, investigaciones y exploraciones en ciencias de la computación, además de información sobre mi formación e intereses. Está disponible en español e inglés y cuenta con temas claro y oscuro.
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Construido con Nuxt, Vue, TypeScript y Nuxt Content. Publicado en GitHub Pages.
