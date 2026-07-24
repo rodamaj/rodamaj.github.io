@@ -4,8 +4,12 @@ import type { LocaleObject } from '@nuxtjs/i18n'
 const { locale, locales, setLocale } = useI18n()
 const colorMode = useColorMode()
 
-const onLangSelected = (lang: string) => {
-  setLocale(lang as 'en' | 'es')
+const onLangSelected = async (lang: string) => {
+  if (lang === locale.value) {
+    return
+  }
+
+  await setLocale(lang as 'en' | 'es')
 }
 
 const onThemeSelected = (theme: string) => {

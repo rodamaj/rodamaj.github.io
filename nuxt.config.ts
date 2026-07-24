@@ -26,6 +26,9 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'es',
     strategy: 'no_prefix',
+    experimental: {
+      preload: true,
+    },
   },
 
   colorMode: {
@@ -62,7 +65,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      failOnError: false, // ✅ avoid CI fail while debugging
+      failOnError: true,
     },
   },
 })

@@ -100,6 +100,15 @@ test.describe('critical site flows', () => {
     await page.reload()
 
     await expect(page.locator('html')).toHaveClass(/dark-mode/)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en-US')
+    await expect(page.getByRole('button', { name: 'English' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+    await expect(page.getByRole('button', { name: 'Spanish' })).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    )
   })
 })
 
@@ -144,6 +153,35 @@ test.describe('responsive columns', () => {
           Math.abs(homeBox.width - panelBox.width) < 2 &&
           Math.abs(panelBox.x - (homeBox.x + homeBox.width)) < 2 &&
           homeBox.width > 600
+        )
+      })
+      .toBe(true)
+  })
+
+  test('keeps two columns when science loads with a trailing slash', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/science/')
+
+    await expect(page.locator('.context-view')).toHaveClass(/has-panel/)
+    const home = page.locator('.home-container')
+    const panel = page.locator('.side-panel')
+
+    await expect(home).toBeVisible()
+    await expect(panel).toBeVisible()
+    await expect
+      .poll(async () => {
+        const homeBox = await home.boundingBox()
+        const panelBox = await panel.boundingBox()
+
+        if (!homeBox || !panelBox) {
+          return false
+        }
+
+        return (
+          Math.abs(homeBox.width - panelBox.width) < 2 &&
+          Math.abs(panelBox.x - (homeBox.x + homeBox.width)) < 2
         )
       })
       .toBe(true)

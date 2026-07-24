@@ -22,9 +22,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npx nuxt dev --host 127.0.0.1 --port 4173',
+    command:
+      'npm run generate && python3 -m http.server 4173 --directory .output/public',
     env: {
       NUXT_IGNORE_LOCK: '1',
+      PLAYWRIGHT_TEST: '1',
     },
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,

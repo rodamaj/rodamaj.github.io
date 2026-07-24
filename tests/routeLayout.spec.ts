@@ -19,6 +19,16 @@ describe('getRouteLayoutState', () => {
     }
   )
 
+  it.each(['/about/', '/science/', '/engineering/'])(
+    'opens %s as a side panel after a static-host redirect',
+    (path) => {
+      expect(getRouteLayoutState(path)).toEqual({
+        hasHomeContext: true,
+        hasPanel: true,
+      })
+    }
+  )
+
   it.each(['/music', '/photography', '/thoughts'])(
     'renders %s as a standalone page',
     (path) => {

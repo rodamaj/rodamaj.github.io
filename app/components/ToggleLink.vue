@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import type { LinkInfo } from '~/types/ToggleLinkInfo'
 
 const { links, activeId = undefined } = defineProps<{
@@ -9,21 +9,13 @@ const { links, activeId = undefined } = defineProps<{
 
 const emit = defineEmits(['select'])
 
-const activeLinkId = ref(activeId ?? links[0]?.id ?? '')
-
-watch(
-  () => activeId,
-  (nextActiveId) => {
-    activeLinkId.value = nextActiveId ?? links[0]?.id ?? ''
-  }
-)
+const selectedId = computed(() => activeId ?? links[0]?.id ?? '')
 
 const onSelect = (id: string) => {
-  if (activeLinkId.value === id) {
+  if (selectedId.value === id) {
     return
   }
 
-  activeLinkId.value = id
   emit('select', id)
 }
 </script>
@@ -35,9 +27,9 @@ const onSelect = (id: string) => {
       :key="link.id"
       type="button"
       class="link"
-      :class="{ active: activeLinkId === link.id }"
+      :class="{ active: selectedId === link.id }"
       :aria-label="link.ariaLabel"
-      :aria-pressed="activeLinkId === link.id"
+      :aria-pressed="selectedId === link.id"
       @click="onSelect(link.id)"
     >
       {{ link.label }}

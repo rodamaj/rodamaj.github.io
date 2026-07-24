@@ -18,7 +18,7 @@ describe('ToggleLink', () => {
     expect(buttons[1]?.attributes('aria-pressed')).toBe('true')
   })
 
-  it('selects and emits a different option', async () => {
+  it('emits a different option without drifting from the controlled value', async () => {
     const wrapper = mount(ToggleLink, {
       props: { links, activeId: 'es' },
     })
@@ -26,8 +26,11 @@ describe('ToggleLink', () => {
     await wrapper.findAll('button')[1]?.trigger('click')
 
     expect(wrapper.emitted('select')).toEqual([['en']])
-    expect(wrapper.findAll('button')[1]?.attributes('aria-pressed')).toBe(
+    expect(wrapper.findAll('button')[0]?.attributes('aria-pressed')).toBe(
       'true'
+    )
+    expect(wrapper.findAll('button')[1]?.attributes('aria-pressed')).toBe(
+      'false'
     )
   })
 
