@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import type { LinkInfo } from '~/types/ToggleLinkInfo'
 
 const { links, activeId = undefined } = defineProps<{

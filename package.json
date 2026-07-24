@@ -4,10 +4,15 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "check": "npm run lint && npm run typecheck && npm run test",
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
+    "lint": "eslint .",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
     "@nuxt/content": "^3.15.0",
@@ -21,10 +26,15 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.4.11",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.3",
+    "happy-dom": "^20.11.1",
     "prettier": "^3.6.2",
-    "prettier-plugin-vue": "^1.1.6"
+    "prettier-plugin-vue": "^1.1.6",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.8"
   }
 }
