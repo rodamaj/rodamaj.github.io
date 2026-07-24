@@ -20,10 +20,16 @@ useSeoMeta({
     <main class="site-content page-content">
       <header class="page-header">
         <h1 class="page-title">
-          <NuxtLink to="/" class="name-link">{{
-            content.identity.name
-          }}</NuxtLink>
-          <span aria-hidden="true"> / </span>{{ text(title) }}
+          <span class="page-title-origin">
+            <NuxtLink to="/" class="name-link page-title-origin-link">{{
+              content.identity.name
+            }}</NuxtLink>
+            <span class="page-title-origin-text">{{
+              content.identity.name
+            }}</span>
+            <span aria-hidden="true"> / </span>
+          </span>
+          {{ text(title) }}
         </h1>
         <p v-if="description" class="page-description">
           {{ text(description) }}
@@ -34,7 +40,12 @@ useSeoMeta({
 
       <footer class="page-footer">
         <p aria-hidden="true">––</p>
-        <NuxtLink to="/">← {{ text(content.labels.index) }}</NuxtLink>
+        <NuxtLink to="/" class="page-index-link">
+          {{ text(content.labels.index) }}
+        </NuxtLink>
+        <NuxtLink to="/" class="panel-close-link">
+          {{ text(content.labels.closePanel) }}
+        </NuxtLink>
         <SettingsSection />
       </footer>
     </main>

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const localeHead = useLocaleHead()
 const colorMode = useColorMode()
+const route = useRoute()
+
+const panelRoutes = new Set(['/about', '/science', '/engineering'])
+const isIndex = computed(() => route.path === '/')
+const hasPanel = computed(() => panelRoutes.has(route.path))
+const hasHomeContext = computed(() => isIndex.value || hasPanel.value)
 
 useHead(() => ({
   htmlAttrs: {
@@ -21,6 +27,23 @@ useHead(() => ({
 <template>
   <div class="app">
     <NuxtRouteAnnouncer />
-    <NuxtPage />
+
+    <div
+      v-if="hasHomeContext"
+      class="context-view"
+      :class="{ 'has-panel': hasPanel }"
+    >
+      <HomeView :panel="hasPanel" />
+
+      <Transition name="side-panel">
+        <div v-show="hasPanel" class="side-panel">
+          <div class="side-panel-scroll">
+            <NuxtPage />
+          </div>
+        </div>
+      </Transition>
+    </div>
+
+    <NuxtPage v-else />
   </div>
 </template>

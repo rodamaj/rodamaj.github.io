@@ -199,5 +199,6 @@ export const siteContent = {
     index: { es: 'Índice', en: 'Index' },
     about: { es: 'Acerca de', en: 'About' },
     moreAndContact: { es: 'Más + contacto', en: 'More + contact' },
+    closePanel: { es: 'Cerrar panel', en: 'Close panel' },
   },
 } as const

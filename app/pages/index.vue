@@ -1,14 +1,5 @@
 <script setup lang="ts">
 const { content, text } = useSiteContent()
-const visibleNavigation = content.navigation.filter((item) => item.visible)
-
-const primaryLinks = [
-  {
-    label: content.labels.moreAndContact,
-    href: '/about',
-    external: false,
-  },
-]
 
 useSeoMeta({
   title: () => text(content.labels.index),
@@ -20,43 +11,6 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="site-container home-container">
-    <main class="site-content home-content">
-      <header class="home-intro">
-        <h1>{{ content.identity.name }}</h1>
-        <p>{{ text(content.identity.role) }}</p>
-        <p>{{ text(content.identity.statement) }}</p>
-
-        <p>
-          <NuxtLink
-            v-for="link in primaryLinks"
-            :key="link.href"
-            :to="link.href"
-            class="forward-link"
-          >
-            {{ text(link.label) }}
-          </NuxtLink>
-        </p>
-      </header>
-
-      <p class="separator" aria-hidden="true">––</p>
-
-      <nav aria-label="Secciones principales" class="home-navigation">
-        <section v-for="item in visibleNavigation" :key="item.id">
-          <h2>
-            <NuxtLink :to="item.href" class="forward-link">{{
-              text(item.label)
-            }}</NuxtLink>
-          </h2>
-          <p>{{ text(item.description) }}</p>
-        </section>
-      </nav>
-
-      <p class="separator" aria-hidden="true">––</p>
-
-      <footer class="home-footer">
-        <SettingsSection />
-      </footer>
-    </main>
-  </div>
+  <!-- The visible index remains mounted by app.vue while panel routes are open. -->
+  <div aria-hidden="true"></div>
 </template>
