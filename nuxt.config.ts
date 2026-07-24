@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
+    baseUrl: 'https://rodamaj.github.io',
     locales: [
       { code: 'es', language: 'es-ES', file: 'es.json' },
       { code: 'en', language: 'en-US', file: 'en.json' },
