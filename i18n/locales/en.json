@@ -7,8 +7,10 @@
   "theme-switcher-label": "Theme switcher",
   "language-option-es-label": "Spanish",
   "language-option-en-label": "English",
+  "system-theme-label": "System",
   "light-theme-label": "Light",
   "dark-theme-label": "Dark",
+  "system-theme-option-label": "Use system theme",
   "light-theme-option-label": "Light theme",
   "dark-theme-option-label": "Dark theme",
   "opens-in-new-tab-label": "opens in a new tab"

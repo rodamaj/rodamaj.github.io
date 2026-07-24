@@ -9,7 +9,7 @@ const onLangSelected = (lang: string) => {
 }
 
 const onThemeSelected = (theme: string) => {
-  colorMode.preference = theme as 'light' | 'dark'
+  colorMode.preference = theme as 'system' | 'light' | 'dark'
 }
 </script>
 
@@ -41,6 +41,11 @@ const onThemeSelected = (theme: string) => {
       </h2>
       <ToggleLink
         :links="[
+          {
+            label: $t('system-theme-label'),
+            id: 'system',
+            ariaLabel: $t('system-theme-option-label'),
+          },
           {
             label: $t('light-theme-label'),
             id: 'light',

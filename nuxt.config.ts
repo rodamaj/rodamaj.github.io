@@ -27,9 +27,10 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    preference: 'light', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not system preference found
+    preference: 'system',
+    fallback: 'light',
     storage: 'localStorage',
+    storageKey: 'nuxt-color-mode',
   },
 
   ssr: true,
