@@ -16,17 +16,17 @@ education:
       en: 'Incoming: August 2026'
     program:
       es: Maestría Académica en Computación e Informática
-      en: Computer Science and Informatics
+      en: Master of Science in Computer Science and Informatics
     institution: Universidad de Costa Rica
   - date: { es: Desde 2025, en: Since 2025 }
     program:
       es: Bachillerato en Computación con énfasis en Ciencias de la Computación
-      en: Computer Science
+      en: Bachelor of Science in Computer Science
     institution: Universidad de Costa Rica
   - date: { es: '2018–2021', en: '2018–2021' }
     program:
       es: Bachillerato en Computación con énfasis en Ingeniería de Software
-      en: Software Engineering
+      en: Bachelor of Science in Software Engineering
     institution: Universidad de Costa Rica
 
 interests:
