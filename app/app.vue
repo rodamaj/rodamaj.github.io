@@ -4,8 +4,13 @@ import { getRouteLayoutState } from '~/utils/routeLayout'
 const localeHead = useLocaleHead()
 const colorMode = useColorMode()
 const route = useRoute()
+const isHydrated = ref(false)
 
 const routeLayout = computed(() => getRouteLayoutState(route.path))
+
+onMounted(() => {
+  isHydrated.value = true
+})
 
 useHead(() => {
   const direction = localeHead.value.htmlAttrs?.dir
@@ -31,7 +36,7 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="app">
+  <div class="app" :data-hydrated="isHydrated">
     <NuxtRouteAnnouncer />
 
     <div
