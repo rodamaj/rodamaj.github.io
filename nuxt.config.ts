@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     storage: 'localStorage',
   },
 
-  ssr: false,
+  ssr: true,
   app: {
     baseURL: '/',
     head: {
