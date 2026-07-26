@@ -1,0 +1,23 @@
+slug: prusia-treetops
+order: 2
+date: "2025-05-23"
+location:
+  es: Sector Prusia, Parque Nacional Volcán Irazú, Tierra Blanca, Cartago, Cartago, Costa Rica
+  en: Prusia Sector, Irazú Volcano National Park, Tierra Blanca, Cartago, Cartago, Costa Rica
+device: iPhone 16 Pro
+captureType: main-camera-2x
+focalLengthMm: 48
+image:
+  src: /images/photography/prusia-treetops/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Copas de árboles vistas desde abajo con luz filtrándose entre las ramas.
+    en: Treetops seen from below with light filtering through the branches.
+  sources:
+    - src: /images/photography/prusia-treetops/640.jpg
+      width: 640
+    - src: /images/photography/prusia-treetops/960.jpg
+      width: 960
+    - src: /images/photography/prusia-treetops/1600.jpg
+      width: 1600

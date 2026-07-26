@@ -1,0 +1,22 @@
+slug: vive-claro-stage-fire
+order: 8
+date: "2026-02-10"
+location:
+  es: Vive Claro Distrito Cultural, Salitre, Teusaquillo, Bogotá, Colombia
+  en: Vive Claro Distrito Cultural, Salitre, Teusaquillo, Bogotá, Colombia
+device: iPhone 17 Pro
+captureType: video-frame
+image:
+  src: /images/photography/vive-claro-stage-fire/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Una mano levantada frente a un escenario de concierto iluminado por fuego.
+    en: A raised hand in front of a concert stage lit by fire.
+  sources:
+    - src: /images/photography/vive-claro-stage-fire/640.jpg
+      width: 640
+    - src: /images/photography/vive-claro-stage-fire/960.jpg
+      width: 960
+    - src: /images/photography/vive-claro-stage-fire/1600.jpg
+      width: 1600

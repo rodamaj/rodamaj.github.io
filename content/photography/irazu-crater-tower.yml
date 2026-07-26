@@ -1,0 +1,23 @@
+slug: irazu-crater-tower
+order: 3
+date: "2025-05-23"
+location:
+  es: Sector Cráteres, Parque Nacional Volcán Irazú, Santa Rosa, Oreamuno, Cartago, Costa Rica
+  en: Craters Sector, Irazú Volcano National Park, Santa Rosa, Oreamuno, Cartago, Costa Rica
+device: iPhone 16 Pro
+captureType: ultra-wide
+focalLengthMm: 14
+image:
+  src: /images/photography/irazu-crater-tower/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Torre de telecomunicaciones entre niebla, con un vehículo al pie de la ladera.
+    en: Telecommunications tower in the fog, with a vehicle at the foot of the slope.
+  sources:
+    - src: /images/photography/irazu-crater-tower/640.jpg
+      width: 640
+    - src: /images/photography/irazu-crater-tower/960.jpg
+      width: 960
+    - src: /images/photography/irazu-crater-tower/1600.jpg
+      width: 1600

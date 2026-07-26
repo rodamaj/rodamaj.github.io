@@ -1,0 +1,23 @@
+slug: santa-teresa-night-road
+order: 5
+date: "2025-06-07"
+location:
+  es: Santa Teresa, Cóbano, Puntarenas, Puntarenas, Costa Rica
+  en: Santa Teresa, Cóbano, Puntarenas, Puntarenas, Costa Rica
+device: iPhone 16 Pro
+captureType: main-camera
+focalLengthMm: 24
+image:
+  src: /images/photography/santa-teresa-night-road/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Persona caminando por una calle oscura hacia las luces de varios vehículos.
+    en: Person walking along a dark road toward the lights of several vehicles.
+  sources:
+    - src: /images/photography/santa-teresa-night-road/640.jpg
+      width: 640
+    - src: /images/photography/santa-teresa-night-road/960.jpg
+      width: 960
+    - src: /images/photography/santa-teresa-night-road/1600.jpg
+      width: 1600

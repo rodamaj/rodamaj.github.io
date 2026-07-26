@@ -1,0 +1,23 @@
+slug: nicoya-gulf-crossing
+order: 4
+date: "2025-06-07"
+location:
+  es: Ferry Puntarenas–Paquera, Golfo de Nicoya, Costa Rica
+  en: Puntarenas–Paquera Ferry, Gulf of Nicoya, Costa Rica
+device: iPhone 16 Pro
+captureType: main-camera
+focalLengthMm: 24
+image:
+  src: /images/photography/nicoya-gulf-crossing/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Mar bajo un cielo cubierto de nubes, visto desde el ferry.
+    en: Sea beneath a cloud-filled sky, seen from the ferry.
+  sources:
+    - src: /images/photography/nicoya-gulf-crossing/640.jpg
+      width: 640
+    - src: /images/photography/nicoya-gulf-crossing/960.jpg
+      width: 960
+    - src: /images/photography/nicoya-gulf-crossing/1600.jpg
+      width: 1600

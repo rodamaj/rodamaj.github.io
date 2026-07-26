@@ -1,0 +1,23 @@
+slug: crystal-clear-neon-selfie
+order: 6
+date: "2025-07-12"
+location:
+  es: Crystal Clear Club, Hospital, San José, San José, Costa Rica
+  en: Crystal Clear Club, Hospital, San José, San José, Costa Rica
+device: iPhone 16 Pro
+captureType: main-camera
+focalLengthMm: 24
+image:
+  src: /images/photography/crystal-clear-neon-selfie/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Letrero de neón rosado que dice “Selfie” sobre un espejo ornamentado.
+    en: Pink neon sign reading “Selfie” above an ornate mirror.
+  sources:
+    - src: /images/photography/crystal-clear-neon-selfie/640.jpg
+      width: 640
+    - src: /images/photography/crystal-clear-neon-selfie/960.jpg
+      width: 960
+    - src: /images/photography/crystal-clear-neon-selfie/1600.jpg
+      width: 1600

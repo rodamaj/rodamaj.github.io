@@ -1,0 +1,23 @@
+slug: research-city-facade
+order: 1
+date: "2026-04-16"
+location:
+  es: Ciudad de la Investigación, Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica
+  en: Ciudad de la Investigación, Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica
+device: iPhone 17
+captureType: main-camera
+focalLengthMm: 26
+image:
+  src: /images/photography/research-city-facade/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Fachada de un edificio vista desde abajo, entre nubes.
+    en: Building facade seen from below, framed by clouds.
+  sources:
+    - src: /images/photography/research-city-facade/640.jpg
+      width: 640
+    - src: /images/photography/research-city-facade/960.jpg
+      width: 960
+    - src: /images/photography/research-city-facade/1600.jpg
+      width: 1600

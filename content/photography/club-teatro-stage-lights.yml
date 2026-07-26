@@ -1,0 +1,23 @@
+slug: club-teatro-stage-lights
+order: 7
+date: "2024-11-02"
+location:
+  es: Club Teatro, Hospital, San José, San José, Costa Rica
+  en: Club Teatro, Hospital, San José, San José, Costa Rica
+device: iPhone 16 Pro Max
+captureType: main-camera
+focalLengthMm: 24
+image:
+  src: /images/photography/club-teatro-stage-lights/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Escenario de un concierto iluminado en azul y rojo, con siluetas del público.
+    en: Concert stage lit in blue and red, with silhouettes of the audience.
+  sources:
+    - src: /images/photography/club-teatro-stage-lights/640.jpg
+      width: 640
+    - src: /images/photography/club-teatro-stage-lights/960.jpg
+      width: 960
+    - src: /images/photography/club-teatro-stage-lights/1600.jpg
+      width: 1600
