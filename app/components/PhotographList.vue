@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { PhotographEntry } from '~/content/site'
+import type { PhotographEntry } from '~/types/content'
 
 defineProps<{
   entries: readonly PhotographEntry[]
 }>()
 
-const { content, locale, text } = useSiteContent()
+const { t } = useI18n()
+const { locale, text } = useLocalizedText()
 
 const formatDate = (date: string) => {
   const language = locale.value === 'es' ? 'es-CR' : 'en-US'
@@ -24,10 +25,10 @@ const srcset = (entry: PhotographEntry) =>
 const details = (entry: PhotographEntry) =>
   [
     entry.device,
-    text(content.photography.captureTypes[entry.captureType]),
+    t(`site.photography.captureTypes.${entry.captureType}`),
     entry.focalLengthMm
       ? `${entry.focalLengthMm} mm`
-      : text(content.photography.focalNotRetained),
+      : t('site.photography.focalNotRetained'),
   ].join(' · ')
 </script>
 

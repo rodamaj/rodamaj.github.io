@@ -21,7 +21,7 @@ const onThemeSelected = (theme: string) => {
   <PlainTextSection class="settings-section">
     <section aria-labelledby="language-switcher-heading">
       <h2 id="language-switcher-heading" class="sr-only">
-        {{ $t('language-switcher-label') }}
+        {{ $t('ui.settings.language.label') }}
       </h2>
       <ToggleLink
         :links="
@@ -30,8 +30,8 @@ const onThemeSelected = (theme: string) => {
             id: locale.code,
             ariaLabel:
               locale.code === 'es'
-                ? $t('language-option-es-label')
-                : $t('language-option-en-label'),
+                ? $t('ui.settings.language.options.es')
+                : $t('ui.settings.language.options.en'),
           }))
         "
         :active-id="locale"
@@ -41,24 +41,24 @@ const onThemeSelected = (theme: string) => {
 
     <section aria-labelledby="theme-switcher-heading">
       <h2 id="theme-switcher-heading" class="sr-only">
-        {{ $t('theme-switcher-label') }}
+        {{ $t('ui.settings.theme.label') }}
       </h2>
       <ToggleLink
         :links="[
           {
-            label: $t('system-theme-label'),
+            label: $t('ui.settings.theme.options.system.label'),
             id: 'system',
-            ariaLabel: $t('system-theme-option-label'),
+            ariaLabel: $t('ui.settings.theme.options.system.ariaLabel'),
           },
           {
-            label: $t('light-theme-label'),
+            label: $t('ui.settings.theme.options.light.label'),
             id: 'light',
-            ariaLabel: $t('light-theme-option-label'),
+            ariaLabel: $t('ui.settings.theme.options.light.ariaLabel'),
           },
           {
-            label: $t('dark-theme-label'),
+            label: $t('ui.settings.theme.options.dark.label'),
             id: 'dark',
-            ariaLabel: $t('dark-theme-option-label'),
+            ariaLabel: $t('ui.settings.theme.options.dark.ariaLabel'),
           },
         ]"
         :active-id="colorMode.preference"

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { EditorialEntry } from '~/content/site'
+import type { EditorialEntry } from '~/types/content'
 
 defineProps<{
   entries: readonly EditorialEntry[]
 }>()
 
-const { content, text } = useSiteContent()
+const { t } = useI18n()
+const { text } = useLocalizedText()
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const { content, text } = useSiteContent()
         <p v-if="entry.status" class="entry-status">{{ text(entry.status) }}</p>
 
         <p v-if="entry.technologies?.length" class="entry-technologies">
-          <span>{{ text(content.labels.technologies) }}:</span>
+          <span>{{ t('ui.labels.technologies') }}:</span>
           {{ entry.technologies.join(', ') }}
         </p>
 
@@ -46,6 +47,11 @@ const { content, text } = useSiteContent()
               :class="{ 'external-link': link.external }"
               :target="link.external ? '_blank' : undefined"
               :rel="link.external ? 'noreferrer' : undefined"
+              :aria-label="
+                link.external
+                  ? `${text(link.label)}, ${t('ui.accessibility.opensInNewTab')}`
+                  : undefined
+              "
               >{{ text(link.label) }}</a
             >
           </template>
@@ -54,3 +60,66 @@ const { content, text } = useSiteContent()
     </li>
   </ol>
 </template>
+
+<style scoped>
+.editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.editorial-entry {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.entry-date {
+  margin: 0;
+  color: var(--theme-text-soft);
+}
+
+.entry-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.entry-body > * {
+  margin: 0;
+}
+
+.entry-body h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.entry-status,
+.entry-meta {
+  margin-top: 0.25rem;
+}
+
+.entry-technologies {
+  color: var(--theme-text-soft);
+}
+
+.entry-technologies span {
+  color: var(--theme-text);
+}
+
+@media (max-width: 700px) {
+  .editorial-list {
+    gap: 3rem;
+  }
+
+  .editorial-entry {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+</style>

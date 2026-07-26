@@ -1,18 +1,21 @@
 <script setup lang="ts">
-const { content, text } = useSiteContent()
+import { siteConfig } from '~/config/site'
+
+const { t } = useI18n()
+const { text } = useLocalizedText()
 </script>
 
 <template>
   <PageShell
-    :title="content.pages.music.title"
-    :description="content.pages.music.description"
+    :title="t('site.pages.music.title')"
+    :description="t('site.pages.music.description')"
   >
     <div class="text-sections">
       <section>
-        <h2>{{ text(content.music.recentTitle) }}</h2>
-        <div v-if="content.music.recentEntries.length">
+        <h2>{{ t('site.music.recentTitle') }}</h2>
+        <div v-if="siteConfig.music.recentEntries.length">
           <article
-            v-for="entry in content.music.recentEntries"
+            v-for="entry in siteConfig.music.recentEntries"
             :key="`${entry.artist}-${entry.title}`"
           >
             <p>{{ entry.artist }} — {{ entry.title }}</p>
@@ -20,15 +23,15 @@ const { content, text } = useSiteContent()
           </article>
         </div>
         <p v-else class="placeholder pre-line">
-          {{ text(content.music.recentPlaceholder) }}
+          {{ t('site.music.recentPlaceholder') }}
         </p>
       </section>
 
       <section>
-        <h2>{{ text(content.music.returningTitle) }}</h2>
-        <div v-if="content.music.returningEntries.length">
+        <h2>{{ t('site.music.returningTitle') }}</h2>
+        <div v-if="siteConfig.music.returningEntries.length">
           <p
-            v-for="entry in content.music.returningEntries"
+            v-for="entry in siteConfig.music.returningEntries"
             :key="`${entry.artist}-${entry.title}`"
           >
             {{ entry.artist }} — {{ entry.title
@@ -36,9 +39,42 @@ const { content, text } = useSiteContent()
           </p>
         </div>
         <p v-else class="placeholder">
-          {{ text(content.music.returningPlaceholder) }}
+          {{ t('site.music.returningPlaceholder') }}
         </p>
       </section>
     </div>
   </PageShell>
 </template>
+
+<style scoped>
+.text-sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.text-sections section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.text-sections section > * {
+  margin: 0;
+}
+
+.text-sections h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.placeholder {
+  color: var(--theme-text-soft);
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+</style>

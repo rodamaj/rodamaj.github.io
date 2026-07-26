@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { content, text } = useSiteContent()
+const { t } = useI18n()
+const { text } = useLocalizedText()
 const { data: about } = await useAsyncData('about-content', () =>
   queryCollection('about').first()
 )
@@ -26,8 +27,8 @@ const resumeLinks = computed(() =>
 
 <template>
   <PageShell
-    :title="content.pages.about.title"
-    :description="content.pages.about.description"
+    :title="t('site.pages.about.title')"
+    :description="t('site.pages.about.description')"
   >
     <div v-if="about" class="text-sections about-sections">
       <section>
@@ -65,6 +66,11 @@ const resumeLinks = computed(() =>
               :class="{ 'external-link': link.external }"
               :target="link.external ? '_blank' : undefined"
               :rel="link.external ? 'noreferrer' : undefined"
+              :aria-label="
+                link.external
+                  ? `${text(link.label)}, ${t('ui.accessibility.opensInNewTab')}`
+                  : undefined
+              "
               >{{ text(link.label) }}</a
             >
           </template>
@@ -81,6 +87,11 @@ const resumeLinks = computed(() =>
               :class="{ 'external-link': link.external }"
               :target="link.external ? '_blank' : undefined"
               :rel="link.external ? 'noreferrer' : undefined"
+              :aria-label="
+                link.external
+                  ? `${text(link.label)}, ${t('ui.accessibility.opensInNewTab')}`
+                  : undefined
+              "
               >{{ text(link.label) }}</a
             >
           </template>
@@ -89,3 +100,56 @@ const resumeLinks = computed(() =>
     </div>
   </PageShell>
 </template>
+
+<style scoped>
+.text-sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.text-sections section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.text-sections section > * {
+  margin: 0;
+}
+
+.text-sections h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.education-list li {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.education-list p {
+  margin: 0;
+}
+
+.education-list li p:first-child {
+  color: var(--theme-text-soft);
+}
+
+.inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.3rem;
+}
+</style>

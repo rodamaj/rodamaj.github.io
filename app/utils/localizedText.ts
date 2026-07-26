@@ -1,4 +1,4 @@
-import type { LocalizedText, SiteLocale } from '~/content/site'
+import type { LocalizedText, SiteLocale } from '~/types/content'
 
 export const getLocalizedText = (
   value: LocalizedText,

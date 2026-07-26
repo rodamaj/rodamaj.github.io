@@ -1,17 +1,115 @@
 {
-  "profession": "Ingeniero de software",
-  "occupation": "Estudiante de ciencias de la computación, Universidad de Costa Rica",
-  "en-cv-label": "Currículo en inglés",
-  "es-cv-label": "Currículo en español",
-  "language-switcher-label": "Selector de idioma",
-  "theme-switcher-label": "Selector de tema",
-  "language-option-es-label": "Español",
-  "language-option-en-label": "Inglés",
-  "system-theme-label": "Sistema",
-  "light-theme-label": "Claro",
-  "dark-theme-label": "Oscuro",
-  "system-theme-option-label": "Usar el tema del sistema",
-  "light-theme-option-label": "Tema claro",
-  "dark-theme-option-label": "Tema oscuro",
-  "opens-in-new-tab-label": "se abre en una pestaña nueva"
+  "site": {
+    "identity": {
+      "role": "Ingeniero de software y estudiante de ciencias de la computación.",
+      "statement": "Construyo sistemas y estudio problemas computacionales."
+    },
+    "navigation": {
+      "mainLabel": "Secciones principales",
+      "engineering": {
+        "label": "Ingeniería",
+        "description": "Sistemas, herramientas y trabajo profesional seleccionado."
+      },
+      "science": {
+        "label": "Ciencia",
+        "description": "Investigaciones y exploraciones en ciencias de la computación."
+      },
+      "thoughts": {
+        "label": "Pensamientos",
+        "description": "Notas sobre software, ciencia y otras cosas."
+      },
+      "music": {
+        "label": "Música",
+        "description": "Discos y canciones a los que vuelvo."
+      },
+      "photography": {
+        "label": "Fotografía",
+        "description": "Fotografías tomadas con mi iPhone."
+      }
+    },
+    "pages": {
+      "engineering": {
+        "title": "Ingeniería",
+        "description": "Sistemas, productos y herramientas cuyo resultado principal es algo que funciona."
+      },
+      "science": {
+        "title": "Ciencia",
+        "description": "Investigaciones, experimentos y exploraciones orientadas a comprender problemas computacionales."
+      },
+      "thoughts": {
+        "title": "Pensamientos",
+        "description": "Un espacio para notas sobre software, ciencia, aprendizaje y otros temas."
+      },
+      "music": {
+        "title": "Música",
+        "description": "Un registro personal de discos y canciones."
+      },
+      "photography": {
+        "title": "Fotografía",
+        "description": "Una selección de fotografías tomadas con mi iPhone."
+      },
+      "about": {
+        "title": "Acerca de",
+        "description": "Biografía, formación, intereses y formas de contacto."
+      }
+    },
+    "thoughts": {
+      "emptyTitle": "Próximamente.",
+      "emptyDescription": "[Placeholder: aquí aparecerán notas breves sobre software, ciencia, herramientas, aprendizaje y otros temas.]"
+    },
+    "music": {
+      "recentTitle": "Escuchando últimamente",
+      "recentPlaceholder": "[Placeholder: artista — álbum]\n[Placeholder: una línea breve sobre por qué me interesa.]",
+      "returningTitle": "Discos a los que vuelvo",
+      "returningPlaceholder": "[Placeholder: artista — álbum, año]"
+    },
+    "photography": {
+      "captureTypes": {
+        "main-camera": "Cámara principal",
+        "main-camera-2x": "Cámara principal, 2×",
+        "ultra-wide": "Ultra gran angular",
+        "video-frame": "Frame de video"
+      },
+      "focalNotRetained": "Focal no conservada"
+    }
+  },
+  "ui": {
+    "labels": {
+      "technologies": "Tecnologías",
+      "index": "Índice",
+      "moreAndContact": "Más + contacto"
+    },
+    "actions": {
+      "closePanel": "Cerrar panel"
+    },
+    "accessibility": {
+      "opensInNewTab": "se abre en una pestaña nueva"
+    },
+    "settings": {
+      "language": {
+        "label": "Selector de idioma",
+        "options": {
+          "es": "Español",
+          "en": "Inglés"
+        }
+      },
+      "theme": {
+        "label": "Selector de tema",
+        "options": {
+          "system": {
+            "label": "Sistema",
+            "ariaLabel": "Usar el tema del sistema"
+          },
+          "light": {
+            "label": "Claro",
+            "ariaLabel": "Tema claro"
+          },
+          "dark": {
+            "label": "Oscuro",
+            "ariaLabel": "Tema oscuro"
+          }
+        }
+      }
+    }
+  }
 }

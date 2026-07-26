@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const { content, text } = useSiteContent()
+import { siteConfig } from '~/config/site'
+
+const { t } = useI18n()
 
 useSeoMeta({
-  title: () => text(content.labels.index),
-  description: () => text(content.identity.statement),
-  ogTitle: content.identity.name,
-  ogDescription: () => text(content.identity.statement),
+  title: () => t('ui.labels.index'),
+  description: () => t('site.identity.statement'),
+  ogTitle: siteConfig.identity.name,
+  ogDescription: () => t('site.identity.statement'),
   ogType: 'website',
 })
 </script>

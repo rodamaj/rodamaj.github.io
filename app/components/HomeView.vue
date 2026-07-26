@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { siteConfig } from '~/config/site'
+
 const { panel = false } = defineProps<{
   panel?: boolean
 }>()
 
-const { content, text } = useSiteContent()
-const visibleNavigation = content.navigation.filter((item) => item.visible)
+const { t } = useI18n()
+const visibleNavigation = siteConfig.navigation.filter((item) => item.visible)
 
 const primaryLinks = [
   {
-    label: content.labels.moreAndContact,
+    labelKey: 'ui.labels.moreAndContact',
     href: '/about',
   },
 ]
@@ -18,13 +20,13 @@ const primaryLinks = [
   <div
     class="site-container home-container"
     :role="panel ? 'complementary' : 'main'"
-    :aria-label="panel ? text(content.labels.index) : undefined"
+    :aria-label="panel ? t('ui.labels.index') : undefined"
   >
     <div class="site-content home-content">
       <header class="home-intro">
-        <h1>{{ content.identity.name }}</h1>
-        <p>{{ text(content.identity.role) }}</p>
-        <p>{{ text(content.identity.statement) }}</p>
+        <h1>{{ siteConfig.identity.name }}</h1>
+        <p>{{ t('site.identity.role') }}</p>
+        <p>{{ t('site.identity.statement') }}</p>
 
         <p>
           <NuxtLink
@@ -33,21 +35,21 @@ const primaryLinks = [
             :to="link.href"
             class="forward-link"
           >
-            {{ text(link.label) }}
+            {{ t(link.labelKey) }}
           </NuxtLink>
         </p>
       </header>
 
       <p class="separator" aria-hidden="true">––</p>
 
-      <nav aria-label="Secciones principales" class="home-navigation">
+      <nav :aria-label="t('site.navigation.mainLabel')" class="home-navigation">
         <section v-for="item in visibleNavigation" :key="item.id">
           <h2>
             <NuxtLink :to="item.href" class="forward-link">{{
-              text(item.label)
+              t(`site.navigation.${item.id}.label`)
             }}</NuxtLink>
           </h2>
-          <p>{{ text(item.description) }}</p>
+          <p>{{ t(`site.navigation.${item.id}.description`) }}</p>
         </section>
       </nav>
 
@@ -59,3 +61,57 @@ const primaryLinks = [
     </div>
   </div>
 </template>
+
+<style scoped>
+.home-container {
+  align-items: flex-start;
+}
+
+.home-intro,
+.home-navigation,
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.home-intro > *,
+.home-navigation > section > *,
+.home-footer > * {
+  margin: 0;
+}
+
+.home-intro h1,
+.home-navigation h2 {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.home-intro h1 {
+  font-weight: 700;
+}
+
+.home-navigation {
+  gap: 1.5rem;
+}
+
+.home-navigation h2 {
+  font-weight: 400;
+}
+
+.home-navigation section {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.separator {
+  margin: 2rem 0;
+}
+
+@media (min-width: 700px) {
+  .home-container {
+    align-items: center;
+  }
+}
+</style>

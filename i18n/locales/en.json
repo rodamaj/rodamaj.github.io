@@ -1,17 +1,115 @@
 {
-  "profession": "Software engineer",
-  "occupation": "Computer science student, Universidad de Costa Rica",
-  "en-cv-label": "CV in English",
-  "es-cv-label": "CV in Spanish",
-  "language-switcher-label": "Language switcher",
-  "theme-switcher-label": "Theme switcher",
-  "language-option-es-label": "Spanish",
-  "language-option-en-label": "English",
-  "system-theme-label": "System",
-  "light-theme-label": "Light",
-  "dark-theme-label": "Dark",
-  "system-theme-option-label": "Use system theme",
-  "light-theme-option-label": "Light theme",
-  "dark-theme-option-label": "Dark theme",
-  "opens-in-new-tab-label": "opens in a new tab"
+  "site": {
+    "identity": {
+      "role": "Software engineer and computer science student.",
+      "statement": "I build systems and study computational problems."
+    },
+    "navigation": {
+      "mainLabel": "Main sections",
+      "engineering": {
+        "label": "Engineering",
+        "description": "Selected systems, tools, and professional work."
+      },
+      "science": {
+        "label": "Science",
+        "description": "Research and explorations in computer science."
+      },
+      "thoughts": {
+        "label": "Thoughts",
+        "description": "Notes on software, science, and other things."
+      },
+      "music": {
+        "label": "Music",
+        "description": "Records and songs I return to."
+      },
+      "photography": {
+        "label": "Photography",
+        "description": "Photographs taken with my iPhone."
+      }
+    },
+    "pages": {
+      "engineering": {
+        "title": "Engineering",
+        "description": "Systems, products, and tools whose main outcome is something that works."
+      },
+      "science": {
+        "title": "Science",
+        "description": "Research, experiments, and explorations aimed at understanding computational problems."
+      },
+      "thoughts": {
+        "title": "Thoughts",
+        "description": "A place for notes on software, science, learning, and other subjects."
+      },
+      "music": {
+        "title": "Music",
+        "description": "A personal record of albums and songs."
+      },
+      "photography": {
+        "title": "Photography",
+        "description": "A selection of photographs taken with my iPhone."
+      },
+      "about": {
+        "title": "About",
+        "description": "Biography, education, interests, and ways to get in touch."
+      }
+    },
+    "thoughts": {
+      "emptyTitle": "Coming soon.",
+      "emptyDescription": "[Placeholder: short notes on software, science, tools, learning, and other subjects will appear here.]"
+    },
+    "music": {
+      "recentTitle": "Recent listening",
+      "recentPlaceholder": "[Placeholder: artist — album]\n[Placeholder: a short line about why it interests me.]",
+      "returningTitle": "Records I return to",
+      "returningPlaceholder": "[Placeholder: artist — album, year]"
+    },
+    "photography": {
+      "captureTypes": {
+        "main-camera": "Main camera",
+        "main-camera-2x": "Main camera, 2×",
+        "ultra-wide": "Ultra wide",
+        "video-frame": "Video frame"
+      },
+      "focalNotRetained": "Focal length not retained"
+    }
+  },
+  "ui": {
+    "labels": {
+      "technologies": "Technologies",
+      "index": "Index",
+      "moreAndContact": "More + contact"
+    },
+    "actions": {
+      "closePanel": "Close panel"
+    },
+    "accessibility": {
+      "opensInNewTab": "opens in a new tab"
+    },
+    "settings": {
+      "language": {
+        "label": "Language switcher",
+        "options": {
+          "es": "Spanish",
+          "en": "English"
+        }
+      },
+      "theme": {
+        "label": "Theme switcher",
+        "options": {
+          "system": {
+            "label": "System",
+            "ariaLabel": "Use system theme"
+          },
+          "light": {
+            "label": "Light",
+            "ariaLabel": "Light theme"
+          },
+          "dark": {
+            "label": "Dark",
+            "ariaLabel": "Dark theme"
+          }
+        }
+      }
+    }
+  }
 }

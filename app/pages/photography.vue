@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { PhotographEntry } from '~/content/site'
+import type { PhotographEntry } from '~/types/content'
 
-const { content, text } = useSiteContent()
+const { t } = useI18n()
+const { text } = useLocalizedText()
 const { data } = await useAsyncData('photography-entries', () =>
   queryCollection('photography')
     .order('date', 'DESC')
@@ -11,8 +12,8 @@ const { data } = await useAsyncData('photography-entries', () =>
 const entries = computed(() => (data.value ?? []) as PhotographEntry[])
 
 useSeoMeta({
-  ogTitle: () => text(content.pages.photography.title),
-  ogDescription: () => text(content.pages.photography.description),
+  ogTitle: () => t('site.pages.photography.title'),
+  ogDescription: () => t('site.pages.photography.description'),
   ogType: 'website',
   ogImage:
     'https://rodamaj.github.io/images/photography/research-city-facade/1600.jpg',
@@ -24,12 +25,31 @@ useSeoMeta({
 
 <template>
   <PageShell
-    :title="content.pages.photography.title"
-    :description="content.pages.photography.description"
+    :title="t('site.pages.photography.title')"
+    :description="t('site.pages.photography.description')"
   >
     <PhotographList v-if="entries.length" :entries="entries" />
     <section v-else class="empty-state">
-      <h2>{{ text(content.pages.photography.title) }}</h2>
+      <h2>{{ t('site.pages.photography.title') }}</h2>
     </section>
   </PageShell>
 </template>
+
+<style scoped>
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.empty-state > * {
+  margin: 0;
+}
+
+.empty-state h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+</style>
