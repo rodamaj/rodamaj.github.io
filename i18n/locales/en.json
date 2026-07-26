@@ -66,8 +66,9 @@
       "playlistTitle": "Essential songs",
       "playlistDescription": "An evolving selection.",
       "playlistLink": "Listen on Spotify",
+      "discogsTitle": "Collection",
       "discogsDescription": "My CD collection is on Discogs.",
-      "discogsLink": "View profile on Discogs"
+      "discogsLink": "View my CD collection on Discogs"
     },
     "photography": {
       "captureTypes": {

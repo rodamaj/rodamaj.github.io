@@ -66,8 +66,9 @@
       "playlistTitle": "Canciones imperdibles",
       "playlistDescription": "Una selección en constante cambio.",
       "playlistLink": "Escuchar en Spotify",
+      "discogsTitle": "Colección",
       "discogsDescription": "Mi colección de CDs está en Discogs.",
-      "discogsLink": "Ver perfil en Discogs"
+      "discogsLink": "Ver mi colección de CDs en Discogs"
     },
     "photography": {
       "captureTypes": {
