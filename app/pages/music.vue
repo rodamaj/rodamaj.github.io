@@ -2,7 +2,6 @@
 import { siteConfig } from '~/config/site'
 
 const { t } = useI18n()
-const { text } = useLocalizedText()
 </script>
 
 <template>
@@ -10,71 +9,145 @@ const { text } = useLocalizedText()
     :title="t('site.pages.music.title')"
     :description="t('site.pages.music.description')"
   >
-    <div class="text-sections">
-      <section>
-        <h2>{{ t('site.music.recentTitle') }}</h2>
-        <div v-if="siteConfig.music.recentEntries.length">
-          <article
-            v-for="entry in siteConfig.music.recentEntries"
-            :key="`${entry.artist}-${entry.title}`"
-          >
-            <p>{{ entry.artist }} — {{ entry.title }}</p>
-            <p v-if="entry.note">{{ text(entry.note) }}</p>
-          </article>
-        </div>
-        <p v-else class="placeholder pre-line">
-          {{ t('site.music.recentPlaceholder') }}
-        </p>
-      </section>
-
-      <section>
+    <section class="returning-records">
+      <header class="section-header">
         <h2>{{ t('site.music.returningTitle') }}</h2>
-        <div v-if="siteConfig.music.returningEntries.length">
-          <p
-            v-for="entry in siteConfig.music.returningEntries"
-            :key="`${entry.artist}-${entry.title}`"
-          >
-            {{ entry.artist }} — {{ entry.title
+        <p>{{ t('site.music.noParticularOrder') }}</p>
+      </header>
+
+      <ul v-if="siteConfig.music.returningEntries.length" class="record-list">
+        <li
+          v-for="entry in siteConfig.music.returningEntries"
+          :key="`${entry.artist}-${entry.title}`"
+        >
+          <p class="record-title">
+            <cite>{{ entry.title }}</cite>
+          </p>
+          <p class="record-details">
+            {{ entry.artist
             }}<template v-if="entry.year">, {{ entry.year }}</template>
           </p>
-        </div>
-        <p v-else class="placeholder">
-          {{ t('site.music.returningPlaceholder') }}
-        </p>
-      </section>
-    </div>
+        </li>
+      </ul>
+
+      <p v-else class="placeholder">
+        {{ t('site.music.returningPlaceholder') }}
+      </p>
+    </section>
+
+    <section class="playlist-section">
+      <header class="section-header">
+        <h2>{{ t('site.music.playlistTitle') }}</h2>
+        <p>{{ t('site.music.playlistDescription') }}</p>
+      </header>
+      <p>
+        <a
+          :href="siteConfig.music.spotifyPlaylistUrl"
+          class="external-link"
+          target="_blank"
+          rel="noreferrer"
+          :aria-label="`${t('site.music.playlistLink')}, ${t('ui.accessibility.opensInNewTab')}`"
+          >{{ t('site.music.playlistLink') }}</a
+        >
+      </p>
+    </section>
+
+    <aside class="discogs-profile">
+      <p>{{ t('site.music.discogsDescription') }}</p>
+      <p>
+        <a
+          :href="siteConfig.music.discogsUrl"
+          class="external-link"
+          target="_blank"
+          rel="noreferrer"
+          :aria-label="`${t('site.music.discogsLink')}, ${t('ui.accessibility.opensInNewTab')}`"
+          >{{ t('site.music.discogsLink') }}</a
+        >
+      </p>
+    </aside>
   </PageShell>
 </template>
 
 <style scoped>
-.text-sections {
+.returning-records {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4rem;
+  gap: 2rem;
 }
 
-.text-sections section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.text-sections section > * {
+.returning-records > * {
   margin: 0;
 }
 
-.text-sections h2 {
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.section-header > * {
+  margin: 0;
+}
+
+.section-header h2 {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
 }
 
+.section-header p,
+.record-details,
 .placeholder {
   color: var(--theme-text-soft);
 }
 
-.pre-line {
-  white-space: pre-line;
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.record-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.record-list p {
+  margin: 0;
+}
+
+.record-title cite {
+  font-style: italic;
+}
+
+.playlist-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.playlist-section > * {
+  margin: 0;
+}
+
+.discogs-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 4rem;
+}
+
+.discogs-profile p {
+  margin: 0;
+}
+
+.discogs-profile p:first-child {
+  color: var(--theme-text-soft);
 }
 </style>

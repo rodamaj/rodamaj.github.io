@@ -211,6 +211,19 @@ test.describe('responsive columns', () => {
     await expect(page.locator('.photograph-entry')).toHaveCount(8)
   })
 
+  test('opens music in the desktop side panel', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/music')
+
+    const home = page.locator('.home-container')
+    const panel = page.locator('.side-panel')
+
+    await expect(home).toBeVisible()
+    await expect(panel).toBeVisible()
+    await expect(page.locator('.context-view')).toHaveClass(/has-panel/)
+    await expect(page.locator('.record-list li')).toHaveCount(8)
+  })
+
   test('keeps two columns when science loads with a trailing slash', async ({
     page,
   }) => {

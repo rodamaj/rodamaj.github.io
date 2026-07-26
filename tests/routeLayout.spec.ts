@@ -9,7 +9,7 @@ describe('getRouteLayoutState', () => {
     })
   })
 
-  it.each(['/about', '/science', '/engineering', '/photography'])(
+  it.each(['/about', '/science', '/engineering', '/music', '/photography'])(
     'opens %s as a side panel over the home view',
     (path) => {
       expect(getRouteLayoutState(path)).toEqual({
@@ -19,23 +19,23 @@ describe('getRouteLayoutState', () => {
     }
   )
 
-  it.each(['/about/', '/science/', '/engineering/', '/photography/'])(
-    'opens %s as a side panel after a static-host redirect',
-    (path) => {
-      expect(getRouteLayoutState(path)).toEqual({
-        hasHomeContext: true,
-        hasPanel: true,
-      })
-    }
-  )
+  it.each([
+    '/about/',
+    '/science/',
+    '/engineering/',
+    '/music/',
+    '/photography/',
+  ])('opens %s as a side panel after a static-host redirect', (path) => {
+    expect(getRouteLayoutState(path)).toEqual({
+      hasHomeContext: true,
+      hasPanel: true,
+    })
+  })
 
-  it.each(['/music', '/thoughts'])(
-    'renders %s as a standalone page',
-    (path) => {
-      expect(getRouteLayoutState(path)).toEqual({
-        hasHomeContext: false,
-        hasPanel: false,
-      })
-    }
-  )
+  it('renders thoughts as a standalone page', () => {
+    expect(getRouteLayoutState('/thoughts')).toEqual({
+      hasHomeContext: false,
+      hasPanel: false,
+    })
+  })
 })

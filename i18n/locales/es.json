@@ -42,7 +42,7 @@
       },
       "music": {
         "title": "Música",
-        "description": "Un registro personal de discos y canciones."
+        "description": "curated music (for a portfolio)."
       },
       "photography": {
         "title": "Fotografía",
@@ -61,7 +61,13 @@
       "recentTitle": "Escuchando últimamente",
       "recentPlaceholder": "[Placeholder: artista — álbum]\n[Placeholder: una línea breve sobre por qué me interesa.]",
       "returningTitle": "Discos a los que vuelvo",
-      "returningPlaceholder": "[Placeholder: artista — álbum, año]"
+      "noParticularOrder": "Sin ningún orden particular.",
+      "returningPlaceholder": "[Placeholder: artista — álbum, año]",
+      "playlistTitle": "Canciones imperdibles",
+      "playlistDescription": "Una selección en constante cambio.",
+      "playlistLink": "Escuchar en Spotify",
+      "discogsDescription": "Mi colección de CDs está en Discogs.",
+      "discogsLink": "Ver perfil en Discogs"
     },
     "photography": {
       "captureTypes": {

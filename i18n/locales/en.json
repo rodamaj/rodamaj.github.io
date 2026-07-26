@@ -42,7 +42,7 @@
       },
       "music": {
         "title": "Music",
-        "description": "A personal record of albums and songs."
+        "description": "curated music (for a portfolio)."
       },
       "photography": {
         "title": "Photography",
@@ -61,7 +61,13 @@
       "recentTitle": "Recent listening",
       "recentPlaceholder": "[Placeholder: artist — album]\n[Placeholder: a short line about why it interests me.]",
       "returningTitle": "Records I return to",
-      "returningPlaceholder": "[Placeholder: artist — album, year]"
+      "noParticularOrder": "In no particular order.",
+      "returningPlaceholder": "[Placeholder: artist — album, year]",
+      "playlistTitle": "Essential songs",
+      "playlistDescription": "An evolving selection.",
+      "playlistLink": "Listen on Spotify",
+      "discogsDescription": "My CD collection is on Discogs.",
+      "discogsLink": "View profile on Discogs"
     },
     "photography": {
       "captureTypes": {

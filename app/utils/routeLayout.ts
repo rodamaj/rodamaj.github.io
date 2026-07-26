@@ -2,6 +2,7 @@ const panelRoutes = new Set([
   '/about',
   '/science',
   '/engineering',
+  '/music',
   '/photography',
 ])
 
