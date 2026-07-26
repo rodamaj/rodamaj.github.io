@@ -30,13 +30,30 @@ export type ThoughtEntry = {
   summary?: LocalizedText
 }
 
+export type PhotographCaptureType =
+  | 'main-camera'
+  | 'main-camera-2x'
+  | 'ultra-wide'
+  | 'video-frame'
+
 export type PhotographEntry = {
-  id: string
-  src: string
-  alt: LocalizedText
-  date?: LocalizedText
-  location?: LocalizedText
-  note?: LocalizedText
+  slug: string
+  order: number
+  date: string
+  location: LocalizedText
+  device: string
+  captureType: PhotographCaptureType
+  focalLengthMm?: number
+  image: {
+    src: string
+    width: number
+    height: number
+    alt: LocalizedText
+    sources: Array<{
+      src: string
+      width: number
+    }>
+  }
 }
 
 export const siteContent = {
@@ -96,11 +113,11 @@ export const siteContent = {
     {
       id: 'photography',
       href: '/photography',
-      visible: false,
+      visible: true,
       label: { es: 'Fotografía', en: 'Photography' },
       description: {
-        es: 'Algunas de mis fotografías favoritas.',
-        en: 'Some of my favorite photographs.',
+        es: 'Fotografías tomadas con mi iPhone.',
+        en: 'Photographs taken with my iPhone.',
       },
     },
   ],
@@ -137,8 +154,8 @@ export const siteContent = {
     photography: {
       title: { es: 'Fotografía', en: 'Photography' },
       description: {
-        es: 'Una selección de fotografías tomadas por mí.',
-        en: 'A selection of photographs taken by me.',
+        es: 'Una selección de fotografías tomadas con mi iPhone.',
+        en: 'A selection of photographs taken with my iPhone.',
       },
     },
     about: {
@@ -186,11 +203,27 @@ export const siteContent = {
   },
 
   photography: {
-    entries: [] as PhotographEntry[],
-    emptyTitle: { es: 'Próximamente.', en: 'Coming soon.' },
-    emptyDescription: {
-      es: '[Placeholder: aquí aparecerá una selección de mis fotografías favoritas.]',
-      en: '[Placeholder: a selection of my favorite photographs will appear here.]',
+    captureTypes: {
+      'main-camera': {
+        es: 'Cámara principal',
+        en: 'Main camera',
+      },
+      'main-camera-2x': {
+        es: 'Cámara principal, 2×',
+        en: 'Main camera, 2×',
+      },
+      'ultra-wide': {
+        es: 'Ultra gran angular',
+        en: 'Ultra wide',
+      },
+      'video-frame': {
+        es: 'Frame de video',
+        en: 'Video frame',
+      },
+    } satisfies Record<PhotographCaptureType, LocalizedText>,
+    focalNotRetained: {
+      es: 'Focal no conservada',
+      en: 'Focal length not retained',
     },
   },
 

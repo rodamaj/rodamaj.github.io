@@ -27,4 +27,5 @@ test-results
 !.env.example
 
 # Local-only assets
-public/public-assets 
+public/public-assets
+photo-inbox/

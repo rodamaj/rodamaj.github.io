@@ -60,6 +60,33 @@ const linksSchema = z.object({
   cvEn: contentLink,
 })
 
+const photographSchema = z.object({
+  slug: z.string(),
+  order: z.number(),
+  date: z.string(),
+  location: localizedText,
+  device: z.string(),
+  captureType: z.enum([
+    'main-camera',
+    'main-camera-2x',
+    'ultra-wide',
+    'video-frame',
+  ]),
+  focalLengthMm: z.number().optional(),
+  image: z.object({
+    src: z.string(),
+    width: z.number(),
+    height: z.number(),
+    alt: localizedText,
+    sources: z.array(
+      z.object({
+        src: z.string(),
+        width: z.number(),
+      })
+    ),
+  }),
+})
+
 export default defineContentConfig({
   collections: {
     engineering: defineCollection({
@@ -75,6 +102,11 @@ export default defineContentConfig({
     thoughts: defineCollection({
       type: 'page',
       source: 'thoughts/*.md',
+    }),
+    photography: defineCollection({
+      type: 'data',
+      source: 'photography/*.yml',
+      schema: photographSchema,
     }),
     about: defineCollection({
       type: 'data',

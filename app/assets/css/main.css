@@ -225,33 +225,6 @@ button:focus-visible {
   content: '↗';
 }
 
-.photograph-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.photograph-list figure,
-.photograph-list p {
-  margin: 0;
-}
-
-.photograph-list figure {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.photograph-list img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.photograph-metadata {
-  color: var(--theme-text-soft);
-}
-
 .page-content {
   padding-bottom: 2rem;
 }

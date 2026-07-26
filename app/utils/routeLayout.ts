@@ -1,4 +1,9 @@
-const panelRoutes = new Set(['/about', '/science', '/engineering'])
+const panelRoutes = new Set([
+  '/about',
+  '/science',
+  '/engineering',
+  '/photography',
+])
 
 export const getRouteLayoutState = (path: string) => {
   const normalizedPath = path.length > 1 ? path.replace(/\/+$/, '') : path

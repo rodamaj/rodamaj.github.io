@@ -8,6 +8,7 @@
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "lint": "eslint .",
+    "photo:add": "node scripts/add-photo.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest run",

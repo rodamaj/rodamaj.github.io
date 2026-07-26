@@ -59,6 +59,46 @@ test.describe('critical site flows', () => {
     ).toBeVisible()
   })
 
+  test('renders the photography collection with responsive images and metadata', async ({
+    page,
+  }) => {
+    await page.goto('/photography')
+    await waitForHydration(page)
+
+    const photographs = page.locator('.photograph-entry')
+    const firstImage = photographs.first().getByRole('img')
+
+    await expect(photographs).toHaveCount(8)
+    await expect(firstImage).toHaveAttribute('loading', 'eager')
+    await expect(firstImage).toHaveAttribute('srcset', /640\.jpg 640w/)
+    await expect(photographs.nth(1).getByRole('img')).toHaveAttribute(
+      'loading',
+      'lazy'
+    )
+    await expect(photographs.first().locator('.photograph-details')).toHaveText(
+      'iPhone 17 · Cámara principal · 26 mm'
+    )
+    await expect(
+      page.locator('#vive-claro-stage-fire .photograph-details')
+    ).toHaveText('iPhone 17 Pro · Frame de video · Focal no conservada')
+
+    const locationText = await photographs
+      .first()
+      .locator('.photograph-context p')
+      .textContent()
+    expect(locationText).toContain('Ciudad de la Investigación')
+    expect(locationText).toContain('San Pedro, Montes de Oca')
+
+    await expect(photographs.nth(1)).toHaveAttribute(
+      'id',
+      'vive-claro-stage-fire'
+    )
+    await expect(photographs.nth(2)).toHaveAttribute(
+      'id',
+      'crystal-clear-neon-selfie'
+    )
+  })
+
   test('opens and closes a panel through navigation', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 })
     await page.goto('/')
@@ -156,6 +196,19 @@ test.describe('responsive columns', () => {
         )
       })
       .toBe(true)
+  })
+
+  test('opens photography in the desktop side panel', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/photography')
+
+    const home = page.locator('.home-container')
+    const panel = page.locator('.side-panel')
+
+    await expect(home).toBeVisible()
+    await expect(panel).toBeVisible()
+    await expect(page.locator('.context-view')).toHaveClass(/has-panel/)
+    await expect(page.locator('.photograph-entry')).toHaveCount(8)
   })
 
   test('keeps two columns when science loads with a trailing slash', async ({

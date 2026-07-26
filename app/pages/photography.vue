@@ -1,5 +1,25 @@
 <script setup lang="ts">
+import type { PhotographEntry } from '~/content/site'
+
 const { content, text } = useSiteContent()
+const { data } = await useAsyncData('photography-entries', () =>
+  queryCollection('photography')
+    .order('date', 'DESC')
+    .order('order', 'ASC')
+    .all()
+)
+const entries = computed(() => (data.value ?? []) as PhotographEntry[])
+
+useSeoMeta({
+  ogTitle: () => text(content.pages.photography.title),
+  ogDescription: () => text(content.pages.photography.description),
+  ogType: 'website',
+  ogImage:
+    'https://rodamaj.github.io/images/photography/research-city-facade/1600.jpg',
+  ogImageAlt: () =>
+    entries.value[0] ? text(entries.value[0].image.alt) : undefined,
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
@@ -7,37 +27,9 @@ const { content, text } = useSiteContent()
     :title="content.pages.photography.title"
     :description="content.pages.photography.description"
   >
-    <div v-if="content.photography.entries.length" class="photograph-list">
-      <figure
-        v-for="photograph in content.photography.entries"
-        :key="photograph.id"
-      >
-        <img :src="photograph.src" :alt="text(photograph.alt)" />
-        <figcaption>
-          <p v-if="photograph.note">{{ text(photograph.note) }}</p>
-          <p
-            v-if="photograph.date || photograph.location"
-            class="photograph-metadata"
-          >
-            <template v-if="photograph.date">{{
-              text(photograph.date)
-            }}</template>
-            <span
-              v-if="photograph.date && photograph.location"
-              aria-hidden="true"
-            >
-              ·
-            </span>
-            <template v-if="photograph.location">{{
-              text(photograph.location)
-            }}</template>
-          </p>
-        </figcaption>
-      </figure>
-    </div>
+    <PhotographList v-if="entries.length" :entries="entries" />
     <section v-else class="empty-state">
-      <h2>{{ text(content.photography.emptyTitle) }}</h2>
-      <p>{{ text(content.photography.emptyDescription) }}</p>
+      <h2>{{ text(content.pages.photography.title) }}</h2>
     </section>
   </PageShell>
 </template>
