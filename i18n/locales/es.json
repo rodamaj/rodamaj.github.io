@@ -68,6 +68,7 @@
         "main-camera": "Cámara principal",
         "main-camera-2x": "Cámara principal, 2×",
         "ultra-wide": "Ultra gran angular",
+        "telephoto": "Teleobjetivo",
         "video-frame": "Frame de video"
       },
       "focalNotRetained": "Focal no conservada"

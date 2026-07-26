@@ -68,6 +68,7 @@
         "main-camera": "Main camera",
         "main-camera-2x": "Main camera, 2×",
         "ultra-wide": "Ultra wide",
+        "telephoto": "Telephoto",
         "video-frame": "Video frame"
       },
       "focalNotRetained": "Focal length not retained"

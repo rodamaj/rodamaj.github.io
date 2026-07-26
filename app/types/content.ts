@@ -34,6 +34,7 @@ export type PhotographCaptureType =
   | 'main-camera'
   | 'main-camera-2x'
   | 'ultra-wide'
+  | 'telephoto'
   | 'video-frame'
 
 export type PhotographEntry = {

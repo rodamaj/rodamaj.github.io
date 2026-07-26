@@ -22,6 +22,7 @@ const captureTypes = [
   'main-camera',
   'main-camera-2x',
   'ultra-wide',
+  'telephoto',
   'video-frame',
 ]
 
@@ -41,6 +42,8 @@ Opciones:
   --focal-length <mm>            Distancia focal; omitir si no se conservó
   --alt-es <texto>               Texto alternativo en español
   --alt-en <texto>               Texto alternativo en inglés
+  --geocode                      Consultar la ubicación GPS en Nominatim
+  --no-geocode                   No consultar la ubicación a partir del GPS
   --dry-run                      Validar y mostrar el YAML sin escribir archivos
   --help                         Mostrar esta ayuda
 `.trim()
@@ -57,6 +60,8 @@ const { values, positionals } = parseArgs({
     'focal-length': { type: 'string' },
     'alt-es': { type: 'string' },
     'alt-en': { type: 'string' },
+    geocode: { type: 'boolean', default: false },
+    'no-geocode': { type: 'boolean', default: false },
     'dry-run': { type: 'boolean', default: false },
     help: { type: 'boolean', short: 'h', default: false },
     root: { type: 'string' },
@@ -92,6 +97,24 @@ const runSips = async (...args) => {
   return stdout
 }
 
+const metadataNames = [
+  'kMDItemAcquisitionModel',
+  'kMDItemFocalLength35mm',
+  'kMDItemLatitude',
+  'kMDItemLongitude',
+]
+const { stdout: metadataOutput } = await execFileAsync('/usr/bin/mdls', [
+  ...metadataNames.flatMap((name) => ['-name', name]),
+  sourcePath,
+])
+const metadataProperty = (name) => {
+  const value = metadataOutput.match(
+    new RegExp(`^${name}\\s+=\\s+(.+)$`, 'm')
+  )?.[1]
+  if (!value || value === '(null)') return ''
+  return value.replace(/^"(.*)"$/, '$1')
+}
+
 const sourceProperties = await runSips(
   '-g',
   'pixelWidth',
@@ -113,7 +136,98 @@ const metadataDate = property('creation')?.match(/^(\d{4}):(\d{2}):(\d{2})/)
 const suggestedDate = metadataDate
   ? `${metadataDate[1]}-${metadataDate[2]}-${metadataDate[3]}`
   : ''
-const suggestedDevice = property('model')?.replace(/^<nil>$/, '') ?? ''
+const suggestedDevice =
+  metadataProperty('kMDItemAcquisitionModel') ||
+  property('model')?.replace(/^<nil>$/, '') ||
+  ''
+const suggestedFocalLength = metadataProperty('kMDItemFocalLength35mm')
+const latitudeMetadata = metadataProperty('kMDItemLatitude')
+const longitudeMetadata = metadataProperty('kMDItemLongitude')
+const latitude = Number(latitudeMetadata)
+const longitude = Number(longitudeMetadata)
+const hasCoordinates =
+  Boolean(latitudeMetadata && longitudeMetadata) &&
+  Number.isFinite(latitude) &&
+  Number.isFinite(longitude)
+const sourceName = basename(sourcePath).replace(/\.[^.]+$/, '')
+const focalLengthNumber = Number(suggestedFocalLength)
+const suggestedCaptureType = sourceName.endsWith('_still')
+  ? 'video-frame'
+  : focalLengthNumber > 0 && focalLengthNumber <= 18
+    ? 'ultra-wide'
+    : focalLengthNumber >= 40 && focalLengthNumber <= 55
+      ? 'main-camera-2x'
+      : focalLengthNumber >= 60
+        ? 'telephoto'
+        : 'main-camera'
+
+const formatLocation = ({ address = {} }) =>
+  [
+    address.amenity ??
+      address.tourism ??
+      address.leisure ??
+      address.historic ??
+      address.natural,
+    address.neighbourhood,
+    address.suburb,
+    address.city_district,
+    address.city ?? address.town ?? address.village ?? address.municipality,
+    address.county,
+    address.state,
+    address.country,
+  ]
+    .filter(Boolean)
+    .join(', ')
+
+const interactive = process.stdin.isTTY && process.stdout.isTTY
+const prompt = interactive
+  ? createInterface({ input: process.stdin, output: process.stdout })
+  : null
+let shouldGeocode = values.geocode
+
+if (
+  hasCoordinates &&
+  !values.geocode &&
+  !values['no-geocode'] &&
+  !values['location-es'] &&
+  !values['location-en'] &&
+  prompt
+) {
+  const answer = await prompt.question(
+    `GPS detectado (${latitude}, ${longitude}). ¿Consultar Nominatim? [s/N]: `
+  )
+  shouldGeocode = /^s(?:í|i)?$/i.test(answer.trim())
+}
+
+let suggestedLocation = ''
+if (
+  hasCoordinates &&
+  shouldGeocode &&
+  !values['no-geocode'] &&
+  (!values['location-es'] || !values['location-en'])
+) {
+  try {
+    const endpoint = new URL('https://nominatim.openstreetmap.org/reverse')
+    endpoint.search = new URLSearchParams({
+      format: 'jsonv2',
+      lat: String(latitude),
+      lon: String(longitude),
+      zoom: '18',
+      addressdetails: '1',
+      'accept-language': 'es',
+    })
+    const response = await fetch(endpoint, {
+      headers: {
+        Accept: 'application/json',
+        'User-Agent':
+          'rodamaj.github.io-photo-generator/1.0 (https://rodamaj.github.io)',
+      },
+    })
+    if (response.ok) suggestedLocation = formatLocation(await response.json())
+  } catch {
+    console.warn('No fue posible obtener una ubicación a partir del GPS.')
+  }
+}
 
 if (!sourceWidth || !sourceHeight) {
   throw new Error('No fue posible leer las dimensiones de la fotografía.')
@@ -132,11 +246,6 @@ if (sourceWidth < imageWidths.at(-1)) {
   )
 }
 
-const interactive = process.stdin.isTTY && process.stdout.isTTY
-const prompt = interactive
-  ? createInterface({ input: process.stdin, output: process.stdout })
-  : null
-
 const ask = async (label, currentValue = '', fallback = '') => {
   if (currentValue) return currentValue.trim()
   if (!prompt) return fallback.trim()
@@ -148,30 +257,42 @@ const ask = async (label, currentValue = '', fallback = '') => {
 
 const askCaptureType = async () => {
   if (values['capture-type']) return values['capture-type'].trim()
-  if (!prompt) return 'main-camera'
+  if (!prompt) return suggestedCaptureType
 
   console.log('\nTipo de captura:')
   console.log('  1. Cámara principal')
   console.log('  2. Cámara principal, 2×')
   console.log('  3. Ultra gran angular')
-  console.log('  4. Frame de video')
-  const answer = (await prompt.question('Selecciona una opción [1]: ')).trim()
+  console.log('  4. Teleobjetivo')
+  console.log('  5. Frame de video')
+  const suggestedOption = captureTypes.indexOf(suggestedCaptureType) + 1
+  const answer = (
+    await prompt.question(`Selecciona una opción [${suggestedOption}]: `)
+  ).trim()
 
-  if (!answer) return 'main-camera'
+  if (!answer) return suggestedCaptureType
   return captureTypes[Number(answer) - 1] ?? answer
 }
 
-const sourceName = basename(sourcePath).replace(/\.[^.]+$/, '')
 const data = {
   slug: await ask('Identificador en inglés (kebab-case)', values.slug),
   date: await ask('Fecha (YYYY-MM-DD)', values.date, suggestedDate),
-  locationEs: await ask('Ubicación en español', values['location-es']),
-  locationEn: await ask('Ubicación en inglés', values['location-en']),
+  locationEs: await ask(
+    'Ubicación en español',
+    values['location-es'],
+    suggestedLocation
+  ),
+  locationEn: await ask(
+    'Ubicación en inglés',
+    values['location-en'],
+    suggestedLocation
+  ),
   device: await ask('Dispositivo', values.device, suggestedDevice),
   captureType: await askCaptureType(),
   focalLength: await ask(
     'Distancia focal en mm (Enter si no se conservó)',
-    values['focal-length']
+    values['focal-length'],
+    suggestedFocalLength
   ),
   altEs: await ask('Texto alternativo en español', values['alt-es']),
   altEn: await ask('Texto alternativo en inglés', values['alt-en']),

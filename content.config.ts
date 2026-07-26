@@ -70,6 +70,7 @@ const photographSchema = z.object({
     'main-camera',
     'main-camera-2x',
     'ultra-wide',
+    'telephoto',
     'video-frame',
   ]),
   focalLengthMm: z.number().optional(),
