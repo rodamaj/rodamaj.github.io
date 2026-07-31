@@ -110,6 +110,14 @@ test.describe('critical site flows', () => {
     await expect(page.locator('.context-view')).toHaveClass(/has-panel/)
     await expect(page.locator('.home-container')).toBeVisible()
     await expect(page.locator('.side-panel')).toBeVisible()
+    await expect(
+      page.locator('.home-container [aria-current="page"]')
+    ).toHaveText('Ingeniería')
+    await expect(
+      page.locator('.home-container').getByRole('link', {
+        name: 'Ingeniería',
+      })
+    ).toHaveCount(0)
 
     await page.getByRole('link', { name: 'Cerrar panel' }).click()
 
