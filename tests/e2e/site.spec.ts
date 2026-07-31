@@ -25,7 +25,9 @@ test.describe('critical site flows', () => {
         response?.ok(),
         `${route} should return a successful response`
       ).toBe(true)
-      await expect(page.locator('.site-container').first()).toBeVisible()
+      await expect(
+        page.locator('.site-container:visible').first()
+      ).toBeVisible()
     }
 
     expect(clientErrors).toEqual([])
