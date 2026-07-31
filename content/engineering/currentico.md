@@ -1,6 +1,6 @@
 ---
 id: currentico
-order: 2
+order: 3
 date: { es: '2023–2024', en: '2023–2024' }
 title: { es: Currentico, en: Currentico }
 description:
