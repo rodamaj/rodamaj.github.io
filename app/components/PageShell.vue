@@ -53,6 +53,7 @@ useSeoMeta({
 
 <style scoped>
 .page-content {
+  container-type: inline-size;
   padding-bottom: 2rem;
 }
 

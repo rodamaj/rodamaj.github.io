@@ -85,7 +85,7 @@ useHead(() => {
   width: 100%;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
   .context-view {
     display: flex;
     align-items: flex-start;
@@ -105,7 +105,12 @@ useHead(() => {
 
   .context-view.has-panel > :deep(.home-container) {
     display: flex;
-    flex-basis: 50%;
+    /*
+     * Equalize the space around the 600px home content and the 720px panel
+     * content. If both no longer fit, preserve the panel content and a
+     * comfortable gutter before taking space from the home column.
+     */
+    flex-basis: min(calc(50% - 3.75rem), calc(100% - 52rem));
     height: 100dvh;
     min-height: 0;
     align-items: flex-start;
@@ -119,7 +124,7 @@ useHead(() => {
 
   .side-panel {
     position: relative;
-    flex: 0 0 50%;
+    flex: 1 1 0;
     width: auto;
     height: 100dvh;
     min-height: 0;
@@ -131,6 +136,10 @@ useHead(() => {
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior-y: contain;
+  }
+
+  .side-panel :deep(.site-content) {
+    width: min(100%, 720px);
   }
 
   .side-panel::before {

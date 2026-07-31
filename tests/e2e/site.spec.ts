@@ -100,7 +100,7 @@ test.describe('critical site flows', () => {
   })
 
   test('opens and closes a panel through navigation', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/')
     await waitForHydration(page)
 
@@ -193,7 +193,7 @@ test.describe('responsive columns', () => {
   test('uses one full-width panel below the desktop breakpoint', async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 900, height: 900 })
+    await page.setViewportSize({ width: 1360, height: 900 })
     await page.goto('/engineering')
 
     await expect(page.locator('.home-container')).toBeHidden()
@@ -203,40 +203,59 @@ test.describe('responsive columns', () => {
 
     expect(panel).not.toBeNull()
     expect(panel?.x).toBeCloseTo(0, 0)
-    expect(panel?.width).toBeCloseTo(900, 0)
+    expect(panel?.width).toBeCloseTo(1360, 0)
   })
 
-  test('uses two equal app columns at the desktop breakpoint', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1280, height: 900 })
+  test('keeps equal space around both desktop columns', async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 })
     await page.goto('/engineering')
 
     const home = page.locator('.home-container')
+    const homeContent = home.locator('.home-content')
     const panel = page.locator('.side-panel')
+    const panelContent = panel.locator('.site-content')
 
     await expect(home).toBeVisible()
     await expect(panel).toBeVisible()
     await expect
       .poll(async () => {
         const homeBox = await home.boundingBox()
+        const homeContentBox = await homeContent.boundingBox()
         const panelBox = await panel.boundingBox()
+        const panelContentBox = await panelContent.boundingBox()
 
-        if (!homeBox || !panelBox) {
+        if (!homeBox || !homeContentBox || !panelBox || !panelContentBox) {
           return false
         }
 
+        const homeSpace = (homeBox.width - homeContentBox.width) / 2
+        const panelSpace = (panelBox.width - panelContentBox.width) / 2
+
         return (
-          Math.abs(homeBox.width - panelBox.width) < 2 &&
           Math.abs(panelBox.x - (homeBox.x + homeBox.width)) < 2 &&
-          homeBox.width > 600
+          Math.abs(homeContentBox.width - 600) < 2 &&
+          Math.abs(panelContentBox.width - 720) < 2 &&
+          Math.abs(homeSpace - panelSpace) < 2
         )
       })
       .toBe(true)
   })
 
+  test('preserves the side panel width when desktop space gets tight', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto('/engineering')
+
+    const home = await page.locator('.home-container').boundingBox()
+    const panel = await page.locator('.side-panel').boundingBox()
+
+    expect(home?.width).toBeCloseTo(608, 0)
+    expect(panel?.width).toBeCloseTo(832, 0)
+  })
+
   test('opens photography in the desktop side panel', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/photography')
 
     const home = page.locator('.home-container')
@@ -249,7 +268,7 @@ test.describe('responsive columns', () => {
   })
 
   test('opens music in the desktop side panel', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/music')
 
     const home = page.locator('.home-container')
@@ -264,7 +283,7 @@ test.describe('responsive columns', () => {
   test('keeps two columns when science loads with a trailing slash', async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/science/')
 
     await expect(page.locator('.context-view')).toHaveClass(/has-panel/)
@@ -283,8 +302,8 @@ test.describe('responsive columns', () => {
         }
 
         return (
-          Math.abs(homeBox.width - panelBox.width) < 2 &&
-          Math.abs(panelBox.x - (homeBox.x + homeBox.width)) < 2
+          Math.abs(panelBox.x - (homeBox.x + homeBox.width)) < 2 &&
+          panelBox.width > homeBox.width
         )
       })
       .toBe(true)

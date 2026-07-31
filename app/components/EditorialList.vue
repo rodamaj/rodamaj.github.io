@@ -112,7 +112,7 @@ const { text } = useLocalizedText()
   color: var(--theme-text);
 }
 
-@media (max-width: 700px) {
+@container (max-width: 34rem) {
   .editorial-list {
     gap: 3rem;
   }
