@@ -97,6 +97,6 @@ button:focus-visible {
 
 @media (max-width: 700px) {
   .site-container {
-    padding: 2rem 1.25rem;
+    padding: 2rem clamp(1.5rem, 5vw, 2rem);
   }
 }
