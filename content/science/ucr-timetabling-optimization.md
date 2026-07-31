@@ -12,7 +12,13 @@ status: { es: Proyecto académico, en: Academic project }
 context:
   - { es: Trabajo en equipo, en: Team project }
 technologies:
-  [Python, Exhaustive search, Greedy heuristics, Backtracking, Simulated annealing]
+  [
+    Python,
+    Exhaustive search,
+    Greedy heuristics,
+    Backtracking,
+    Simulated annealing,
+  ]
 links:
   - label: { es: Repositorio, en: Repository }
     href: https://github.com/rodamaj/ucr-timetabling-optimization

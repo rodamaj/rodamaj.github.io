@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "check": "npm run lint && npm run typecheck && npm run test",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test",
     "dev": "nuxt dev --host",
+    "format:check": "prettier --check .",
     "generate": "nuxt generate",
     "lint": "eslint .",
     "photo:add": "node scripts/add-photo.mjs",
