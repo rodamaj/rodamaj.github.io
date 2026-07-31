@@ -160,6 +160,35 @@ test.describe('critical site flows', () => {
   })
 })
 
+test.describe('first-visit language detection', () => {
+  test.use({ locale: 'en-US' })
+
+  test('keeps the language switcher synchronized after hydration', async ({
+    page,
+  }) => {
+    await page.goto('/')
+    await waitForHydration(page)
+
+    await expect(page.getByRole('link', { name: 'Engineering' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'English' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+    await expect(page.getByRole('button', { name: 'Spanish' })).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    )
+
+    await page.getByRole('button', { name: 'Spanish' }).click()
+
+    await expect(page.getByRole('link', { name: 'Ingeniería' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Español' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+  })
+})
+
 test.describe('responsive columns', () => {
   test('uses one full-width panel below the desktop breakpoint', async ({
     page,

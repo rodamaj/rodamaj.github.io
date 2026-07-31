@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import type { LocaleObject } from '@nuxtjs/i18n'
 
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale, defaultLocale } = useI18n()
 const colorMode = useColorMode()
+// Static HTML uses the default locale. Keep hydration deterministic, then
+// reflect browser/cookie detection after the component mounts.
+const isHydrated = ref(false)
+
+onMounted(() => {
+  isHydrated.value = true
+})
 
 const onLangSelected = async (lang: string) => {
   if (lang === locale.value) {
@@ -34,7 +41,7 @@ const onThemeSelected = (theme: string) => {
                 : $t('ui.settings.language.options.en'),
           }))
         "
-        :active-id="locale"
+        :active-id="isHydrated ? locale : defaultLocale"
         @select="onLangSelected"
       />
     </section>
