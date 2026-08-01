@@ -93,6 +93,12 @@
     "accessibility": {
       "opensInNewTab": "se abre en una pestaña nueva"
     },
+    "error": {
+      "title": "Página no disponible",
+      "description": "No fue posible cargar esta página en este momento.",
+      "home": "Volver al inicio",
+      "retry": "Intentar de nuevo"
+    },
     "settings": {
       "language": {
         "label": "Selector de idioma",

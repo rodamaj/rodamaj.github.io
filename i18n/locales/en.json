@@ -93,6 +93,12 @@
     "accessibility": {
       "opensInNewTab": "opens in a new tab"
     },
+    "error": {
+      "title": "Page unavailable",
+      "description": "This page could not be loaded at this time.",
+      "home": "Return home",
+      "retry": "Try again"
+    },
     "settings": {
       "language": {
         "label": "Language switcher",
