@@ -202,7 +202,7 @@ test.describe('first-visit language detection', () => {
 })
 
 test.describe('responsive columns', () => {
-  test('keeps the home content vertically centered across viewport sizes', async ({
+  test('keeps the home content centered without overflow across viewport sizes', async ({
     page,
   }) => {
     const viewports = [
@@ -231,6 +231,16 @@ test.describe('responsive columns', () => {
         Math.abs(spaceAbove - spaceBelow),
         `${viewport.width}x${viewport.height} should be vertically centered`
       ).toBeLessThan(2)
+
+      const documentHeight = await page.evaluate(() => ({
+        client: document.documentElement.clientHeight,
+        scroll: document.documentElement.scrollHeight,
+      }))
+
+      expect(
+        documentHeight.scroll,
+        `${viewport.width}x${viewport.height} should not overflow vertically`
+      ).toBe(documentHeight.client)
     }
   })
 
