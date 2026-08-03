@@ -39,6 +39,8 @@ useHead(() => {
   <div class="app" :data-hydrated="isHydrated">
     <NuxtRouteAnnouncer />
 
+    <span class="mirrored-signature" aria-hidden="true">jamador</span>
+
     <div
       v-if="routeLayout.hasHomeContext"
       class="context-view"
@@ -62,6 +64,22 @@ useHead(() => {
 <style scoped>
 .app {
   min-height: 100vh;
+}
+
+.mirrored-signature {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1rem;
+  z-index: 10;
+  color: var(--theme-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.22;
+  pointer-events: none;
+  text-transform: lowercase;
+  transform: scaleX(-1);
+  user-select: none;
 }
 
 .context-view,

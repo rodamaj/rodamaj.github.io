@@ -14,6 +14,16 @@ const waitForHydration = (page: Page) =>
   page.locator('.app[data-hydrated="true"]').waitFor()
 
 test.describe('critical site flows', () => {
+  test('shows the mirrored jamador signature', async ({ page }) => {
+    await page.goto('/')
+
+    const signature = page.locator('.mirrored-signature')
+
+    await expect(signature).toHaveText('jamador')
+    await expect(signature).toHaveAttribute('aria-hidden', 'true')
+    await expect(signature).toHaveCSS('transform', /matrix\(-1, 0, 0, 1/)
+  })
+
   test('renders every main route without client errors', async ({ page }) => {
     const clientErrors: Error[] = []
     page.on('pageerror', (error) => clientErrors.push(error))
