@@ -1,3 +1,5 @@
+import { siteUrl } from './site.config.mjs'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -19,7 +21,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    baseUrl: 'https://rodamaj.github.io',
+    baseUrl: siteUrl,
     locales: [
       { code: 'es', language: 'es-ES', file: 'es.json' },
       { code: 'en', language: 'en-US', file: 'en.json' },

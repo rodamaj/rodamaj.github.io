@@ -15,6 +15,7 @@ import { tmpdir } from 'node:os'
 import { basename, isAbsolute, join, resolve } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { parseArgs, promisify } from 'node:util'
+import { siteUrl } from '../site.config.mjs'
 
 const execFileAsync = promisify(execFile)
 const imageWidths = [640, 960, 1600]
@@ -219,8 +220,7 @@ if (
     const response = await fetch(endpoint, {
       headers: {
         Accept: 'application/json',
-        'User-Agent':
-          'rodamaj.github.io-photo-generator/1.0 (https://rodamaj.github.io)',
+        'User-Agent': `rodamaj-photo-generator/1.0 (${siteUrl})`,
       },
     })
     if (response.ok) suggestedLocation = formatLocation(await response.json())

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { siteUrl } from '~~/site.config.mjs'
 import type { PhotographEntry } from '~/types/content'
 
 const { t } = useI18n()
@@ -15,8 +16,7 @@ useSeoMeta({
   ogTitle: () => t('site.pages.photography.title'),
   ogDescription: () => t('site.pages.photography.description'),
   ogType: 'website',
-  ogImage:
-    'https://rodamaj.github.io/images/photography/research-city-facade/1600.jpg',
+  ogImage: `${siteUrl}/images/photography/research-city-facade/1600.jpg`,
   ogImageAlt: () =>
     entries.value[0] ? text(entries.value[0].image.alt) : undefined,
   twitterCard: 'summary_large_image',
