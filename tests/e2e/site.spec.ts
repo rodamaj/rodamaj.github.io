@@ -192,6 +192,38 @@ test.describe('first-visit language detection', () => {
 })
 
 test.describe('responsive columns', () => {
+  test('keeps the home content vertically centered across viewport sizes', async ({
+    page,
+  }) => {
+    const viewports = [
+      { width: 390, height: 844 },
+      { width: 1280, height: 900 },
+    ]
+
+    for (const viewport of viewports) {
+      await page.setViewportSize(viewport)
+      await page.goto('/')
+
+      const container = await page.locator('.home-container').boundingBox()
+      const content = await page.locator('.home-content').boundingBox()
+
+      expect(container).not.toBeNull()
+      expect(content).not.toBeNull()
+
+      const spaceAbove = (content?.y ?? 0) - (container?.y ?? 0)
+      const spaceBelow =
+        (container?.y ?? 0) +
+        (container?.height ?? 0) -
+        (content?.y ?? 0) -
+        (content?.height ?? 0)
+
+      expect(
+        Math.abs(spaceAbove - spaceBelow),
+        `${viewport.width}x${viewport.height} should be vertically centered`
+      ).toBeLessThan(2)
+    }
+  })
+
   test('uses one full-width panel below the desktop breakpoint', async ({
     page,
   }) => {

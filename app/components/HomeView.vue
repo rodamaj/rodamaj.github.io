@@ -80,7 +80,7 @@ const primaryLinks = [
 
 <style scoped>
 .home-container {
-  align-items: flex-start;
+  align-items: center;
 }
 
 .home-intro,
@@ -127,11 +127,5 @@ const primaryLinks = [
 
 .separator {
   margin: 2rem 0;
-}
-
-@media (min-width: 700px) {
-  .home-container {
-    align-items: center;
-  }
 }
 </style>
