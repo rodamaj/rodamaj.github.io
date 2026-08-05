@@ -24,7 +24,7 @@ export const siteConfig = {
     {
       id: 'music',
       href: '/music',
-      visible: false,
+      visible: true,
     },
     {
       id: 'photography',
