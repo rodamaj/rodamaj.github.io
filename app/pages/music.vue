@@ -2,6 +2,7 @@
 import { siteConfig } from '~/config/site'
 
 const { t } = useI18n()
+const { text } = useLocalizedText()
 </script>
 
 <template>
@@ -10,6 +11,10 @@ const { t } = useI18n()
     :description="t('site.pages.music.description')"
   >
     <div class="text-sections music-sections">
+      <section>
+        <p>{{ t('site.music.introduction') }}</p>
+      </section>
+
       <section>
         <h2>{{ t('site.music.returningTitle') }}</h2>
 
@@ -24,6 +29,9 @@ const { t } = useI18n()
             <p class="record-details">
               {{ entry.artist
               }}<template v-if="entry.year">, {{ entry.year }}</template>
+            </p>
+            <p v-if="entry.note" class="record-note">
+              {{ text(entry.note) }}
             </p>
           </li>
         </ul>
@@ -111,6 +119,10 @@ const { t } = useI18n()
 
 .record-list p {
   margin: 0;
+}
+
+.record-list .record-note {
+  margin-top: 0.875rem;
 }
 
 .record-title cite {
