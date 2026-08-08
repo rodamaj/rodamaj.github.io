@@ -86,7 +86,7 @@
     "labels": {
       "technologies": "Technologies",
       "index": "Index",
-      "moreAndContact": "More + contact"
+      "about": "About"
     },
     "actions": {
       "closePanel": "Close panel"

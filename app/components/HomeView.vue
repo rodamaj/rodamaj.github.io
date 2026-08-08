@@ -15,7 +15,7 @@ const isCurrentPage = (href: string) => currentPath.value === href
 
 const primaryLinks = [
   {
-    labelKey: 'ui.labels.moreAndContact',
+    labelKey: 'ui.labels.about',
     href: '/about',
   },
 ]
