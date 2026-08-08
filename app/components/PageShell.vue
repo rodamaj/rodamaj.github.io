@@ -23,12 +23,9 @@ useSeoMeta({
             <NuxtLink to="/" class="name-link page-title-origin-link">{{
               siteConfig.identity.name
             }}</NuxtLink>
-            <span class="page-title-origin-text">{{
-              siteConfig.identity.name
-            }}</span>
             <span aria-hidden="true"> / </span>
           </span>
-          {{ title }}
+          <span class="page-current-title">{{ title }}</span>
         </h1>
         <p v-if="description" class="page-description">
           {{ description }}
@@ -80,8 +77,7 @@ useSeoMeta({
   line-height: 1.5;
 }
 
-.name-link,
-.page-title-origin-text {
+.page-current-title {
   font-weight: 700;
 }
 
@@ -94,8 +90,7 @@ useSeoMeta({
   margin-top: 5rem;
 }
 
-.panel-close-link,
-.page-title-origin-text {
+.panel-close-link {
   display: none;
 }
 

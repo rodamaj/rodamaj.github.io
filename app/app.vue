@@ -183,13 +183,11 @@ useHead(() => {
     transform: translateX(3rem);
   }
 
-  .context-view .side-panel :deep(.page-title-origin-link),
   .context-view .side-panel :deep(.page-index-link),
   .context-view .side-panel :deep(.page-footer .settings-section) {
     display: none;
   }
 
-  .context-view .side-panel :deep(.page-title-origin-text),
   .context-view .side-panel :deep(.panel-close-link) {
     display: inline;
   }
