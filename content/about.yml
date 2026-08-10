@@ -11,14 +11,12 @@ sections:
   resumes: { es: Currículos, en: Resumes }
 
 education:
-  - date:
-      es: 'Ingreso previsto: agosto de 2026'
-      en: 'Incoming: August 2026'
+  - date: { es: '2026–actualidad', en: '2026–present' }
     program:
       es: Maestría Académica en Computación e Informática
       en: Master of Science in Computer Science and Informatics
     institution: Universidad de Costa Rica
-  - date: { es: Desde 2025, en: Since 2025 }
+  - date: { es: '2025–actualidad', en: '2025–present' }
     program:
       es: Bachillerato en Computación con énfasis en Ciencias de la Computación
       en: Bachelor of Science in Computer Science
