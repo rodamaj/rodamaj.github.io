@@ -58,6 +58,7 @@
       "emptyDescription": "[Placeholder: short notes on software, science, tools, learning, and other subjects will appear here.]"
     },
     "music": {
+      "introduction": "Music holds a very important place in my life: it is one of my greatest passions and my favorite art form. These are eight records I always return to, in no particular order. They are part of who I am, and I think there is something beautiful about sharing with the world how they make me feel.",
       "recentTitle": "Recent listening",
       "recentPlaceholder": "[Placeholder: artist — album]\n[Placeholder: a short line about why it interests me.]",
       "returningTitle": "Records I return to",

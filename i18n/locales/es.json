@@ -58,6 +58,7 @@
       "emptyDescription": "[Placeholder: aquí aparecerán notas breves sobre software, ciencia, herramientas, aprendizaje y otros temas.]"
     },
     "music": {
+      "introduction": "La música ocupa un lugar muy importante en mi vida: es una de mis mayores pasiones y mi forma de arte favorita. Estos son ocho discos a los que siempre vuelvo, sin ningún orden particular. Forman parte de mi identidad y me parece bonito compartir con el mundo lo que me hacen sentir.",
       "recentTitle": "Escuchando últimamente",
       "recentPlaceholder": "[Placeholder: artista — álbum]\n[Placeholder: una línea breve sobre por qué me interesa.]",
       "returningTitle": "Discos a los que vuelvo",

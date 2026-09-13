@@ -2,6 +2,7 @@
 import { siteConfig } from '~/config/site'
 
 const { t } = useI18n()
+const { text } = useLocalizedText()
 </script>
 
 <template>
@@ -10,6 +11,10 @@ const { t } = useI18n()
     :description="t('site.pages.music.description')"
   >
     <div class="text-sections music-sections">
+      <section>
+        <p>{{ t('site.music.introduction') }}</p>
+      </section>
+
       <section>
         <h2>{{ t('site.music.returningTitle') }}</h2>
 
@@ -24,6 +29,28 @@ const { t } = useI18n()
             <p class="record-details">
               {{ entry.artist
               }}<template v-if="entry.year">, {{ entry.year }}</template>
+            </p>
+            <p v-if="entry.note" class="record-note">
+              {{ text(entry.note) }}
+            </p>
+            <p class="record-links">
+              <a
+                :href="entry.spotifyUrl"
+                class="external-link"
+                target="_blank"
+                rel="noreferrer"
+                :aria-label="`Spotify: ${entry.title}, ${entry.artist}, ${t('ui.accessibility.opensInNewTab')}`"
+                >Spotify</a
+              >
+              <span aria-hidden="true">·</span>
+              <a
+                :href="entry.appleMusicUrl"
+                class="external-link"
+                target="_blank"
+                rel="noreferrer"
+                :aria-label="`Apple Music: ${entry.title}, ${entry.artist}, ${t('ui.accessibility.opensInNewTab')}`"
+                >Apple Music</a
+              >
             </p>
           </li>
         </ul>
@@ -111,6 +138,17 @@ const { t } = useI18n()
 
 .record-list p {
   margin: 0;
+}
+
+.record-list .record-note {
+  margin-top: 0.875rem;
+}
+
+.record-list .record-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.875rem;
 }
 
 .record-title cite {
