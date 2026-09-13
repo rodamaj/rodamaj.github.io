@@ -124,7 +124,7 @@ const { text } = useLocalizedText()
 .record-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   padding: 0;
   margin: 0;
   list-style: none;
