@@ -73,6 +73,7 @@ const primaryLinks = [
 
       <footer class="home-footer">
         <SettingsSection />
+        <CopyrightNotice />
       </footer>
     </div>
   </div>

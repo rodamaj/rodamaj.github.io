@@ -43,6 +43,7 @@ useSeoMeta({
           {{ t('ui.actions.closePanel') }}
         </NuxtLink>
         <SettingsSection />
+        <CopyrightNotice />
       </footer>
     </main>
   </div>
