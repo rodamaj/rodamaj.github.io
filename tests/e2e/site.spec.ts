@@ -202,6 +202,30 @@ test.describe('first-visit language detection', () => {
 })
 
 test.describe('responsive columns', () => {
+  test('starts each desktop panel at the top when switching sections', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1600, height: 900 })
+    await page.goto('/science')
+    await waitForHydration(page)
+
+    const panel = page.locator('.side-panel-scroll')
+
+    for (const route of ['/music', '/engineering', '/science']) {
+      await panel.evaluate((element) => {
+        element.scrollTop = element.scrollHeight
+      })
+      await expect
+        .poll(() => panel.evaluate((el) => el.scrollTop))
+        .toBeGreaterThan(0)
+
+      await page.locator(`.home-navigation a[href="${route}"]`).click()
+      await expect(page).toHaveURL(route)
+      await expect.poll(() => panel.evaluate((el) => el.scrollTop)).toBe(0)
+      await expect(page.locator('.side-panel .page-header')).toBeInViewport()
+    }
+  })
+
   test('keeps the home content centered without overflow across viewport sizes', async ({
     page,
   }) => {

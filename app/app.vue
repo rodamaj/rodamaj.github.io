@@ -5,8 +5,19 @@ const localeHead = useLocaleHead()
 const colorMode = useColorMode()
 const route = useRoute()
 const isHydrated = ref(false)
+const panelScroll = ref<HTMLElement | null>(null)
 
 const routeLayout = computed(() => getRouteLayoutState(route.path))
+
+// The desktop panel scrolls independently of the document, so the router's
+// document scroll reset does not reset it when navigating between sections.
+watch(
+  () => route.path,
+  () => {
+    if (panelScroll.value) panelScroll.value.scrollTop = 0
+  },
+  { flush: 'post' }
+)
 
 onMounted(() => {
   isHydrated.value = true
@@ -50,7 +61,7 @@ useHead(() => {
 
       <Transition name="side-panel">
         <div v-show="routeLayout.hasPanel" class="side-panel">
-          <div class="side-panel-scroll">
+          <div ref="panelScroll" class="side-panel-scroll">
             <NuxtPage />
           </div>
         </div>
