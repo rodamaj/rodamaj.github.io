@@ -50,6 +50,8 @@ export const siteConfig = {
       {
         artist: 'The Cure',
         title: 'Pornography',
+        spotifyUrl: 'https://open.spotify.com/album/0qJ30kPyjNkKjtV5h0JpHm',
+        appleMusicUrl: 'https://music.apple.com/us/album/pornography/286646425',
         year: '1982',
         note: {
           es: 'Este disco fue, en su momento, lo más oscuro que había escuchado. Creo que lo sigue siendo. Es una experiencia sonora que no es necesariamente cómoda ni glamurosa; todo lo contrario. Te enseña que está bien que tu vida tenga un lado extraño, incomprendido o grotesco. Todo eso con un bajo increíble de fondo. “Cold” es mi favorita. Es tan fría como su título.',
@@ -59,6 +61,8 @@ export const siteConfig = {
       {
         artist: 'Taylor Swift',
         title: 'Red',
+        spotifyUrl: 'https://open.spotify.com/album/6mncWOZEllpFLH0DGSufNO',
+        appleMusicUrl: 'https://music.apple.com/us/album/red/1440935340',
         year: '2012',
         note: {
           es: 'Algo hermoso de crecer es darte cuenta de que todas las experiencias románticas que fracasaron tenían que pasar para ayudarte a madurar y entender qué quieres para tu futuro. Red es un álbum que relata todas esas etapas de enamoramiento, decepción, enojo, tristeza, resignación y esperanza con una mezcla de country y pop brillante, pegajosa, melancólica y dolorosa. Incluso a mi edad, muchas de estas letras todavía resuenan en mí. Y ni hablemos de la Taylor’s Version.',
@@ -68,6 +72,9 @@ export const siteConfig = {
       {
         artist: 'Beyoncé',
         title: 'Renaissance',
+        spotifyUrl: 'https://open.spotify.com/album/6FJxoadUE4JNVwWHghBwnb',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/renaissance/1630005298',
         year: '2022',
         note: {
           es: 'Renaissance llegó cuando la pandemia estaba terminando y nos llevó de nuevo a la pista de baile. A veces, cuando voy a clubes, ponen “Summer Renaissance” y todo se siente como un lugar seguro: no solo frente a la pandemia, sino también frente a los gobiernos tiranos que quieren oprimir a las comunidades vulnerables. Pero cada vez que pongo Renaissance, lo único que importa es moverme como si estuviera en pleno ballroom. Gracias por tanto, Bey.',
@@ -77,6 +84,9 @@ export const siteConfig = {
       {
         artist: 'Black Country, New Road',
         title: 'Ants from Up There',
+        spotifyUrl: 'https://open.spotify.com/album/21xp7NdU1ajmO1CX0w2Egd',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/ants-from-up-there/1586070259',
         year: '2022',
         note: {
           es: 'Para mí, alguna vez el amor fue como ese avión supersónico: existió y voló de mi vida para siempre en un abrir y cerrar de ojos. El tema “Basketball Shoes” menciona a mi artista favorita, Charli(e), y también alguna vez dejé boronas en una cama porque el amor me hizo llevar el plato hasta ahí. ¿Otra razón para amar este álbum? Tal vez su instrumentación fuera de este mundo.',
@@ -86,6 +96,9 @@ export const siteConfig = {
       {
         artist: 'C. Tangana',
         title: 'El Madrileño',
+        spotifyUrl: 'https://open.spotify.com/album/52QyC9nSbgtHFXyQRHsXJ9',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/el-madrile%C3%B1o/1548535189',
         year: '2021',
         note: {
           es: 'No hay mucho que decir acá porque el idioma español lo expresa todo demasiado bien. Escúchenlo. Y vean el Tiny Desk. Ufff, joyita.',
@@ -95,6 +108,9 @@ export const siteConfig = {
       {
         artist: 'Portugal. The Man',
         title: 'In the Mountain in the Cloud',
+        spotifyUrl: 'https://open.spotify.com/album/0CX05Z6vAVuGWhbzXiEXbr',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/in-the-mountain-in-the-cloud/439947544',
         year: '2011',
         note: {
           es: 'Debatí bastante entre incluir este disco o “The Black Parade” de MCR en esta selección, porque ambos me hacen sentir una melancolía hermosa que me cala hasta los huesos. Me decidí por el de Portugal. The Man porque tal vez menos personas lo han escuchado y hay que darle visibilidad. Recomiendo escucharlo cuando haga mucho frío y estén cuestionando su propia existencia y las políticas que mueven al mundo. Hermoso álbum.',
@@ -104,6 +120,9 @@ export const siteConfig = {
       {
         artist: 'Nirvana',
         title: 'In Utero',
+        spotifyUrl: 'https://open.spotify.com/album/7wOOA7l306K8HfBKfPoafr',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/in-utero-20th-anniversary-edition/1440858699',
         year: '1993',
         note: {
           es: 'RIP Kurt. Un visionario. Lo admiro muchísimo y le agradezco cada día haber creado, junto a su banda, este disco que me ha acompañado durante tanto tiempo. Lo que más me gusta es cómo se atrevió a hablar de problemas digestivos en “Milk It” y “Pennyroyal Tea” como nadie más lo ha hecho. Me identifico mucho. Ah, y “Dumb” podría ser mi canción favorita de todos los tiempos.',
@@ -113,10 +132,13 @@ export const siteConfig = {
       {
         artist: 'Father John Misty',
         title: 'I Love You, Honeybear',
+        spotifyUrl: 'https://open.spotify.com/album/7buEcyw6fJF3WPgr06BomH',
+        appleMusicUrl:
+          'https://music.apple.com/us/album/i-love-you-honeybear/931563362',
         year: '2015',
         note: {
-          es: 'Creo que esta es una de las colecciones de canciones más hermosas que relatan las experiencias que puede vivir un hombre cuando se enamora. La voz de Father John Misty es hipnotizante y aquí está acompañada por una producción muy original en cada tema. “Strange Encounter” es, obviamente, mi canción en las apps de citas. “Holy Shit” hace volar mi pensamiento existencialista. Y siempre que suena “I Went to the Store One Day”, lloro. Soy humano.',
-          en: 'I think this is one of the most beautiful collections of songs about the experiences a man can go through when he falls in love. Father John Misty’s voice is hypnotic, and here it is accompanied by highly original production on every track. “Strange Encounter” is obviously my song on dating apps. “Holy Shit” sends my existentialist thoughts soaring. And whenever “I Went to the Store One Day” plays, I cry. I’m human.',
+          es: 'Creo que esta es una de las colecciones de canciones más hermosas que relatan las experiencias que puede vivir un hombre cuando se enamora. La voz de Father John Misty es hipnotizante y aquí está acompañada por una producción muy original en cada tema. “Strange Encounter” es, obviamente, mi canción en las apps de citas. “Holy Shit” hace volar mi pensamiento existencialista. Y siempre que suena “I Went to the Store One Day”, lloro.',
+          en: 'I think this is one of the most beautiful collections of songs about the experiences a man can go through when he falls in love. Father John Misty’s voice is hypnotic, and here it is accompanied by highly original production on every track. “Strange Encounter” is obviously my song on dating apps. “Holy Shit” sends my existentialist thoughts soaring. And whenever “I Went to the Store One Day” plays, I cry.',
         },
       },
     ],
