@@ -129,4 +129,10 @@ const primaryLinks = [
 .separator {
   margin: 2rem 0;
 }
+
+@media (max-width: 700px) {
+  .home-container {
+    padding-block: 1.5rem;
+  }
+}
 </style>
