@@ -2,7 +2,7 @@
   "site": {
     "projectCategories": {
       "academic-project": "Proyecto académico",
-      "company-project": "Proyecto empresarial",
+      "professional-project": "Proyecto profesional",
       "personal-project": "Proyecto personal"
     },
     "identity": {

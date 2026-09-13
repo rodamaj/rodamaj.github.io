@@ -1,6 +1,6 @@
 ---
 id: airline-backend
-category: company-project
+category: professional-project
 order: 1
 date: { es: '2024–2025', en: '2024–2025' }
 title:

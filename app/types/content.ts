@@ -13,7 +13,7 @@ export type ContentLink = {
 
 export type ProjectCategory =
   | 'academic-project'
-  | 'company-project'
+  | 'professional-project'
   | 'personal-project'
 
 export type EditorialEntry = {

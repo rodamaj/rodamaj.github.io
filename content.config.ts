@@ -7,7 +7,11 @@ const localizedText = z.object({
 
 const editorialSchema = z.object({
   id: z.string(),
-  category: z.enum(['academic-project', 'company-project', 'personal-project']),
+  category: z.enum([
+    'academic-project',
+    'professional-project',
+    'personal-project',
+  ]),
   order: z.number(),
   date: localizedText,
   title: localizedText,

@@ -1,6 +1,6 @@
 ---
 id: ordering-app
-category: company-project
+category: professional-project
 order: 4
 date: { es: '2022–2024', en: '2022–2024' }
 title:
