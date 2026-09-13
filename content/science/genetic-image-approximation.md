@@ -1,5 +1,6 @@
 ---
 id: genetic-image-approximation
+category: academic-project
 order: 2
 date: { es: '2026', en: '2026' }
 title:

@@ -1,5 +1,10 @@
 {
   "site": {
+    "projectCategories": {
+      "academic-project": "Proyecto académico",
+      "company-project": "Proyecto empresarial",
+      "personal-project": "Proyecto personal"
+    },
     "identity": {
       "role": "Ingeniero de software y estudiante de ciencias de la computación.",
       "statement": "Construyo sistemas y estudio problemas computacionales."
@@ -24,7 +29,7 @@
       },
       "photography": {
         "label": "Fotografía",
-        "description": "Fotografías tomadas con mi iPhone."
+        "description": "Fotos tomadas con mi iPhone."
       }
     },
     "pages": {
@@ -46,7 +51,7 @@
       },
       "photography": {
         "title": "Fotografía",
-        "description": "Una selección de fotografías tomadas con mi iPhone."
+        "description": "Una selección de fotos tomadas con mi iPhone."
       },
       "about": {
         "title": "Acerca de",

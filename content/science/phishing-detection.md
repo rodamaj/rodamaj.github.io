@@ -1,5 +1,6 @@
 ---
 id: phishing-detection
+category: academic-project
 order: 3
 date: { es: '2026', en: '2026' }
 title:

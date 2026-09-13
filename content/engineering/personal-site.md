@@ -1,5 +1,6 @@
 ---
 id: personal-site
+category: personal-project
 order: 5
 date:
   es: 2021–presente

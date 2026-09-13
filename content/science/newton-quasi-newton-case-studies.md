@@ -1,5 +1,6 @@
 ---
 id: newton-quasi-newton-case-studies
+category: academic-project
 order: 1
 date: { es: '2026', en: '2026' }
 title:

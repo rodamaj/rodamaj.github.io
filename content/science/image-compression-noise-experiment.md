@@ -1,5 +1,6 @@
 ---
 id: image-compression-noise-experiment
+category: academic-project
 order: 4
 date: { es: '2026', en: '2026' }
 title:

@@ -1,5 +1,6 @@
 ---
 id: hawkeyes
+category: academic-project
 order: 6
 date:
   es: 2020 · actualizado en 2026

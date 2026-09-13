@@ -11,7 +11,13 @@ export type ContentLink = {
   external?: boolean
 }
 
+export type ProjectCategory =
+  | 'academic-project'
+  | 'company-project'
+  | 'personal-project'
+
 export type EditorialEntry = {
+  category: ProjectCategory
   id: string
   date: LocalizedText
   title: LocalizedText

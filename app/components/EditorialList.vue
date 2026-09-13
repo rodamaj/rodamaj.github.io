@@ -20,28 +20,12 @@ const { text } = useLocalizedText()
           {{ text(paragraph) }}
         </p>
 
-        <p v-if="entry.status" class="entry-status">{{ text(entry.status) }}</p>
-
-        <p v-if="entry.technologies?.length" class="entry-technologies">
-          <span>{{ t('ui.labels.technologies') }}:</span>
-          {{ entry.technologies.join(', ') }}
-        </p>
-
-        <p
-          v-if="entry.context?.length || entry.links?.length"
-          class="entry-meta"
-        >
-          <template v-for="(item, index) in entry.context" :key="text(item)">
-            <span v-if="index" aria-hidden="true"> · </span>
-            <span>{{ text(item) }}</span>
-          </template>
+        <p class="entry-meta">
+          <span class="entry-category">{{
+            t(`site.projectCategories.${entry.category}`)
+          }}</span>
           <template v-for="link in entry.links" :key="link.href">
-            <span
-              v-if="entry.context?.length || entry.links?.indexOf(link)"
-              aria-hidden="true"
-            >
-              ·
-            </span>
+            <span aria-hidden="true"> · </span>
             <a
               :href="link.href"
               :class="{ 'external-link': link.external }"
@@ -99,17 +83,12 @@ const { text } = useLocalizedText()
   line-height: 1.5;
 }
 
-.entry-status,
 .entry-meta {
   margin-top: 0.25rem;
 }
 
-.entry-technologies {
+.entry-category {
   color: var(--theme-text-soft);
-}
-
-.entry-technologies span {
-  color: var(--theme-text);
 }
 
 @container (max-width: 34rem) {

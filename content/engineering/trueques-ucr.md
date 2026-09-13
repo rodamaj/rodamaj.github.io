@@ -1,5 +1,6 @@
 ---
 id: trueques-ucr
+category: academic-project
 order: 7
 date:
   es: 2020 · renovado en 2026

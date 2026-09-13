@@ -1,5 +1,6 @@
 ---
 id: credit-platform-backend
+category: company-project
 order: 2
 date: { es: '2023–2024', en: '2023–2024' }
 title:

@@ -1,5 +1,10 @@
 {
   "site": {
+    "projectCategories": {
+      "academic-project": "Academic project",
+      "company-project": "Company project",
+      "personal-project": "Personal project"
+    },
     "identity": {
       "role": "Software engineer and computer science student.",
       "statement": "I build systems and study computational problems."
@@ -24,7 +29,7 @@
       },
       "photography": {
         "label": "Photography",
-        "description": "Photographs taken with my iPhone."
+        "description": "Photos taken with my iPhone."
       }
     },
     "pages": {
@@ -46,7 +51,7 @@
       },
       "photography": {
         "title": "Photography",
-        "description": "A selection of photographs taken with my iPhone."
+        "description": "A selection of photos taken with my iPhone."
       },
       "about": {
         "title": "About",

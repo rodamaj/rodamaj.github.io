@@ -1,5 +1,6 @@
 ---
 id: ucr-timetabling-optimization
+category: academic-project
 order: 6
 date: { es: '2025', en: '2025' }
 title:

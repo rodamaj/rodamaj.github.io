@@ -1,5 +1,6 @@
 ---
 id: space-mission-log
+category: academic-project
 order: 5
 date: { es: '2025', en: '2025' }
 title:
