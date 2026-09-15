@@ -15,7 +15,7 @@ const { text } = useLocalizedText()
         <p>{{ t('site.music.introduction') }}</p>
       </section>
 
-      <section>
+      <section class="records-section">
         <h2>{{ t('site.music.returningTitle') }}</h2>
 
         <ul v-if="siteConfig.music.returningEntries.length" class="record-list">
@@ -108,6 +108,10 @@ const { text } = useLocalizedText()
 
 .text-sections section > * {
   margin: 0;
+}
+
+.text-sections .records-section {
+  gap: 2rem;
 }
 
 .text-sections h2 {
