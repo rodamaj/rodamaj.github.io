@@ -1,0 +1,23 @@
+slug: church-clock-facade
+order: 6
+date: '2026-11-17'
+location:
+  es: San Pedro, Montes de Oca, San José, Costa Rica
+  en: San Pedro, Montes de Oca, San José, Costa Rica
+device: iPhone 18 Pro
+captureType: telephoto
+focalLengthMm: 200
+image:
+  src: /images/photography/church-clock-facade/1600.jpg
+  width: 1600
+  height: 2133
+  alt:
+    es: Fachada de una iglesia con un reloj y una cruz bajo un cielo nublado, en blanco y negro.
+    en: Black and white church facade with a clock and a cross beneath an overcast sky.
+  sources:
+    - src: /images/photography/church-clock-facade/640.jpg
+      width: 640
+    - src: /images/photography/church-clock-facade/960.jpg
+      width: 960
+    - src: /images/photography/church-clock-facade/1600.jpg
+      width: 1600
