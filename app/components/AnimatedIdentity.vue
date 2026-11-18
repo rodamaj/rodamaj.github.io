@@ -5,10 +5,12 @@ const root = ref<HTMLElement | null>(null)
 const ready = ref(false)
 const wordWidth = ref(0)
 const positions = ref<Record<string, string>[]>([])
+const cursorPositions = ref<Record<string, string>>({})
+const typingOrder = [1, 2, 3, 4, 5, 12, 13, 14, 15, 16, 17]
 const characters = computed(() => [...props.name])
 // Reuse these seven glyphs from the alias through to their final positions.
 const baseIndices = [11, 10, 9, 8, 7, 6, 0]
-const stages = [baseIndices, [0, null, 6, 7, 8, 9, 10, 11]]
+const stages = [baseIndices]
 let observer: ResizeObserver | undefined
 let disposed = false
 
@@ -29,26 +31,35 @@ const measure = () => {
     }
     return result
   })
-  const final = coordinates[2]
+  const final = coordinates[1]
   if (!final) return
 
   const width = layouts[0]?.getBoundingClientRect().width ?? 0
   wordWidth.value = width
   positions.value = characters.value.map((_, index) => {
     const finalX = final.get(index) ?? 0
-    const glyph = layouts[2]?.querySelector<HTMLElement>(
+    const glyph = layouts[1]?.querySelector<HTMLElement>(
       `[data-index="${index}"]`
     )
     const glyphWidth = glyph?.getBoundingClientRect().width ?? 0
     const mirror = (x: number) => `${width - x - glyphWidth}px`
-    const anchor = index < 6 ? 0 : 11
-    const startX = coordinates[1]?.get(anchor) ?? 0
     return {
       '--start': `${coordinates[0]?.get(index) ?? 0}px`,
-      '--ordered': mirror(coordinates[1]?.get(index) ?? startX),
+      '--tension': `${(coordinates[0]?.get(index) ?? 0) + (index === 0 ? 0.6 : -0.4)}px`,
+      '--release': `${width - finalX - glyphWidth + (index === 0 ? 0.8 : -1.6)}px`,
       '--final': mirror(finalX),
+      '--type-at': `${4.48 + (typingOrder.indexOf(index) + 1) * 0.12}s`,
     }
   })
+  const cursorStops = [1, 2, 3, 4, 5, 12, 13, 14, 15, 16, 17]
+  cursorPositions.value = Object.fromEntries(
+    cursorStops.map((index, stop) => [
+      `--cursor-${stop}`,
+      `${final.get(index) ?? 0}px`,
+    ])
+  )
+  cursorPositions.value['--cursor-end'] =
+    `${layouts[1]?.getBoundingClientRect().width ?? 0}px`
   ready.value = true
 }
 
@@ -93,6 +104,11 @@ onBeforeUnmount(() => {
         }}</span></span
       >
     </span>
+    <span
+      class="identity-cursor"
+      :style="cursorPositions"
+      aria-hidden="true"
+    ></span>
     <span
       v-for="(stage, stageIndex) in stages"
       :key="stageIndex"
@@ -168,7 +184,9 @@ onBeforeUnmount(() => {
 
 .identity-face {
   display: block;
-  animation: unmirror-letter 5.6s cubic-bezier(0.45, 0, 0.2, 1) both;
+  transform-origin: center;
+  will-change: transform;
+  animation: unmirror-letter 5.6s cubic-bezier(0.37, 0, 0.63, 1) both;
 }
 
 .identity-extra .identity-face {
@@ -183,7 +201,83 @@ onBeforeUnmount(() => {
 
 .identity-extra {
   z-index: 1;
-  animation: emerge-glyph 5.6s cubic-bezier(0.45, 0, 0.2, 1) both;
+  transform: translateX(var(--final));
+  animation: reveal-glyph 1ms steps(1, end) var(--type-at) both;
+}
+
+.identity-cursor {
+  position: absolute;
+  top: 0.15em;
+  left: 0;
+  height: 1.1em;
+  border-left: 1px solid currentColor;
+  opacity: 0;
+  pointer-events: none;
+  animation:
+    cursor-position 2s steps(1, end) 4.48s both,
+    cursor-window 2s steps(1, end) 4.48s forwards,
+    cursor-blink 0.6s steps(1, end) 4.48s infinite;
+}
+
+@keyframes cursor-position {
+  0% {
+    transform: translateX(var(--cursor-0));
+  }
+  6% {
+    transform: translateX(var(--cursor-1));
+  }
+  12% {
+    transform: translateX(var(--cursor-2));
+  }
+  18% {
+    transform: translateX(var(--cursor-3));
+  }
+  24% {
+    transform: translateX(var(--cursor-4));
+  }
+  30% {
+    transform: translateX(var(--cursor-5));
+  }
+  36% {
+    transform: translateX(var(--cursor-6));
+  }
+  42% {
+    transform: translateX(var(--cursor-7));
+  }
+  48% {
+    transform: translateX(var(--cursor-8));
+  }
+  54% {
+    transform: translateX(var(--cursor-9));
+  }
+  60% {
+    transform: translateX(var(--cursor-10));
+  }
+  66%,
+  100% {
+    transform: translateX(var(--cursor-end));
+  }
+}
+
+@keyframes cursor-window {
+  0%,
+  99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    border-color: currentColor;
+  }
+  50% {
+    border-color: transparent;
+  }
 }
 
 @keyframes rotate-alias {
@@ -199,12 +293,12 @@ onBeforeUnmount(() => {
 
 @keyframes unmirror-letter {
   0%,
-  38% {
-    transform: rotateY(0deg);
+  36% {
+    transform: perspective(24em) rotateY(0deg);
   }
-  52%,
+  56%,
   100% {
-    transform: rotateY(180deg);
+    transform: perspective(24em) rotateY(180deg);
   }
 }
 
@@ -213,24 +307,27 @@ onBeforeUnmount(() => {
   60% {
     transform: translateX(var(--start));
   }
-  74%,
-  80% {
-    transform: translateX(var(--ordered));
+  65%,
+  67% {
+    transform: translateX(var(--tension));
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
+  70% {
+    transform: translateX(var(--release));
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  75%,
   100% {
     transform: translateX(var(--final));
   }
 }
 
-@keyframes emerge-glyph {
-  0%,
-  80% {
-    transform: translateX(var(--ordered));
-    clip-path: inset(0 100% 0 0);
+@keyframes reveal-glyph {
+  from {
+    opacity: 0;
   }
-  100% {
-    transform: translateX(var(--final));
-    clip-path: inset(0 0 0 0);
+  to {
+    opacity: 1;
   }
 }
 
@@ -239,10 +336,12 @@ onBeforeUnmount(() => {
     visibility: visible;
   }
 
+  .identity-cursor,
   .is-ready .identity-animation {
     display: none;
   }
 
+  .identity-cursor,
   .identity-animation,
   .identity-face,
   .identity-glyph {

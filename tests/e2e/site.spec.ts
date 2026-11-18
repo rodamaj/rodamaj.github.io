@@ -55,19 +55,63 @@ test.describe('critical site flows', () => {
       'matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)'
     )
     for (const face of await base.locator('.identity-face').all()) {
-      await expect(face).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)')
+      expect(
+        await face.evaluate(
+          (el) => new DOMMatrix(getComputedStyle(el).transform).m11
+        )
+      ).toBeCloseTo(1)
     }
-    await setTime(3000)
+    await setTime(3200)
     expect(await getWord()).toBe('jamador')
     for (const face of await base.locator('.identity-face').all()) {
-      await expect(face).toHaveCSS(
-        'transform',
-        'matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)'
-      )
+      expect(
+        await face.evaluate(
+          (el) => new DOMMatrix(getComputedStyle(el).transform).m11
+        )
+      ).toBeCloseTo(-1)
     }
+    const firstSurnameLetter = title.locator('.identity-base[data-index="6"]')
+    await setTime(3360)
+    const attached = (await firstSurnameLetter.boundingBox())!.x
+    await setTime(3640)
+    const resisted = (await firstSurnameLetter.boundingBox())!.x
+    await setTime(3920)
+    const released = (await firstSurnameLetter.boundingBox())!.x
     await setTime(4300)
+    const settled = (await firstSurnameLetter.boundingBox())!.x
+    expect(resisted - attached).toBeGreaterThan(0)
+    expect(resisted - attached).toBeLessThan(1)
+    expect(released).toBeGreaterThan(settled)
+    expect(settled).toBeGreaterThan(resisted)
     expect(await getWord()).toBe('jamador')
-    await setTime(5600)
+    const extra = title.locator('.identity-extra[data-index="1"]')
+    await expect(extra).toHaveCSS('opacity', '0')
+    const extraPosition = await extra.boundingBox()
+    await setTime(4660)
+    await expect(extra).toHaveCSS('opacity', '1')
+    await expect(title.locator('.identity-extra[data-index="2"]')).toHaveCSS(
+      'opacity',
+      '0'
+    )
+    await expect(title.locator('.identity-cursor')).toHaveCSS('opacity', '1')
+    await setTime(5100)
+    await expect(title.locator('.identity-extra[data-index="4"]')).toHaveCSS(
+      'opacity',
+      '1'
+    )
+    await expect(title.locator('.identity-extra[data-index="12"]')).toHaveCSS(
+      'opacity',
+      '0'
+    )
+    expect(await extra.boundingBox()).toEqual(extraPosition)
+    expect((await firstSurnameLetter.boundingBox())!.x).toBeCloseTo(settled)
+    await setTime(6600)
+    await expect(extra).toHaveCSS('opacity', '1')
+    await expect(title.locator('.identity-cursor')).toHaveCSS(
+      'visibility',
+      'hidden'
+    )
+    expect((await firstSurnameLetter.boundingBox())!.x).toBeCloseTo(settled)
     for (const handle of handles)
       expect(await handle.evaluate((el) => el.isConnected)).toBe(true)
     const glyphs = title.locator('.identity-glyph')
