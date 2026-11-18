@@ -14,14 +14,102 @@ const waitForHydration = (page: Page) =>
   page.locator('.app[data-hydrated="true"]').waitFor()
 
 test.describe('critical site flows', () => {
-  test('shows the mirrored jamador signature', async ({ page }) => {
+  test('moves the same alias letters continuously into the title', async ({
+    page,
+  }) => {
     await page.goto('/')
+    const title = page.getByRole('heading', {
+      name: 'Josué Amador-Rojas',
+      exact: true,
+    })
+    await expect(title).toHaveClass(/is-ready/)
+    const base = title.locator('.identity-base')
+    await expect(base).toHaveCount(7)
+    const setTime = async (time: number) => {
+      await title.evaluate((element, currentTime) => {
+        for (const animation of element.getAnimations({ subtree: true })) {
+          animation.pause()
+          animation.currentTime = currentTime
+        }
+      }, time)
+    }
+    await setTime(0)
+    const before = await title.boundingBox()
+    const getWord = () =>
+      base.evaluateAll((letters) =>
+        letters
+          .map((el) => ({
+            text: el.textContent?.toLowerCase(),
+            x: el.getBoundingClientRect().left,
+          }))
+          .sort((a, b) => a.x - b.x)
+          .map((letter) => letter.text)
+          .join('')
+      )
+    expect(await getWord()).toBe('rodamaj')
+    const handles = await base.elementHandles()
+    await setTime(1800)
+    expect(await getWord()).toBe('jamador')
+    await expect(title.locator('.identity-animation')).toHaveCSS(
+      'transform',
+      'matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)'
+    )
+    for (const face of await base.locator('.identity-face').all()) {
+      await expect(face).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)')
+    }
+    await setTime(3000)
+    expect(await getWord()).toBe('jamador')
+    for (const face of await base.locator('.identity-face').all()) {
+      await expect(face).toHaveCSS(
+        'transform',
+        'matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)'
+      )
+    }
+    await setTime(4300)
+    expect(await getWord()).toBe('jamador')
+    await setTime(5600)
+    for (const handle of handles)
+      expect(await handle.evaluate((el) => el.isConnected)).toBe(true)
+    const glyphs = title.locator('.identity-glyph')
+    await expect(glyphs).toHaveCount(18)
+    const deltas = await title.evaluate((el) => {
+      const final = el.querySelectorAll(
+        '.identity-measure:last-child [data-index]'
+      )
+      return [...el.querySelectorAll('.identity-glyph')].map((glyph, index) =>
+        Math.abs(
+          glyph.getBoundingClientRect().left -
+            final[index]!.getBoundingClientRect().left
+        )
+      )
+    })
+    expect(Math.max(...deltas)).toBeLessThan(1)
+    const given = await title
+      .locator('.identity-glyph[data-index="4"]')
+      .boundingBox()
+    const surname = await title
+      .locator('.identity-glyph[data-index="6"]')
+      .boundingBox()
+    expect(surname!.x - given!.x - given!.width).toBeGreaterThan(3)
+    expect(await title.boundingBox()).toEqual(before)
+    await expect(page.locator('.mirrored-signature')).toHaveCount(0)
+  })
 
-    const signature = page.locator('.mirrored-signature')
-
-    await expect(signature).toHaveText('jamador')
-    await expect(signature).toHaveAttribute('aria-hidden', 'true')
-    await expect(signature).toHaveCSS('transform', /matrix\(-1, 0, 0, 1/)
+  test('shows the full title immediately with reduced motion', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/')
+    const title = page.getByRole('heading', {
+      name: 'Josué Amador-Rojas',
+      exact: true,
+    })
+    await expect(title.locator('.identity-fallback')).toBeVisible()
+    await expect(title.locator('.identity-animation')).toBeHidden()
+    await expect(title.locator('.identity-glyph').first()).toHaveCSS(
+      'animation-name',
+      'none'
+    )
   })
 
   test('renders every main route without client errors', async ({ page }) => {

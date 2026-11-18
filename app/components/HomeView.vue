@@ -29,7 +29,7 @@ const primaryLinks = [
   >
     <div class="site-content home-content">
       <header class="home-intro">
-        <h1>{{ siteConfig.identity.name }}</h1>
+        <AnimatedIdentity :name="siteConfig.identity.name" />
         <p>{{ t('site.identity.role') }}</p>
         <p>{{ t('site.identity.statement') }}</p>
 
