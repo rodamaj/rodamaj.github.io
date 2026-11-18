@@ -2,8 +2,22 @@ slug: church-clock-facade
 order: 6
 date: '2026-11-17'
 location:
-  es: San Pedro, Montes de Oca, San José, Costa Rica
-  en: San Pedro, Montes de Oca, San José, Costa Rica
+  - level: district
+    name:
+      es: San Pedro
+      en: San Pedro
+  - level: canton
+    name:
+      es: Montes de Oca
+      en: Montes de Oca
+  - level: province
+    name:
+      es: San José
+      en: San José
+  - level: country
+    name:
+      es: Costa Rica
+      en: Costa Rica
 device: iPhone 18 Pro
 captureType: telephoto
 zoom: 8

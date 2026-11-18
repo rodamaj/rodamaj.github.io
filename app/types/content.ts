@@ -46,7 +46,7 @@ export type PhotographEntry = {
   slug: string
   order: number
   date: string
-  location: LocalizedText
+  location: Array<{ level: string; name: LocalizedText }>
   device: string
   captureType: PhotographCaptureType
   zoom?: number

@@ -2,8 +2,30 @@ slug: research-city-facade
 order: 1
 date: '2026-04-16'
 location:
-  es: Ciudad de la Investigación, Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica
-  en: Ciudad de la Investigación, Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica
+  - level: place
+    name:
+      es: Ciudad de la Investigación
+      en: Ciudad de la Investigación
+  - level: place
+    name:
+      es: Universidad de Costa Rica
+      en: Universidad de Costa Rica
+  - level: district
+    name:
+      es: San Pedro
+      en: San Pedro
+  - level: canton
+    name:
+      es: Montes de Oca
+      en: Montes de Oca
+  - level: province
+    name:
+      es: San José
+      en: San José
+  - level: country
+    name:
+      es: Costa Rica
+      en: Costa Rica
 device: iPhone 17
 captureType: main-camera
 zoom: 1

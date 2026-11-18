@@ -32,6 +32,8 @@ Opciones:
   --date <YYYY-MM-DD>            Fecha de captura
   --location-es <texto>          Ubicación en español
   --location-en <texto>          Ubicación en inglés
+  --location-levels <lista>     Niveles separados por coma; obligatorio fuera de Costa Rica
+  --location-special           Mar, espacio u otra ubicación sin división administrativa
   --device <texto>               Modelo del iPhone
   --capture-type <tipo>          ${captureTypes.join(' | ')}
   --zoom <número>                Aumento usado (0.5, 1, 2, 4, 8…); omitir si se desconoce
@@ -51,6 +53,8 @@ const { values, positionals } = parseArgs({
     date: { type: 'string' },
     'location-es': { type: 'string' },
     'location-en': { type: 'string' },
+    'location-levels': { type: 'string' },
+    'location-special': { type: 'boolean', default: false },
     device: { type: 'string' },
     'capture-type': { type: 'string' },
     zoom: { type: 'string' },
@@ -295,6 +299,41 @@ const data = {
   altEn: await ask('Texto alternativo en inglés', values['alt-en']),
 }
 
+const locationEs = data.locationEs.split(',').map((part) => part.trim())
+const locationEn = data.locationEn.split(',').map((part) => part.trim())
+const specialLocation = values['location-special']
+const costaRica = locationEs.at(-1) === 'Costa Rica'
+const suppliedLevels = await ask(
+  'Niveles de ubicación separados por coma (ej. place,district,canton,province,country)',
+  values['location-levels'],
+  costaRica && !specialLocation
+    ? [
+        ...Array(Math.max(0, locationEs.length - 4)).fill('place'),
+        'district',
+        'canton',
+        'province',
+        'country',
+      ].join(',')
+    : specialLocation
+      ? locationEs.map(() => 'place').join(',')
+      : ''
+)
+const locationLevels = suppliedLevels.split(',').map((level) => level.trim())
+if (
+  locationEs.length !== locationEn.length ||
+  locationLevels.length !== locationEs.length ||
+  locationLevels.some((level) => !level) ||
+  locationEs.some((part) => !part) ||
+  locationEn.some((part) => !part) ||
+  (costaRica &&
+    !specialLocation &&
+    locationLevels.slice(-4).join(',') !== 'district,canton,province,country')
+) {
+  throw new Error(
+    'Indica cada nivel de ubicación por separado en ambos idiomas. Para Costa Rica se requieren distrito, cantón, provincia y país; para otros países usa sus divisiones administrativas. Usa --location-special para lugares como el mar o el espacio.'
+  )
+}
+
 prompt?.close()
 
 const requiredFields = [
@@ -373,8 +412,12 @@ const yaml = [
   `order: ${order}`,
   `date: ${quote(data.date)}`,
   'location:',
-  `  es: ${quote(data.locationEs)}`,
-  `  en: ${quote(data.locationEn)}`,
+  ...locationLevels.flatMap((level, index) => [
+    `  - level: ${quote(level)}`,
+    '    name:',
+    `      es: ${quote(locationEs[index])}`,
+    `      en: ${quote(locationEn[index])}`,
+  ]),
   `device: ${quote(data.device)}`,
   `captureType: ${data.captureType}`,
   ...(zoom === undefined ? [] : [`zoom: ${zoom}`]),

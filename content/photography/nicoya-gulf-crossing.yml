@@ -2,8 +2,18 @@ slug: nicoya-gulf-crossing
 order: 4
 date: '2025-06-07'
 location:
-  es: Ferry Puntarenas–Paquera, Golfo de Nicoya, Costa Rica
-  en: Puntarenas–Paquera Ferry, Gulf of Nicoya, Costa Rica
+  - level: place
+    name:
+      es: Ferry Puntarenas–Paquera
+      en: Puntarenas–Paquera Ferry
+  - level: region
+    name:
+      es: Golfo de Nicoya
+      en: Gulf of Nicoya
+  - level: country
+    name:
+      es: Costa Rica
+      en: Costa Rica
 device: iPhone 16 Pro
 captureType: main-camera
 zoom: 1

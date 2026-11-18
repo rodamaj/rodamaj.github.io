@@ -69,7 +69,7 @@ const photographSchema = z.object({
   slug: z.string(),
   order: z.number(),
   date: z.string(),
-  location: localizedText,
+  location: z.array(z.object({ level: z.string(), name: localizedText })),
   device: z.string(),
   captureType: z.enum([
     'main-camera',

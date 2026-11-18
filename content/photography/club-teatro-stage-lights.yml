@@ -2,8 +2,26 @@ slug: club-teatro-stage-lights
 order: 7
 date: '2024-11-02'
 location:
-  es: Club Teatro, Hospital, San José, San José, Costa Rica
-  en: Club Teatro, Hospital, San José, San José, Costa Rica
+  - level: place
+    name:
+      es: Club Teatro
+      en: Club Teatro
+  - level: district
+    name:
+      es: Hospital
+      en: Hospital
+  - level: canton
+    name:
+      es: San José
+      en: San José
+  - level: province
+    name:
+      es: San José
+      en: San José
+  - level: country
+    name:
+      es: Costa Rica
+      en: Costa Rica
 device: iPhone 16 Pro Max
 captureType: main-camera
 zoom: 1

@@ -2,8 +2,26 @@ slug: vive-claro-stage-fire
 order: 8
 date: '2026-02-10'
 location:
-  es: Vive Claro Distrito Cultural, Salitre, Teusaquillo, Bogotá, Colombia
-  en: Vive Claro Distrito Cultural, Salitre, Teusaquillo, Bogotá, Colombia
+  - level: place
+    name:
+      es: Vive Claro Distrito Cultural
+      en: Vive Claro Distrito Cultural
+  - level: neighbourhood
+    name:
+      es: Salitre
+      en: Salitre
+  - level: locality
+    name:
+      es: Teusaquillo
+      en: Teusaquillo
+  - level: capital-district
+    name:
+      es: Bogotá
+      en: Bogotá
+  - level: country
+    name:
+      es: Colombia
+      en: Colombia
 device: iPhone 17 Pro
 captureType: video-frame
 image:

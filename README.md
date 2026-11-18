@@ -29,3 +29,13 @@ La cámara (`captureType`) y el aumento (`zoom`) se guardan por separado.
 Indica el aumento utilizado, por ejemplo `--capture-type telephoto --zoom 8`.
 Si no lo conoces, omítelo: no se deduce automáticamente de la cámara ni de los
 milímetros. Los frames de video también pueden quedar sin aumento conocido.
+
+Las ubicaciones conservan cada nivel por separado en `location` (`level` y
+`name` traducible). En Costa Rica se requieren distrito, cantón, provincia y
+país, incluso si sus nombres coinciden. El pie de foto elimina únicamente
+repeticiones consecutivas; los datos originales se conservan completos.
+Para otros países, indica sus niveles con `--location-levels` (por ejemplo,
+`place,neighbourhood,locality,capital-district,country` para la foto de Bogotá).
+Las listas `--location-es` y `--location-en` deben incluir el mismo número de
+partes, separadas por comas. Para el mar, el espacio u otra ubicación sin
+divisiones aplicables, usa `--location-special` y una descripción real del lugar.

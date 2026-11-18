@@ -115,6 +115,17 @@ test.describe('critical site flows', () => {
       'church-clock-facade'
     )
     await expect(page.locator('#crystal-clear-neon-selfie')).toHaveCount(0)
+    await expect(
+      page.locator('#club-teatro-stage-lights .photograph-context p')
+    ).toHaveText('Club Teatro, Hospital, San José, Costa Rica')
+    await expect(
+      page.locator('#prusia-treetops .photograph-context p')
+    ).toHaveText(
+      'Sector Prusia, Parque Nacional Volcán Irazú, Tierra Blanca, Cartago, Costa Rica'
+    )
+    await expect(
+      page.locator('#nicoya-gulf-crossing .photograph-context p')
+    ).toHaveText('Ferry Puntarenas–Paquera, Golfo de Nicoya, Costa Rica')
 
     await expect(photographs.nth(1)).toHaveAttribute(
       'id',

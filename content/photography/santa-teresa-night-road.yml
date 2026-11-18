@@ -2,8 +2,26 @@ slug: santa-teresa-night-road
 order: 5
 date: '2025-06-07'
 location:
-  es: Santa Teresa, Cóbano, Puntarenas, Puntarenas, Costa Rica
-  en: Santa Teresa, Cóbano, Puntarenas, Puntarenas, Costa Rica
+  - level: place
+    name:
+      es: Santa Teresa
+      en: Santa Teresa
+  - level: district
+    name:
+      es: Cóbano
+      en: Cóbano
+  - level: canton
+    name:
+      es: Puntarenas
+      en: Puntarenas
+  - level: province
+    name:
+      es: Puntarenas
+      en: Puntarenas
+  - level: country
+    name:
+      es: Costa Rica
+      en: Costa Rica
 device: iPhone 16 Pro
 captureType: main-camera
 zoom: 1

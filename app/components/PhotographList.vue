@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PhotographEntry } from '~/types/content'
+import { formatPhotographLocation } from '~/utils/photographLocation'
 
 defineProps<{
   entries: readonly PhotographEntry[]
@@ -68,7 +69,7 @@ const details = (entry: PhotographEntry) =>
 
         <figcaption>
           <div class="photograph-context">
-            <p>{{ text(photograph.location) }}</p>
+            <p>{{ formatPhotographLocation(photograph.location, text) }}</p>
             <time :datetime="photograph.date">{{
               formatDate(photograph.date)
             }}</time>
