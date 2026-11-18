@@ -88,7 +88,7 @@ test.describe('critical site flows', () => {
       'lazy'
     )
     await expect(photographs.first().locator('.photograph-details')).toHaveText(
-      'iPhone 17 · Cámara principal · 26 mm'
+      'iPhone 18 Pro · Teleobjetivo · 200 mm'
     )
     await expect(
       page.locator('#vive-claro-stage-fire .photograph-details')
@@ -98,16 +98,21 @@ test.describe('critical site flows', () => {
       .first()
       .locator('.photograph-context p')
       .textContent()
-    expect(locationText).toContain('Ciudad de la Investigación')
-    expect(locationText).toContain('San Pedro, Montes de Oca')
+    expect(locationText).toBe('San Pedro, Montes de Oca, San José, Costa Rica')
+
+    await expect(photographs.first()).toHaveAttribute(
+      'id',
+      'church-clock-facade'
+    )
+    await expect(page.locator('#crystal-clear-neon-selfie')).toHaveCount(0)
 
     await expect(photographs.nth(1)).toHaveAttribute(
       'id',
-      'vive-claro-stage-fire'
+      'research-city-facade'
     )
     await expect(photographs.nth(2)).toHaveAttribute(
       'id',
-      'crystal-clear-neon-selfie'
+      'vive-claro-stage-fire'
     )
   })
 
