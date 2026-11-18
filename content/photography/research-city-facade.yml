@@ -6,6 +6,7 @@ location:
   en: Ciudad de la Investigación, Universidad de Costa Rica, San Pedro, Montes de Oca, San José, Costa Rica
 device: iPhone 17
 captureType: main-camera
+zoom: 1
 focalLengthMm: 26
 image:
   src: /images/photography/research-city-facade/1600.jpg

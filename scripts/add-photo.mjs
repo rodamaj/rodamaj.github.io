@@ -19,13 +19,7 @@ import { siteUrl } from '../site.config.mjs'
 
 const execFileAsync = promisify(execFile)
 const imageWidths = [640, 960, 1600]
-const captureTypes = [
-  'main-camera',
-  'main-camera-2x',
-  'ultra-wide',
-  'telephoto',
-  'video-frame',
-]
+const captureTypes = ['main-camera', 'ultra-wide', 'telephoto', 'video-frame']
 
 const usage = `
 Agrega una fotografía a la colección.
@@ -40,6 +34,7 @@ Opciones:
   --location-en <texto>          Ubicación en inglés
   --device <texto>               Modelo del iPhone
   --capture-type <tipo>          ${captureTypes.join(' | ')}
+  --zoom <número>                Aumento usado (0.5, 1, 2, 4, 8…); omitir si se desconoce
   --focal-length <mm>            Distancia focal; omitir si no se conservó
   --alt-es <texto>               Texto alternativo en español
   --alt-en <texto>               Texto alternativo en inglés
@@ -58,6 +53,7 @@ const { values, positionals } = parseArgs({
     'location-en': { type: 'string' },
     device: { type: 'string' },
     'capture-type': { type: 'string' },
+    zoom: { type: 'string' },
     'focal-length': { type: 'string' },
     'alt-es': { type: 'string' },
     'alt-en': { type: 'string' },
@@ -156,11 +152,9 @@ const suggestedCaptureType = sourceName.endsWith('_still')
   ? 'video-frame'
   : focalLengthNumber > 0 && focalLengthNumber <= 18
     ? 'ultra-wide'
-    : focalLengthNumber >= 40 && focalLengthNumber <= 55
-      ? 'main-camera-2x'
-      : focalLengthNumber >= 60
-        ? 'telephoto'
-        : 'main-camera'
+    : focalLengthNumber >= 60
+      ? 'telephoto'
+      : 'main-camera'
 
 const formatLocation = ({ address = {} }) =>
   [
@@ -261,10 +255,9 @@ const askCaptureType = async () => {
 
   console.log('\nTipo de captura:')
   console.log('  1. Cámara principal')
-  console.log('  2. Cámara principal, 2×')
-  console.log('  3. Ultra gran angular')
-  console.log('  4. Teleobjetivo')
-  console.log('  5. Frame de video')
+  console.log('  2. Ultra gran angular')
+  console.log('  3. Teleobjetivo')
+  console.log('  4. Frame de video')
   const suggestedOption = captureTypes.indexOf(suggestedCaptureType) + 1
   const answer = (
     await prompt.question(`Selecciona una opción [${suggestedOption}]: `)
@@ -289,6 +282,10 @@ const data = {
   ),
   device: await ask('Dispositivo', values.device, suggestedDevice),
   captureType: await askCaptureType(),
+  zoom: await ask(
+    'Aumento usado (0.5, 1, 2, 4, 8…; Enter si se desconoce)',
+    values.zoom
+  ),
   focalLength: await ask(
     'Distancia focal en mm (Enter si no se conservó)',
     values['focal-length'],
@@ -334,6 +331,11 @@ if (!captureTypes.includes(data.captureType)) {
   throw new Error(`Tipo de captura inválido: ${data.captureType}.`)
 }
 
+const zoom = data.zoom ? Number(data.zoom) : undefined
+if (zoom !== undefined && (!Number.isFinite(zoom) || zoom <= 0)) {
+  throw new Error('El aumento debe ser un número positivo.')
+}
+
 const focalLength = data.focalLength ? Number(data.focalLength) : undefined
 if (
   focalLength !== undefined &&
@@ -375,6 +377,7 @@ const yaml = [
   `  en: ${quote(data.locationEn)}`,
   `device: ${quote(data.device)}`,
   `captureType: ${data.captureType}`,
+  ...(zoom === undefined ? [] : [`zoom: ${zoom}`]),
   ...(focalLength === undefined ? [] : [`focalLengthMm: ${focalLength}`]),
   'image:',
   `  src: ${publicBase}/1600.jpg`,

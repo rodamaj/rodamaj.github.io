@@ -6,6 +6,7 @@ location:
   en: San Pedro, Montes de Oca, San José, Costa Rica
 device: iPhone 18 Pro
 captureType: telephoto
+zoom: 8
 focalLengthMm: 200
 image:
   src: /images/photography/church-clock-facade/1600.jpg

@@ -5,7 +5,8 @@ location:
   es: Sector Prusia, Parque Nacional Volcán Irazú, Tierra Blanca, Cartago, Cartago, Costa Rica
   en: Prusia Sector, Irazú Volcano National Park, Tierra Blanca, Cartago, Cartago, Costa Rica
 device: iPhone 16 Pro
-captureType: main-camera-2x
+captureType: main-camera
+zoom: 2
 focalLengthMm: 48
 image:
   src: /images/photography/prusia-treetops/1600.jpg

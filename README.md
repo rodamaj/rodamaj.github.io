@@ -24,3 +24,8 @@ Construido con Nuxt, Vue, TypeScript. Publicado en GitHub Pages.
 
 La consulta externa nunca ocurre sin confirmación. En automatizaciones puedes
 usar `--geocode` o impedirla expresamente con `--no-geocode`.
+
+La cámara (`captureType`) y el aumento (`zoom`) se guardan por separado.
+Indica el aumento utilizado, por ejemplo `--capture-type telephoto --zoom 8`.
+Si no lo conoces, omítelo: no se deduce automáticamente de la cámara ni de los
+milímetros. Los frames de video también pueden quedar sin aumento conocido.

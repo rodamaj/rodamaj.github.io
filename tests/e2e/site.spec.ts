@@ -88,7 +88,7 @@ test.describe('critical site flows', () => {
       'lazy'
     )
     await expect(photographs.first().locator('.photograph-details')).toHaveText(
-      'iPhone 18 Pro · Teleobjetivo · 200 mm'
+      'iPhone 18 Pro · Teleobjetivo, 8× · 200 mm'
     )
     await expect(
       page.locator('#vive-claro-stage-fire .photograph-details')
@@ -99,6 +99,16 @@ test.describe('critical site flows', () => {
       .locator('.photograph-context p')
       .textContent()
     expect(locationText).toBe('San Pedro, Montes de Oca, San José, Costa Rica')
+
+    await expect(
+      page.locator('#research-city-facade .photograph-details')
+    ).toHaveText('iPhone 17 · Cámara principal, 1× · 26 mm')
+    await expect(
+      page.locator('#prusia-treetops .photograph-details')
+    ).toHaveText('iPhone 16 Pro · Cámara principal, 2× · 48 mm')
+    await expect(
+      page.locator('#irazu-crater-tower .photograph-details')
+    ).toHaveText('iPhone 16 Pro · Ultra gran angular, 0,5× · 14 mm')
 
     await expect(photographs.first()).toHaveAttribute(
       'id',

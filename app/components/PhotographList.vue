@@ -22,10 +22,23 @@ const srcset = (entry: PhotographEntry) =>
     .map((source) => `${source.src} ${source.width}w`)
     .join(', ')
 
+const captureLabel = (entry: PhotographEntry) => {
+  const camera = t(`site.photography.captureTypes.${entry.captureType}`)
+  if (!entry.zoom) return camera
+
+  const zoom = new Intl.NumberFormat(
+    locale.value === 'es' ? 'es-CR' : 'en-US',
+    {
+      maximumFractionDigits: 2,
+    }
+  ).format(entry.zoom)
+  return `${camera}, ${zoom}×`
+}
+
 const details = (entry: PhotographEntry) =>
   [
     entry.device,
-    t(`site.photography.captureTypes.${entry.captureType}`),
+    captureLabel(entry),
     entry.focalLengthMm
       ? `${entry.focalLengthMm} mm`
       : t('site.photography.focalNotRetained'),

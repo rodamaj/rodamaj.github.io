@@ -73,12 +73,12 @@ const photographSchema = z.object({
   device: z.string(),
   captureType: z.enum([
     'main-camera',
-    'main-camera-2x',
     'ultra-wide',
     'telephoto',
     'video-frame',
   ]),
-  focalLengthMm: z.number().optional(),
+  zoom: z.number().positive().optional(),
+  focalLengthMm: z.number().positive().optional(),
   image: z.object({
     src: z.string(),
     width: z.number(),
