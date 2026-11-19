@@ -4,10 +4,24 @@ import { getRouteLayoutState } from '~/utils/routeLayout'
 const localeHead = useLocaleHead()
 const colorMode = useColorMode()
 const route = useRoute()
+const identityIntroConsumed = useState(
+  'identity-animation-consumed',
+  () => false
+)
 const isHydrated = ref(false)
 const panelScroll = ref<HTMLElement | null>(null)
 
 const routeLayout = computed(() => getRouteLayoutState(route.path))
+
+// Even when the initial route has no home title, later navigation must not
+// start an introduction that belongs only to the initial document load.
+watch(
+  () => route.fullPath,
+  () => {
+    identityIntroConsumed.value = true
+  },
+  { flush: 'sync' }
+)
 
 // The desktop panel scrolls independently of the document, so the router's
 // document scroll reset does not reset it when navigating between sections.

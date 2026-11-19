@@ -105,12 +105,8 @@ test.describe('critical site flows', () => {
     )
     expect(await extra.boundingBox()).toEqual(extraPosition)
     expect((await firstSurnameLetter.boundingBox())!.x).toBeCloseTo(settled)
-    await setTime(6600)
+    await setTime(6100)
     await expect(extra).toHaveCSS('opacity', '1')
-    await expect(title.locator('.identity-cursor')).toHaveCSS(
-      'visibility',
-      'hidden'
-    )
     expect((await firstSurnameLetter.boundingBox())!.x).toBeCloseTo(settled)
     for (const handle of handles)
       expect(await handle.evaluate((el) => el.isConnected)).toBe(true)
@@ -137,6 +133,12 @@ test.describe('critical site flows', () => {
     expect(surname!.x - given!.x - given!.width).toBeGreaterThan(3)
     expect(await title.boundingBox()).toEqual(before)
     await expect(page.locator('.mirrored-signature')).toHaveCount(0)
+    await setTime(6600)
+    await expect(title).toHaveClass(/is-complete/)
+    await expect(title.locator('.identity-fallback')).toHaveText(
+      'Josué Amador-Rojas'
+    )
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
   })
 
   test('shows the full title immediately with reduced motion', async ({
@@ -149,10 +151,55 @@ test.describe('critical site flows', () => {
       exact: true,
     })
     await expect(title.locator('.identity-fallback')).toBeVisible()
-    await expect(title.locator('.identity-animation')).toBeHidden()
-    await expect(title.locator('.identity-glyph').first()).toHaveCSS(
-      'animation-name',
-      'none'
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
+    await expect(title).toHaveClass(/is-complete/)
+  })
+
+  test('never replays the intro after mobile navigation or preference changes', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('/')
+    const title = page.locator('.animated-identity')
+    await expect(title).toHaveClass(/is-ready/)
+    // Leave before completion: returning must still show plain text.
+    await page.getByRole('link', { name: /^Ingeniería/ }).click()
+    await expect(page).toHaveURL(/\/engineering\/?$/)
+    await page.goBack()
+    await expect(page).toHaveURL(/\/$/)
+    await expect(title).toHaveClass(/is-complete/)
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
+    await expect(title.locator('.identity-fallback')).toHaveText(
+      'Josué Amador-Rojas'
+    )
+    await page.getByRole('button', { name: 'Inglés', exact: true }).click()
+    await page.getByRole('button', { name: 'Dark theme', exact: true }).click()
+    await expect(title).toHaveClass(/is-complete/)
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
+    await page.getByRole('link', { name: /^Engineering/ }).click()
+    await expect(page).toHaveURL(/\/engineering\/?$/)
+    await page.goBack()
+    await expect(page).toHaveURL(/\/$/)
+    await expect(title).toHaveClass(/is-complete/)
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
+    await page.reload()
+    await expect(title).toHaveClass(/is-ready/)
+  })
+
+  test('does not start an intro when home mounts after the initial page', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('/thoughts')
+    await waitForHydration(page)
+    await expect(page.locator('.animated-identity')).toHaveCount(0)
+    await page.locator('.page-index-link').click()
+    await expect(page).toHaveURL(/\/$/)
+    const title = page.locator('.animated-identity')
+    await expect(title).toHaveClass(/is-complete/)
+    await expect(title.locator('.identity-animation')).toHaveCount(0)
+    await expect(title.locator('.identity-fallback')).toHaveText(
+      'Josué Amador-Rojas'
     )
   })
 
@@ -395,6 +442,7 @@ test.describe('responsive columns', () => {
     for (const viewport of viewports) {
       await page.setViewportSize(viewport)
       await page.goto('/')
+      await waitForHydration(page)
 
       const container = await page.locator('.home-container').boundingBox()
       const content = await page.locator('.home-content').boundingBox()

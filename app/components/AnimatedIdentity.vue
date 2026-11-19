@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{ name: string }>()
 
+const route = useRoute()
+const consumed = useState('identity-animation-consumed', () => false)
+const completed = ref(false)
 const root = ref<HTMLElement | null>(null)
 const ready = ref(false)
 const wordWidth = ref(0)
@@ -15,6 +18,7 @@ let observer: ResizeObserver | undefined
 let disposed = false
 
 const measure = () => {
+  if (completed.value) return
   const element = root.value
   if (!element) return
   const origin = element.getBoundingClientRect().left
@@ -63,9 +67,32 @@ const measure = () => {
   ready.value = true
 }
 
+const finish = () => {
+  completed.value = true
+  ready.value = false
+  observer?.disconnect()
+}
+
+const onAnimationEnd = (event: AnimationEvent) => {
+  if (event.animationName.startsWith('cursor-window')) finish()
+}
+
+// Hiding the mobile home view cancels CSS animations; returning would restart
+// them. End the intro on navigation, and retain its claim across remounts.
+watch(() => route.fullPath, finish, { flush: 'sync' })
+
 onMounted(async () => {
+  if (consumed.value) {
+    finish()
+    return
+  }
+  consumed.value = true
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    finish()
+    return
+  }
   await document.fonts.ready
-  if (disposed) return
+  if (disposed || completed.value) return
   measure()
   observer = new ResizeObserver(measure)
   if (root.value) observer.observe(root.value)
@@ -78,58 +105,68 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <h1 ref="root" class="animated-identity" :class="{ 'is-ready': ready }">
+  <h1
+    ref="root"
+    class="animated-identity"
+    :class="{ 'is-ready': ready, 'is-complete': completed }"
+    @animationend="onAnimationEnd"
+  >
     <span class="sr-only">{{ name }}</span>
-    <span class="identity-fallback" aria-hidden="true">
+    <span v-if="completed" class="identity-fallback" aria-hidden="true">{{
+      name
+    }}</span>
+    <span v-else class="identity-fallback" aria-hidden="true">
       <span v-for="(character, index) in characters" :key="index">{{
         character === ' ' ? '\u00a0' : character
       }}</span>
     </span>
-    <span
-      class="identity-animation"
-      :style="{ width: `${wordWidth}px` }"
-      aria-hidden="true"
-    >
+    <template v-if="!completed">
       <span
-        v-for="(character, index) in characters"
-        :key="index"
-        class="identity-glyph"
-        :class="
-          baseIndices.includes(index) ? 'identity-base' : 'identity-extra'
-        "
-        :data-index="index"
-        :style="positions[index]"
-        ><span class="identity-face">{{
-          character === ' ' ? '\u00a0' : character
-        }}</span></span
+        class="identity-animation"
+        :style="{ width: `${wordWidth}px` }"
+        aria-hidden="true"
       >
-    </span>
-    <span
-      class="identity-cursor"
-      :style="cursorPositions"
-      aria-hidden="true"
-    ></span>
-    <span
-      v-for="(stage, stageIndex) in stages"
-      :key="stageIndex"
-      class="identity-measure"
-      aria-hidden="true"
-    >
+        <span
+          v-for="(character, index) in characters"
+          :key="index"
+          class="identity-glyph"
+          :class="
+            baseIndices.includes(index) ? 'identity-base' : 'identity-extra'
+          "
+          :data-index="index"
+          :style="positions[index]"
+          ><span class="identity-face">{{
+            character === ' ' ? '\u00a0' : character
+          }}</span></span
+        >
+      </span>
       <span
-        v-for="(index, slot) in stage"
-        :key="slot"
-        :data-index="index ?? undefined"
-        >{{ index === null ? '\u00a0' : characters[index] }}</span
-      >
-    </span>
-    <span class="identity-measure" aria-hidden="true">
+        class="identity-cursor"
+        :style="cursorPositions"
+        aria-hidden="true"
+      ></span>
       <span
-        v-for="(character, index) in characters"
-        :key="index"
-        :data-index="index"
-        >{{ character === ' ' ? '\u00a0' : character }}</span
+        v-for="(stage, stageIndex) in stages"
+        :key="stageIndex"
+        class="identity-measure"
+        aria-hidden="true"
       >
-    </span>
+        <span
+          v-for="(index, slot) in stage"
+          :key="slot"
+          :data-index="index ?? undefined"
+          >{{ index === null ? '\u00a0' : characters[index] }}</span
+        >
+      </span>
+      <span class="identity-measure" aria-hidden="true">
+        <span
+          v-for="(character, index) in characters"
+          :key="index"
+          :data-index="index"
+          >{{ character === ' ' ? '\u00a0' : character }}</span
+        >
+      </span>
+    </template>
   </h1>
 </template>
 
