@@ -39,3 +39,20 @@ Para otros países, indica sus niveles con `--location-levels` (por ejemplo,
 Las listas `--location-es` y `--location-en` deben incluir el mismo número de
 partes, separadas por comas. Para el mar, el espacio u otra ubicación sin
 divisiones aplicables, usa `--location-special` y una descripción real del lugar.
+
+## Favoritos musicales por año
+
+Cada archivo `content/music/AAAA.yml` contiene `year`, `songs` y `albums`.
+Las listas corresponden a lanzamientos publicados ese año, desde 2020.
+El orden del arreglo define los puestos del 1 al 8; cada entrada tiene `title`
+y `artist`. No se admiten más de ocho entradas por lista. Los puestos que aún
+no tienen selección aparecen como placeholders, sin inventar favoritos.
+
+```yaml
+year: 2020
+songs: []
+albums: []
+```
+
+Para añadir otro año, crea su archivo con el mismo formato: el selector de
+Música lo incorpora automáticamente.

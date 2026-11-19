@@ -93,8 +93,22 @@ const photographSchema = z.object({
   }),
 })
 
+const rankedMusicEntry = z.object({
+  title: z.string().min(1),
+  artist: z.string().min(1),
+})
+
 export default defineContentConfig({
   collections: {
+    musicYears: defineCollection({
+      type: 'data',
+      source: 'music/*.yml',
+      schema: z.object({
+        year: z.number().int().min(2020),
+        songs: z.array(rankedMusicEntry).max(8),
+        albums: z.array(rankedMusicEntry).max(8),
+      }),
+    }),
     engineering: defineCollection({
       type: 'data',
       source: 'engineering/*.md',

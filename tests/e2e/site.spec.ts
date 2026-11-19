@@ -203,6 +203,80 @@ test.describe('critical site flows', () => {
     )
   })
 
+  test('selects annual top eight music rankings from 2020 onward', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('/music')
+    await waitForHydration(page)
+    const favorites = page.locator('.annual-favorites')
+    const year = favorites.getByRole('group', { name: 'Año', exact: true })
+    await expect(
+      year.getByRole('button', { name: '2020', exact: true })
+    ).toHaveAttribute('aria-pressed', 'true')
+    await expect(year.getByRole('button')).toHaveText([
+      '2020',
+      '2021',
+      '2022',
+      '2023',
+      '2024',
+      '2025',
+      '2026',
+    ])
+    await expect(favorites.locator('[data-ranking="songs"] li')).toHaveCount(8)
+    await expect(favorites.locator('[data-ranking="albums"] li')).toHaveCount(8)
+    await expect(favorites.locator('.is-pending')).toHaveCount(16)
+    await year.getByRole('button', { name: '2024', exact: true }).click()
+    await expect(
+      favorites.getByRole('heading', { name: 'Top 8 canciones · 2024' })
+    ).toBeVisible()
+    await expect(
+      favorites.getByRole('heading', { name: 'Top 8 álbumes · 2024' })
+    ).toBeVisible()
+    expect(
+      await page.evaluate(
+        () =>
+          document.documentElement.scrollWidth <=
+          document.documentElement.clientWidth
+      )
+    ).toBe(true)
+    await year.getByRole('button', { name: '2025', exact: true }).click()
+    await expect(favorites.locator('[data-ranking="albums"] cite')).toHaveText([
+      'Let God Sort Em Out',
+      'Pirouette',
+      'Forever Howlong',
+      'Lonely People with Power',
+      'Something Beautiful',
+      'Ego Death at a Bachelorette Party',
+      'Debí Tirar Más Fotos',
+      'Eusexua',
+    ])
+    await expect(favorites.locator('[data-ranking="songs"] cite')).toHaveText([
+      'Acid Rain',
+      'Voy a Llevarte Pa PR',
+      'P.O.V. (ft. Tyler, the Creator)',
+      'Berghain',
+      'Two Horses',
+      'Walk of Fame (ft. Brittany Howard)',
+      'House featuring John Cale',
+      'Glum',
+    ])
+    await expect(favorites.locator('.is-pending')).toHaveCount(0)
+    await year.getByRole('button', { name: '2024', exact: true }).click()
+    await page.getByRole('button', { name: 'Inglés', exact: true }).click()
+    await expect(
+      favorites
+        .getByRole('group', { name: 'Year', exact: true })
+        .getByRole('button', { name: '2024', exact: true })
+    ).toHaveAttribute('aria-pressed', 'true')
+    await expect(
+      favorites.getByRole('heading', { name: 'Top 8 songs · 2024' })
+    ).toBeVisible()
+    await expect(
+      favorites.getByRole('heading', { name: 'Top 8 albums · 2024' })
+    ).toBeVisible()
+  })
+
   test('renders every main route without client errors', async ({ page }) => {
     const clientErrors: Error[] = []
     page.on('pageerror', (error) => clientErrors.push(error))

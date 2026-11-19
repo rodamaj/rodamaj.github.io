@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import { siteConfig } from '~/config/site'
+import type { AnnualMusicFavorites } from '~/types/content'
 
 const { t } = useI18n()
 const { text } = useLocalizedText()
+const { data: annualFavorites } = await useAsyncData(
+  'music-year-favorites',
+  () => queryCollection('musicYears').order('year', 'ASC').all()
+)
+const years = computed(
+  () =>
+    (annualFavorites.value ?? []).map((entry) => ({
+      ...entry,
+      year: Number(entry.year),
+    })) as AnnualMusicFavorites[]
+)
 </script>
 
 <template>
@@ -14,6 +26,8 @@ const { text } = useLocalizedText()
       <section>
         <p>{{ t('site.music.introduction') }}</p>
       </section>
+
+      <AnnualMusicFavorites :years="years" />
 
       <section class="records-section">
         <h2>{{ t('site.music.returningTitle') }}</h2>

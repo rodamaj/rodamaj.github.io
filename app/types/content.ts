@@ -62,3 +62,14 @@ export type PhotographEntry = {
     }>
   }
 }
+
+export type RankedMusicEntry = {
+  title: string
+  artist: string
+}
+
+export type AnnualMusicFavorites = {
+  year: number
+  songs: RankedMusicEntry[]
+  albums: RankedMusicEntry[]
+}

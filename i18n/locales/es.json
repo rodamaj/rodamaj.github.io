@@ -74,7 +74,15 @@
       "playlistLink": "Escuchar en Spotify",
       "discogsTitle": "Colección",
       "discogsDescription": "Mi colección de CDs está en Discogs.",
-      "discogsLink": "Ver mi colección de CDs en Discogs"
+      "discogsLink": "Ver mi colección de CDs en Discogs",
+      "annualTitle": "Favoritos por año",
+      "annualDescription": "Mis ocho canciones y ocho álbumes favoritos publicados en cada año, ordenados del primer al octavo puesto.",
+      "annualYear": "Año",
+      "annualSongs": "Top 8 canciones",
+      "annualAlbums": "Top 8 álbumes",
+      "pendingSong": "Canción por elegir",
+      "pendingAlbum": "Álbum por elegir",
+      "annualPending": "Estas listas están pendientes de completar."
     },
     "photography": {
       "captureTypes": {
